@@ -1,1 +1,1 @@
-for i in $(ls -d */ | sed 's/.$//'); do stow -D "$i"; done;
+for i in $(ls -d */ | sed 's/.$//'); do stow -D -t $HOME "$i"; done;
