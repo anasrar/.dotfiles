@@ -1,0 +1,2 @@
+stow -D -t $HOME "$@"
+
