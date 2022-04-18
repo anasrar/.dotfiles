@@ -12,5 +12,7 @@ Specific directory has `README.md`, read for more specific information like depe
 
 # How to use
 
-- run `stow.sh` to create symlink
-- run `unstow.sh` to remove symlink
+- run `stow.sh <directory>` to create symlink specific directory
+- run `unstow.sh <directory>` to remove symlink specific directory
+- run `stow-all.sh` to create symlink all directory
+- run `unstow-all.sh` to remove symlink all directory
