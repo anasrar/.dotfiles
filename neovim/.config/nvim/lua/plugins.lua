@@ -68,6 +68,7 @@ require('LSP.utils.cmp')
 
 require('LSP.typescript')
 require('LSP.css')
+require('LSP.svelte')
 --require('LSP.deno')
 
 -- # Personal Preferences
