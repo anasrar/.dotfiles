@@ -58,7 +58,8 @@ lspconfig.denols.setup({
     end,
 })
 
-null_ls.setup({
+null_ls.register({
+    name = 'null-ls-deno',
     sources = {
         null_ls.builtins.formatting.deno_fmt,
     },

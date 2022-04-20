@@ -60,7 +60,8 @@ lspconfig.tsserver.setup({
     end,
 })
 
-null_ls.setup({
+null_ls.register({
+    name = 'null-ls-TypeScript',
     sources = {
         null_ls.builtins.diagnostics.eslint_d,
         null_ls.builtins.code_actions.eslint_d,
