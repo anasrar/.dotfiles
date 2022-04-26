@@ -47,25 +47,33 @@ require('packer').startup(function()
   use { 'L3MON4D3/LuaSnip' }
 end)
 
+-- # Theme
 require('theme.tokyonight')
 -- require('theme.iceberg')
 -- require('theme.kanagawa')
 -- require('theme.nightfox')
 -- require('theme.nightfly')
 
+-- # Buffer
 require('buffer.barbar')
 
+-- # Terminal
 require('terminal.toggleterm')
 
+-- # Parser
 require('parser.treesitter')
 
+-- # Finder
 require('finder.telescope')
 
+-- # Status line
 require('statusline.lualine')
 
+-- # LSP utils
 require('LSP.utils.icon')
 require('LSP.utils.cmp')
 
+-- # LSP Config
 require('LSP.typescript')
 require('LSP.css')
 require('LSP.svelte')
