@@ -77,7 +77,10 @@ require('LSP.utils.cmp')
 require('LSP.typescript')
 require('LSP.css')
 require('LSP.svelte')
+require('LSP.vue')
 --require('LSP.deno')
+-- format some markup and dif file
+require('LSP.prettier')
 
 -- # Personal Preferences
 
