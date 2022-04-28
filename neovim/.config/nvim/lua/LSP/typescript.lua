@@ -63,9 +63,15 @@ lspconfig.tsserver.setup({
 null_ls.register({
     name = 'null-ls-TypeScript',
     sources = {
-        null_ls.builtins.diagnostics.eslint_d,
-        null_ls.builtins.code_actions.eslint_d,
-        null_ls.builtins.formatting.prettierd,
+        null_ls.builtins.diagnostics.eslint_d.with({
+          filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+        }),
+        null_ls.builtins.code_actions.eslint_d.with({
+          filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+        }),
+        null_ls.builtins.formatting.prettierd.with({
+          filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+        }),
     },
     on_attach = on_attach,
 })

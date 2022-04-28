@@ -58,13 +58,13 @@ null_ls.setup({
     filetypes = { 'svelte' },
     sources = {
         null_ls.builtins.diagnostics.eslint_d.with({
-          filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue', 'svelte' },
+          filetypes = { 'svelte' },
         }),
         null_ls.builtins.code_actions.eslint_d.with({
-          filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue', 'svelte' },
+          filetypes = { 'svelte' },
         }),
         null_ls.builtins.formatting.prettierd.with({
-          filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue', 'css', 'scss', 'less', 'html', 'json', 'jsonc', 'yaml', 'markdown', 'graphql', 'handlebars', 'svelte' },
+          filetypes = { 'svelte' },
         }),
     },
     on_attach = on_attach,

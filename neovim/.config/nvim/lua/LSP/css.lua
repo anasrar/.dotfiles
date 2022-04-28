@@ -21,6 +21,8 @@ lspconfig.cssls.setup({
 null_ls.register({
     name = 'null-ls-CSS',
     sources = {
-        null_ls.builtins.formatting.prettierd,
+        null_ls.builtins.formatting.prettierd.with({
+          filetypes = { 'css', 'scss', 'less' },
+        }),
     },
 })
