@@ -55,12 +55,6 @@ lspconfig.volar.setup({
 null_ls.register({
     name = 'null-ls-Vue',
     sources = {
-        null_ls.builtins.diagnostics.eslint_d.with({
-          filetypes = { 'vue' },
-        }),
-        null_ls.builtins.code_actions.eslint_d.with({
-          filetypes = { 'vue' },
-        }),
         null_ls.builtins.formatting.prettierd.with({
           filetypes = { 'vue' },
         }),
