@@ -57,12 +57,6 @@ null_ls.setup({
     name = 'null-ls-svelte',
     filetypes = { 'svelte' },
     sources = {
-        null_ls.builtins.diagnostics.eslint_d.with({
-          filetypes = { 'svelte' },
-        }),
-        null_ls.builtins.code_actions.eslint_d.with({
-          filetypes = { 'svelte' },
-        }),
         null_ls.builtins.formatting.prettierd.with({
           filetypes = { 'svelte' },
         }),
