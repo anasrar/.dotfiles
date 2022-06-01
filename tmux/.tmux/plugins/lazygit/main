@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 # DEPENDENCY:
 # - lazygit https://github.com/jesseduffield/lazygit
 
