@@ -14,6 +14,7 @@ require('packer').startup(function()
   -- use { 'rebelot/kanagawa.nvim' }
   -- use { 'EdenEast/nightfox.nvim', branch = 'main' }
   -- use { 'bluz71/vim-nightfly-guicolors' }
+  -- use { 'catppuccin/nvim', as = 'catppuccin' }
 
   -- #Buffer
   use { 'romgrk/barbar.nvim' }
@@ -53,6 +54,7 @@ require('theme.tokyonight')
 -- require('theme.kanagawa')
 -- require('theme.nightfox')
 -- require('theme.nightfly')
+-- require('theme.catppuccin')
 
 -- # Buffer
 require('buffer.barbar')
