@@ -4,7 +4,10 @@ vim.cmd('set relativenumber')
 vim.cmd('set number')
 
 vim.opt.list = true
-vim.opt.listchars = "space:·"
+vim.opt.listchars = {
+  tab = '→ ',
+  space = '·'
+}
 
 -- # Line manipulation
 
