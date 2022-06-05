@@ -1,0 +1,9 @@
+gui:
+  showIcons: true
+  theme:
+    activeBorderColor:
+      - white
+      - bold
+    inactiveBorderColor:
+      - black
+      - bold
