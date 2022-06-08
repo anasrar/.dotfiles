@@ -49,43 +49,25 @@ require('packer').startup(function()
 end)
 
 -- # Theme
-require('theme.tokyonight')
--- require('theme.iceberg')
--- require('theme.kanagawa')
--- require('theme.nightfox')
--- require('theme.nightfly')
--- require('theme.catppuccin')
+require('theme.main')
 
 -- # Buffer
-require('buffer.barbar')
+require('buffer.main')
 
 -- # Terminal
-require('terminal.toggleterm')
+require('terminal.main')
 
 -- # Parser
-require('parser.treesitter')
+require('parser.main')
 
 -- # Finder
-require('finder.telescope')
+require('finder.main')
 
 -- # Status line
-require('statusline.lualine')
+require('statusline.main')
 
--- # LSP utils
-require('LSP.utils.icon')
-require('LSP.utils.cmp')
-
--- # LSP Config
-require('LSP.typescript')
-require('LSP.css')
-require('LSP.svelte')
-require('LSP.vue')
---require('LSP.deno')
-require('LSP.go')
--- format some markup and dif file
-require('LSP.prettier')
+-- # LSP
+require('LSP.main')
 
 -- # Personal Preferences
-
-require('personal.tab')
-require('personal.line')
+require('personal.main')

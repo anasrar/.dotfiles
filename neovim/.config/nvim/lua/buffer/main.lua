@@ -1,0 +1,3 @@
+-- # Buffer
+
+require('buffer.barbar')

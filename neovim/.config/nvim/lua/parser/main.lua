@@ -1,0 +1,3 @@
+-- # Parser
+
+require('parser.treesitter')
