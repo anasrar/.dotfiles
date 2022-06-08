@@ -2,6 +2,7 @@
 
 vim.cmd('set relativenumber')
 vim.cmd('set number')
+vim.cmd('set nowrap')
 
 vim.opt.list = true
 vim.opt.listchars = {
