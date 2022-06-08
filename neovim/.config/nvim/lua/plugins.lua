@@ -46,6 +46,11 @@ require('packer').startup(function()
   -- # LSP Snippet
   use { 'saadparwaiz1/cmp_luasnip' }
   use { 'L3MON4D3/LuaSnip' }
+
+  -- # DAP
+  use { 'mfussenegger/nvim-dap' }
+  use { 'theHamsta/nvim-dap-virtual-text', requires = { 'nvim-treesitter/nvim-treesitter' } }
+  use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } }
 end)
 
 -- # Theme
@@ -68,6 +73,9 @@ require('statusline.main')
 
 -- # LSP
 require('LSP.main')
+
+-- # DAP
+require('DAP.main')
 
 -- # Personal Preferences
 require('personal.main')
