@@ -27,7 +27,7 @@ for i, ext in ipairs(exts) do
     {
       type = 'chrome',
       request = 'attach',
-      name = 'launch program',
+      name = 'Attach Program (Chrome)',
       program = '${file}',
       cwd = vim.fn.getcwd(),
       sourceMaps = true,
