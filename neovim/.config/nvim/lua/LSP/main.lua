@@ -11,5 +11,6 @@ require('LSP.svelte')
 require('LSP.vue')
 -- require('LSP.deno')
 require('LSP.go')
+require('LSP.python')
 -- format some markup and dif file
 require('LSP.prettier')
