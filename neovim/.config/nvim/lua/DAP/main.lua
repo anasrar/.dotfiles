@@ -99,3 +99,4 @@ buf_map('n', '<Leader>do', ':lua require(\'dap\').step_out()<CR>')
 -- # DAP Config
 require('DAP.python')
 require('DAP.typescript')
+require('DAP.go')
