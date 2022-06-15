@@ -29,6 +29,9 @@ require('packer').startup(function()
   use { 'nvim-telescope/telescope-fzy-native.nvim' }
   use { 'nvim-telescope/telescope.nvim' }
 
+  -- # File Tree
+  use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons', }, tag = 'nightly' }
+
   -- # Status line
   use { 'nvim-lualine/lualine.nvim' }
 
@@ -67,6 +70,9 @@ require('parser.main')
 
 -- # Finder
 require('finder.main')
+
+-- # File Tree
+require('filetree.main')
 
 -- # Status line
 require('statusline.main')
