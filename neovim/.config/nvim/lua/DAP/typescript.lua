@@ -20,6 +20,16 @@ NODE_OPTIONS=--no-experimental-fetch npm run build
 ```
 and run any node using flag `--inspect` or `--inspect-brk`, you can also debug deno using the same flag
 
+debugging ts project using ts-node
+install ts-node on local project or global
+```
+npm i -D ts-node
+```
+you can start debug with this commnad and attach or just launch
+```
+node -r ts-node/register --inspect <ts file>
+```
+
 --]=]
 
 local dap = require('dap')
@@ -41,6 +51,26 @@ local exts = {'javascript','typescript','javascriptreact','typescriptreact'}
 for i, ext in ipairs(exts) do
   dap.configurations[ext] = {
     {
+      type = 'node2',
+      request = 'launch',
+      name = 'Launch Program (Node2)',
+      cwd = vim.fn.getcwd(),
+      args = { '${file}' },
+      sourceMaps = true,
+      protocol = 'inspector',
+    },
+    {
+      type = 'node2',
+      request = 'launch',
+      name = 'Launch Program (Node2 with ts-node)',
+      cwd = vim.fn.getcwd(),
+      runtimeArgs = { '-r', 'ts-node/register' },
+      runtimeExecutable = 'node',
+      args = { '--inspect', '${file}' },
+      sourceMaps = true,
+      skipFiles = { '<node_internals>/**', 'node_modules/**' },
+    },
+    {
       type = 'chrome',
       request = 'attach',
       name = 'Attach Program (Chrome)',
@@ -56,6 +86,15 @@ for i, ext in ipairs(exts) do
       request = 'attach',
       name = 'Attach Program (Node2)',
       processId = require('dap.utils').pick_process,
+    },
+    {
+      type = 'node2',
+      request = 'attach',
+      name = 'Attach Program (Node2 with ts-node)',
+      cwd = vim.fn.getcwd(),
+      sourceMaps = true,
+      skipFiles = { '<node_internals>/**' },
+      port = 9229,
     },
   }
 end
