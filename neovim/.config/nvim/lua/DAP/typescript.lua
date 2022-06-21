@@ -71,6 +71,18 @@ for i, ext in ipairs(exts) do
       skipFiles = { '<node_internals>/**', 'node_modules/**' },
     },
     {
+      type = 'node2',
+      request = 'launch',
+      name = 'Launch Test Program (Node2 with jest)',
+      cwd = vim.fn.getcwd(),
+      runtimeArgs = { '--inspect-brk', '${workspaceFolder}/node_modules/.bin/jest' },
+      runtimeExecutable = 'node',
+      args = { '${file}', '--runInBand', '--coverage', 'false'},
+      sourceMaps = true,
+      port = 9229,
+      skipFiles = { '<node_internals>/**', 'node_modules/**' },
+    },
+    {
       type = 'chrome',
       request = 'attach',
       name = 'Attach Program (Chrome)',
