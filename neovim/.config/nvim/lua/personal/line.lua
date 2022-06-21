@@ -17,10 +17,10 @@ local opts = { noremap = true, silent = true }
 
 -- # Move Line
 
-map('n', '<A-up>', ':move -2<CR>', opts)
-map('n', '<A-down>', ':move +1<CR>', opts)
+map('n', '<A-k>', ':move -2<CR>', opts)
+map('n', '<A-j>', ':move +1<CR>', opts)
 
 -- # Duplicate Line
 
-map('n', '<A-S-up>', ':copy .<CR>:move -2<CR>', opts)
-map('n', '<A-S-down>', ':copy .<CR>', opts)
+map('n', '<A-K>', ':copy .<CR>:move -2<CR>', opts)
+map('n', '<A-J>', ':copy .<CR>', opts)
