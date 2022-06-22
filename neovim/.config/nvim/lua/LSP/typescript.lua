@@ -58,6 +58,7 @@ lspconfig.tsserver.setup({
         buf_map(bufnr, 'n', 'go', ':TSLspImportAll<CR>')
         on_attach(client, bufnr)
     end,
+    root_dir = lspconfig.util.root_pattern('package.json'),
 })
 
 null_ls.register({
@@ -65,12 +66,21 @@ null_ls.register({
     sources = {
         null_ls.builtins.diagnostics.eslint_d.with({
           filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+          condition = function(utils)
+              return utils.root_has_file({ 'package.json' })
+          end,
         }),
         null_ls.builtins.code_actions.eslint_d.with({
           filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+          condition = function(utils)
+              return utils.root_has_file({ 'package.json' })
+          end,
         }),
         null_ls.builtins.formatting.prettierd.with({
           filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+          condition = function(utils)
+              return utils.root_has_file({ 'package.json' })
+          end,
         }),
     },
     on_attach = on_attach,

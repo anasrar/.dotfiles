@@ -56,12 +56,18 @@ lspconfig.denols.setup({
         client.resolved_capabilities.document_range_formatting = false
         on_attach(client, bufnr)
     end,
+    root_dir = lspconfig.util.root_pattern('deno.json'),
 })
 
 null_ls.register({
     name = 'null-ls-deno',
     sources = {
-        null_ls.builtins.formatting.deno_fmt,
+        null_ls.builtins.formatting.deno_fmt.with({
+          filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+          condition = function(utils)
+              return utils.root_has_file({ 'deno.json' })
+          end,
+        }),
     },
     on_attach = on_attach,
 })
