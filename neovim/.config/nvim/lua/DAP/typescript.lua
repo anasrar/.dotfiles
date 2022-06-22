@@ -73,6 +73,15 @@ for i, ext in ipairs(exts) do
     {
       type = 'node2',
       request = 'launch',
+      name = 'Launch Program (Node2 with deno)',
+      cwd = vim.fn.getcwd(),
+      runtimeArgs = { 'run', '--inspect-brk', '--allow-all', '${file}' },
+      runtimeExecutable = 'deno',
+      port = 9229,
+    },
+    {
+      type = 'node2',
+      request = 'launch',
       name = 'Launch Test Program (Node2 with jest)',
       cwd = vim.fn.getcwd(),
       runtimeArgs = { '--inspect-brk', '${workspaceFolder}/node_modules/.bin/jest' },
@@ -81,6 +90,15 @@ for i, ext in ipairs(exts) do
       sourceMaps = true,
       port = 9229,
       skipFiles = { '<node_internals>/**', 'node_modules/**' },
+    },
+    {
+      type = 'node2',
+      request = 'launch',
+      name = 'Launch Test Program (Node2 with deno)',
+      cwd = vim.fn.getcwd(),
+      runtimeArgs = { 'test', '--inspect-brk', '--allow-all', '${file}' },
+      runtimeExecutable = 'deno',
+      port = 9229,
     },
     {
       type = 'chrome',
