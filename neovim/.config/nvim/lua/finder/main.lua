@@ -1,3 +1,0 @@
--- # Finder
-
-require('finder.telescope')

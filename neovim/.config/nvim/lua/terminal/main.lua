@@ -1,3 +1,0 @@
--- # Terminal
-
-require('terminal.toggleterm')
