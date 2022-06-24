@@ -1,87 +1,118 @@
 vim.cmd('packadd packer.nvim')
 
-require('packer').startup(function()
-  use { 'wbthomason/packer.nvim' }
+return require('packer').startup(function()
+  use {
+    'wbthomason/packer.nvim',
+  }
 
   -- # Util
-  use { 'editorconfig/editorconfig-vim' }
-  use { 'nvim-lua/plenary.nvim' }
-  use { 'kyazdani42/nvim-web-devicons' }
+  use {
+    'editorconfig/editorconfig-vim',
+    config = function() require('personal.main') end
+  }
+  use {
+    'nvim-lua/plenary.nvim',
+  }
 
   -- # Theme
-  use { 'folke/tokyonight.nvim' }
-  -- use { 'cocopon/iceberg.vim' }
-  -- use { 'rebelot/kanagawa.nvim' }
-  -- use { 'EdenEast/nightfox.nvim', branch = 'main' }
-  -- use { 'bluz71/vim-nightfly-guicolors' }
-  -- use { 'catppuccin/nvim', as = 'catppuccin' }
+  use {
+    'folke/tokyonight.nvim',
+    config = function() require('theme.tokyonight') end
+  }
+  -- use {
+  --   'cocopon/iceberg.vim',
+  --   config = function() require('theme.iceberg') end
+  -- }
+  -- use {
+  --   'rebelot/kanagawa.nvim',
+  --   config = function() require('theme.kanagawa') end
+  -- }
+  -- use {
+  --   'EdenEast/nightfox.nvim',
+  --   branch = 'main',
+  --   config = function() require('theme.nightfox') end
+  -- }
+  -- use {
+  --   'bluz71/vim-nightfly-guicolors',
+  --   config = function() require('theme.nightly') end
+  -- }
+  -- use {
+  --   'catppuccin/nvim', as = 'catppuccin',
+  --   config = function() require('theme.catppuccin') end
+  -- }
 
   -- #Buffer
-  use { 'romgrk/barbar.nvim' }
+  use {
+    'romgrk/barbar.nvim',
+    config = function() require('buffer.barbar') end
+  }
 
   -- # Terminal
-  use { 'akinsho/toggleterm.nvim', branch = 'main' }
+  use {
+    'akinsho/toggleterm.nvim',
+    branch = 'main',
+    config = function() require('terminal.toggleterm') end
+  }
 
   -- # Parser
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    config = function() require('parser.treesitter') end
+  }
 
   -- # Finder
-  use { 'nvim-telescope/telescope-fzy-native.nvim' }
-  use { 'nvim-telescope/telescope.nvim' }
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = {
+      'nvim-telescope/telescope-fzy-native.nvim',
+    },
+    config = function() require('finder.telescope') end
+  }
 
   -- # File Tree
-  use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons', }, tag = 'nightly' }
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons',
+    },
+    tag = 'nightly',
+    config = function() require('filetree.nvim-tree') end
+  }
 
   -- # Status line
-  use { 'nvim-lualine/lualine.nvim' }
+  use {
+    'nvim-lualine/lualine.nvim',
+    config = function() require('statusline.lualine') end
+  }
 
   -- # LSP
-  use { 'neovim/nvim-lspconfig' }
-  -- # LSP Hook
-  use { 'jose-elias-alvarez/null-ls.nvim' }
-  use { 'jose-elias-alvarez/nvim-lsp-ts-utils' } -- null-ls for TS project
-  -- # LSP Completion
-  use { 'hrsh7th/cmp-nvim-lsp' }
-  use { 'hrsh7th/cmp-buffer' }
-  use { 'hrsh7th/cmp-path' }
-  use { 'hrsh7th/cmp-cmdline' }
-  use { 'hrsh7th/nvim-cmp' }
-  -- # LSP Snippet
-  use { 'saadparwaiz1/cmp_luasnip' }
-  use { 'L3MON4D3/LuaSnip' }
+  use {
+    'neovim/nvim-lspconfig',
+    requires = {
+      -- # LSP Hook
+      'jose-elias-alvarez/null-ls.nvim',
+      'jose-elias-alvarez/nvim-lsp-ts-utils', -- null-ls for TS project
+      -- # LSP Completion
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'hrsh7th/nvim-cmp',
+      -- # LSP Snippet
+      'saadparwaiz1/cmp_luasnip',
+      'L3MON4D3/LuaSnip',
+    },
+    config = function() require('LSP.main') end
+  }
 
   -- # DAP
-  use { 'mfussenegger/nvim-dap' }
-  use { 'theHamsta/nvim-dap-virtual-text', requires = { 'nvim-treesitter/nvim-treesitter' } }
-  use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } }
+  use {
+    'mfussenegger/nvim-dap',
+    requires = {
+      'rcarriga/nvim-dap-ui',
+      'nvim-treesitter/nvim-treesitter',
+      'theHamsta/nvim-dap-virtual-text',
+    },
+    config = function() require('DAP.main') end
+  }
 end)
-
--- # Theme
-require('theme.main')
-
--- # Buffer
-require('buffer.main')
-
--- # Terminal
-require('terminal.main')
-
--- # Parser
-require('parser.main')
-
--- # Finder
-require('finder.main')
-
--- # File Tree
-require('filetree.main')
-
--- # Status line
-require('statusline.main')
-
--- # LSP
-require('LSP.main')
-
--- # DAP
-require('DAP.main')
-
--- # Personal Preferences
-require('personal.main')
