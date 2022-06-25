@@ -94,6 +94,7 @@ return require('packer').startup(function()
       'jose-elias-alvarez/nvim-lsp-ts-utils', -- null-ls for TS project
       -- # LSP Completion
       'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',

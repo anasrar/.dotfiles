@@ -35,6 +35,10 @@ cmp.setup({
       luasnip.lsp_expand(args.body)
     end,
   },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
   mapping = {
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -67,19 +71,20 @@ cmp.setup({
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
+    { name = 'nvim_lsp_signature_help' },
     { name = 'luasnip' },
   }, {
     { name = 'buffer' },
   }),
   formatting = {
     format = function(entry, vim_item)
-      vim_item.kind = string.format('%s', icons[vim_item.kind])
+      vim_item.kind = string.format('%s', icons[vim_item.kind]) .. ' ' .. vim_item.kind
       vim_item.menu = ({
-        buffer = '',
-        nvim_lsp = '',
-        luasnip = '',
-        nvim_lua = '',
-        latex_symbols = '',
+        buffer = '[Buffer]',
+        nvim_lsp = '[LSP]',
+        luasnip = '[LuaSnip]',
+        nvim_lua = '[Lua]',
+        latex_symbols = '[LaTex]',
       })[entry.source.name]
       return vim_item
     end
