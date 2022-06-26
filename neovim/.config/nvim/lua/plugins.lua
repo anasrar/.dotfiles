@@ -20,6 +20,10 @@ return require('packer').startup(function()
     config = function() require('theme.tokyonight') end
   }
   -- use {
+  --   'tiagovla/tokyodark.nvim',
+  --   config = function() require('theme.tokyodark') end
+  -- }
+  -- use {
   --   'cocopon/iceberg.vim',
   --   config = function() require('theme.iceberg') end
   -- }
