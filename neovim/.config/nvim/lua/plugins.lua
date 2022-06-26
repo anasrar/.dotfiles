@@ -89,6 +89,12 @@ return require('packer').startup(function()
     config = function() require('statusline.lualine') end
   }
 
+  -- # Git
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function() require('git.gitsigns') end
+  }
+
   -- # LSP
   use {
     'neovim/nvim-lspconfig',
