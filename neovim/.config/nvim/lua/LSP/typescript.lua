@@ -27,9 +27,6 @@ lspconfig.tsserver.setup({
         client.resolved_capabilities.document_range_formatting = false
         ts_utils.setup({})
         ts_utils.setup_client(client)
-        buf_map(bufnr, 'n', 'gs', ':TSLspOrganize<CR>')
-        buf_map(bufnr, 'n', 'gi', ':TSLspRenameFile<CR>')
-        buf_map(bufnr, 'n', 'go', ':TSLspImportAll<CR>')
         on_attach(client, bufnr)
     end,
     root_dir = lspconfig.util.root_pattern('package.json'),
