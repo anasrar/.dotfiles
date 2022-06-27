@@ -101,6 +101,6 @@ buf_map('n', '<Leader>dN', ':lua require(\'dap\').step_into()<CR>')
 buf_map('n', '<Leader>do', ':lua require(\'dap\').step_out()<CR>')
 
 -- # DAP Config
-require('DAP.python')
-require('DAP.typescript')
-require('DAP.go')
+require('rin.DAP.python')
+require('rin.DAP.typescript')
+require('rin.DAP.go')

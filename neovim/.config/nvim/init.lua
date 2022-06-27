@@ -8,7 +8,7 @@ return require('packer').startup(function()
   -- # Util
   use {
     'editorconfig/editorconfig-vim',
-    config = function() require('personal.main') end
+    config = function() require('rin.personal.main') end
   }
   use {
     'nvim-lua/plenary.nvim',
@@ -17,51 +17,51 @@ return require('packer').startup(function()
   -- # Theme
   use {
     'folke/tokyonight.nvim',
-    config = function() require('theme.tokyonight') end
+    config = function() require('rin.theme.tokyonight') end
   }
   -- use {
   --   'tiagovla/tokyodark.nvim',
-  --   config = function() require('theme.tokyodark') end
+  --   config = function() require('rin.theme.tokyodark') end
   -- }
   -- use {
   --   'cocopon/iceberg.vim',
-  --   config = function() require('theme.iceberg') end
+  --   config = function() require('rin.theme.iceberg') end
   -- }
   -- use {
   --   'rebelot/kanagawa.nvim',
-  --   config = function() require('theme.kanagawa') end
+  --   config = function() require('rin.theme.kanagawa') end
   -- }
   -- use {
   --   'EdenEast/nightfox.nvim',
   --   branch = 'main',
-  --   config = function() require('theme.nightfox') end
+  --   config = function() require('rin.theme.nightfox') end
   -- }
   -- use {
   --   'bluz71/vim-nightfly-guicolors',
-  --   config = function() require('theme.nightly') end
+  --   config = function() require('rin.theme.nightly') end
   -- }
   -- use {
   --   'catppuccin/nvim', as = 'catppuccin',
-  --   config = function() require('theme.catppuccin') end
+  --   config = function() require('rin.theme.catppuccin') end
   -- }
 
   -- #Buffer
   use {
     'romgrk/barbar.nvim',
-    config = function() require('buffer.barbar') end
+    config = function() require('rin.buffer.barbar') end
   }
 
   -- # Terminal
   use {
     'akinsho/toggleterm.nvim',
     branch = 'main',
-    config = function() require('terminal.toggleterm') end
+    config = function() require('rin.terminal.toggleterm') end
   }
 
   -- # Parser
   use {
     'nvim-treesitter/nvim-treesitter',
-    config = function() require('parser.treesitter') end
+    config = function() require('rin.parser.treesitter') end
   }
 
   -- # Finder
@@ -70,7 +70,7 @@ return require('packer').startup(function()
     requires = {
       'nvim-telescope/telescope-fzy-native.nvim',
     },
-    config = function() require('finder.telescope') end
+    config = function() require('rin.finder.telescope') end
   }
 
   -- # File Tree
@@ -80,19 +80,19 @@ return require('packer').startup(function()
       'kyazdani42/nvim-web-devicons',
     },
     tag = 'nightly',
-    config = function() require('filetree.nvim-tree') end
+    config = function() require('rin.filetree.nvim-tree') end
   }
 
   -- # Status line
   use {
     'nvim-lualine/lualine.nvim',
-    config = function() require('statusline.lualine') end
+    config = function() require('rin.statusline.lualine') end
   }
 
   -- # Git
   use {
     'lewis6991/gitsigns.nvim',
-    config = function() require('git.gitsigns') end
+    config = function() require('rin.git.gitsigns') end
   }
 
   -- # LSP
@@ -113,7 +113,7 @@ return require('packer').startup(function()
       'saadparwaiz1/cmp_luasnip',
       'L3MON4D3/LuaSnip',
     },
-    config = function() require('LSP.main') end
+    config = function() require('rin.LSP.main') end
   }
 
   -- # DAP
@@ -124,6 +124,6 @@ return require('packer').startup(function()
       'nvim-treesitter/nvim-treesitter',
       'theHamsta/nvim-dap-virtual-text',
     },
-    config = function() require('DAP.main') end
+    config = function() require('rin.DAP.main') end
   }
 end)

@@ -12,7 +12,7 @@ local null_ls = require('null-ls')
 local ts_utils = require('nvim-lsp-ts-utils')
 
 local on_attach = function(client, bufnr)
-    require('LSP.utils.keymap')(bufnr)
+    require('rin.LSP.utils.keymap')(bufnr)
     if client.resolved_capabilities.document_formatting then
         vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
     end
