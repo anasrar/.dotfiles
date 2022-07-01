@@ -74,13 +74,22 @@ return require('packer').startup(function()
   }
 
   -- # File Tree
+  -- use {
+  --   'kyazdani42/nvim-tree.lua',
+  --   requires = {
+  --     'kyazdani42/nvim-web-devicons',
+  --   },
+  --   tag = 'nightly',
+  --   config = function() require('rin.filetree.nvim-tree') end
+  -- }
   use {
-    'kyazdani42/nvim-tree.lua',
-    requires = {
-      'kyazdani42/nvim-web-devicons',
+    'nvim-neo-tree/neo-tree.nvim',
+    requires = { 
+      'nvim-lua/plenary.nvim',
+      'kyazdani42/nvim-web-devicons', -- not strictly required, but recommended
+      'MunifTanjim/nui.nvim',
     },
-    tag = 'nightly',
-    config = function() require('rin.filetree.nvim-tree') end
+    config = function() require('rin.filetree.neo-tree') end
   }
 
   -- # Status line
