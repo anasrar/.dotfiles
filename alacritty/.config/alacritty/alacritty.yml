@@ -8,16 +8,30 @@ window:
   opacity: 0.97
 
 font:
+  # Recursive v1.084 Patch Nerd Font v2.1.0
   normal:
-    family: JetBrainsMono Nerd Font
-    style: Medium
+    family: RecMonoCasual Nerd Font
+    style: Regular
   bold:
-    style: Extra Bold
+    style: Bold
   italic:
-    style: Medium Italic
+    style: Italic
   bold_italic:
-    style: Extra Bold Italic
-  size: 10.0
+    style: Bold Italic
+  size: 10.5
+  builtin_box_drawing: true
+  # JetBrainsMono v2.242 Patch Nerd Font v2.1.0
+  # normal:
+  #   family: JetBrainsMono Nerd Font
+  #   style: Medium
+  # bold:
+  #   style: ExtraBold
+  # italic:
+  #   style: Medium Italic
+  # bold_italic:
+  #   style: ExtraBold Italic
+  # size: 10.0
+  # builtin_box_drawing: true
 draw_bold_text_with_bright_colors: true
 
 colors:
