@@ -14,3 +14,6 @@ require('rin.LSP.go')
 require('rin.LSP.python')
 -- format some markup and dif file
 require('rin.LSP.prettier')
+
+-- # LuaSnip
+require('rin.LSP.luasnip.main')
