@@ -64,4 +64,5 @@ cursor:
 
 key_bindings:
   - { key: Return, mods: Control|Shift, action: SpawnNewInstance }
-  - { key: 94, chars: "\x1b\x1b" } # Muhenkan ➜ Escape
+  - { key: 94, chars: "\x1b" } # Muhenkan ➜ Escape
+  - { key: 93, chars: "\x5c" } # Hiragana Katakan ➜ Backslash
