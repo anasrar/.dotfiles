@@ -10,7 +10,7 @@ local S = {
       docstring = 'const [state, setState] = useState<T>(val)'
     },
     node.fmt(
-      'const [{1}, use{2}] = useState{3}({4});',
+      'const [{1}, set{2}] = useState{3}({4});',
       {
         node.i(1, 'state'),
         node.f(
