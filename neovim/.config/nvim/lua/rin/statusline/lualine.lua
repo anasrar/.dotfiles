@@ -1,8 +1,14 @@
 require('lualine').setup({
   sections = {
-    lualine_a = {'mode'},
+    lualine_a = {
+      {
+        'mode',
+      },
+    },
     lualine_b = {
-      'branch',
+      {
+        'branch',
+      },
     },
     lualine_c = {
       {
@@ -10,8 +16,15 @@ require('lualine').setup({
         symbols = {
           modified = ' 洛',
           readonly = ' ',
-          unnamed = 'BUFFER',
+          unnamed = 'NO NAME',
         },
+      },
+    },
+    lualine_x = {
+      {
+        'diagnostics',
+        always_visible = false,
+        separator = '',
       },
       {
         'diff',
@@ -20,24 +33,38 @@ require('lualine').setup({
           modified = ' ',
           removed = ' ',
         },
+        separator = '',
+      },
+      {
+        'filetype',
       },
     },
-    lualine_x = {
-      'diagnostics',
-      -- 'encoding',
-      -- 'fileformat',
-      'filetype',
+    lualine_y = {
     },
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_z = {
+    },
   },
   inactive_sections = {
-    lualine_a = {'filename'},
+    lualine_a = {
+      {
+        'filename',
+        path = 1,
+        symbols = {
+          modified = ' 洛',
+          readonly = ' ',
+          unnamed = 'NO NAME',
+        },
+      },
+    },
     lualine_b = {},
     lualine_c = {},
     lualine_x = {},
     lualine_y = {},
-    lualine_z = {'filetype'}
+    lualine_z = {
+      {
+        'filetype',
+      },
+    }
   },
 })
 
