@@ -11,6 +11,7 @@ require('rin.LSP.svelte')
 require('rin.LSP.vue')
 require('rin.LSP.deno')
 require('rin.LSP.go')
+require('rin.LSP.cpp')
 require('rin.LSP.python')
 -- format some markup and dif file
 require('rin.LSP.prettier')
