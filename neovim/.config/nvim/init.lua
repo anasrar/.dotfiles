@@ -132,6 +132,7 @@ return require('packer').startup(function()
       'rcarriga/nvim-dap-ui',
       'nvim-treesitter/nvim-treesitter',
       'theHamsta/nvim-dap-virtual-text',
+      'mxsdev/nvim-dap-vscode-js',
     },
     config = function() require('rin.DAP.main') end
   }

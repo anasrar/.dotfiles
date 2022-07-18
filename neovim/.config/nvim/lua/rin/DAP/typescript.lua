@@ -30,6 +30,14 @@ you can start debug with this commnad and attach or just launch
 node -r ts-node/register --inspect <ts file>
 ```
 
+install vscode js debug
+```
+git clone https://github.com/microsoft/vscode-js-debug ~/.DAP/vscode-js-debug --depth=1
+cd ~/.DAP/vscode-js-debug
+npm install --legacy-peer-deps
+npm run compile
+```
+
 --]=]
 
 local dap = require('dap')
@@ -45,6 +53,12 @@ dap.adapters.node2 = {
   command = 'node',
   args = { os.getenv('HOME') .. '/.DAP/vscode-node-debug2/out/src/nodeDebug.js' },
 }
+
+require('dap-vscode-js').setup({
+  node_path = 'node',
+  debugger_path = os.getenv('HOME') .. '/.DAP/vscode-js-debug',
+  adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
+})
 
 local exts = {'javascript','typescript','javascriptreact','typescriptreact'}
 
@@ -92,6 +106,17 @@ for i, ext in ipairs(exts) do
       skipFiles = { '<node_internals>/**', 'node_modules/**' },
     },
     {
+      type = 'pwa-node',
+      request = 'launch',
+      name = 'Launch Test Program (pwa-node with vitest)',
+      cwd = vim.fn.getcwd(),
+      program = '${workspaceFolder}/node_modules/vitest/vitest.mjs',
+      args = { 'run', '${file}' },
+      autoAttachChildProcesses = true,
+      smartStep = true,
+      skipFiles = { '<node_internals>/**', 'node_modules/**' },
+    },
+    {
       type = 'node2',
       request = 'launch',
       name = 'Launch Test Program (Node2 with deno)',
@@ -125,6 +150,14 @@ for i, ext in ipairs(exts) do
       sourceMaps = true,
       skipFiles = { '<node_internals>/**' },
       port = 9229,
+    },
+    {
+      type = 'pwa-node',
+      request = 'attach',
+      name = 'Attach Program (pwa-node)',
+      cwd = vim.fn.getcwd(),
+      processId = require('dap.utils').pick_process,
+      skipFiles = { '<node_internals>/**' },
     },
   }
 end
