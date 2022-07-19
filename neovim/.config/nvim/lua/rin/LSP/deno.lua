@@ -18,20 +18,23 @@ end
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-lspconfig.denols.setup({
-    capabilities = capabilities,
-    init_options = {
-      enable = true,
-      lint = true,
-      unstable = false
-    },
-    on_attach = function(client, bufnr)
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
-        on_attach(client, bufnr)
-    end,
-    root_dir = lspconfig.util.root_pattern('deno.json'),
-})
+if require('null-ls.utils').make_conditional_utils().root_has_file({ 'deno.json' }) then
+    lspconfig.denols.setup({
+        capabilities = capabilities,
+        single_file_support = true,
+        init_options = {
+          enable = true,
+          lint = true,
+          unstable = false
+        },
+        on_attach = function(client, bufnr)
+            client.resolved_capabilities.document_formatting = false
+            client.resolved_capabilities.document_range_formatting = false
+            on_attach(client, bufnr)
+        end,
+        root_dir = lspconfig.util.root_pattern('deno.json'),
+    })
+end
 
 null_ls.register({
     name = 'null-ls-deno',
