@@ -1,4 +1,5 @@
 --[=[
+!DEPRECATED!
 install vscode chrome debug
 ```
 git clone https://github.com/Microsoft/vscode-chrome-debug ~/.DAP/vscode-chrome-debug
@@ -11,6 +12,7 @@ run chrome with argument `--remote-debugging-port=9222`
 chrome --remote-debugging-port=9222
 ```
 
+!DEPRECATED!
 install vscode node debug2
 ```
 git clone https://github.com/microsoft/vscode-node-debug2.git ~/.DAP/vscode-node-debug2
@@ -42,17 +44,19 @@ npm run compile
 
 local dap = require('dap')
 
-dap.adapters.chrome = {
-  type = 'executable',
-  command = 'node',
-  args = { os.getenv('HOME') .. '/.DAP/vscode-chrome-debug/out/src/chromeDebug.js' },
-}
+-- !DEPRECATED!
+-- dap.adapters.chrome = {
+--   type = 'executable',
+--   command = 'node',
+--   args = { os.getenv('HOME') .. '/.DAP/vscode-chrome-debug/out/src/chromeDebug.js' },
+-- }
 
-dap.adapters.node2 = {
-  type = 'executable',
-  command = 'node',
-  args = { os.getenv('HOME') .. '/.DAP/vscode-node-debug2/out/src/nodeDebug.js' },
-}
+-- !DEPRECATED!
+-- dap.adapters.node2 = {
+--   type = 'executable',
+--   command = 'node',
+--   args = { os.getenv('HOME') .. '/.DAP/vscode-node-debug2/out/src/nodeDebug.js' },
+-- }
 
 require('dap-vscode-js').setup({
   node_path = 'node',
