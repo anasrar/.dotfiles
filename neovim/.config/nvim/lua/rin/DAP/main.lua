@@ -53,8 +53,8 @@ require('dapui').setup({
     },
     {
       elements = {
-        'repl',
-        'console',
+        { id = 'repl', size = 0.5 },
+        { id = 'console', size = 0.5 },
       },
       size = 10,
       position = 'bottom',
@@ -99,6 +99,10 @@ buf_map('n', '<Leader>dS', ':lua require(\'dap\').disconnect()<CR>')
 buf_map('n', '<Leader>dn', ':lua require(\'dap\').step_over()<CR>')
 buf_map('n', '<Leader>dN', ':lua require(\'dap\').step_into()<CR>')
 buf_map('n', '<Leader>do', ':lua require(\'dap\').step_out()<CR>')
+
+buf_map('n', '<Leader>dww', ':lua require(\'dapui\').toggle()<CR>')
+buf_map('n', '<Leader>dw[', ':lua require(\'dapui\').toggle(1)<CR>')
+buf_map('n', '<Leader>dw]', ':lua require(\'dapui\').toggle(2)<CR>')
 
 -- # DAP Config
 require('rin.DAP.python')
