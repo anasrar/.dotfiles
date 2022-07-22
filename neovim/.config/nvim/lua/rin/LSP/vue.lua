@@ -10,8 +10,14 @@ local null_ls = require('null-ls')
 
 local on_attach = function(client, bufnr)
     require('rin.LSP.utils.keymap')(bufnr)
-    if client.resolved_capabilities.document_formatting then
-        vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
+    if vim.fn.has('nvim-0.8') == 1 then
+        if client.server_capabilities.documentFormattingProvider then
+            vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
+        end
+    else
+        if client.resolved_capabilities.document_formatting then
+            vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
+        end
     end
 end
 
@@ -20,8 +26,13 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 lspconfig.volar.setup({
     capabilities = capabilities,
     on_attach = function(client, bufnr)
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
+        if vim.fn.has('nvim-0.8') == 1 then
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+        else
+            client.resolved_capabilities.document_formatting = false
+            client.resolved_capabilities.document_range_formatting = false
+        end
         on_attach(client, bufnr)
   end,
 })
