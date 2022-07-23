@@ -5,6 +5,7 @@ window:
   dimensions:
     columns: 80
     lines: 24
+  dynamic_padding: true
   opacity: 0.97
 
 font:
