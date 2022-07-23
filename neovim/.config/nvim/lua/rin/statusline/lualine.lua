@@ -86,6 +86,10 @@ local setup_winbar = {
     lualine_c = {
     },
     lualine_x = {
+      {
+        require('rin.personal.tab').statusline,
+        padding = 0,
+      },
     },
     lualine_y = {
     },

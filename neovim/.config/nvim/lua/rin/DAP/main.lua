@@ -74,6 +74,7 @@ require('dapui').setup({
   }
 })
 dap.listeners.after.event_initialized['dapui_config'] = function()
+  vim.cmd('tabfirst|tabnext')
   dapui.open()
 end
 dap.listeners.before.event_terminated['dapui_config'] = function()

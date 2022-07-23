@@ -17,3 +17,11 @@ vim.g.tokyonight_day_brightness = 0.3
 vim.g.tokyonight_lualine_bold = true
 
 vim.cmd('colorscheme tokyonight')
+
+vim.api.nvim_set_hl(0, 'StatusLineTabLastItem', { bg = '#6b7089', fg = '#161821' })
+vim.api.nvim_set_hl(0, 'StatusLineTabActive', { bg = '#e2a478', fg = '#161821' })
+vim.api.nvim_set_hl(0, 'StatusLineTabActiveStart', { bg = '#e2a478', fg = '#161821' })
+vim.api.nvim_set_hl(0, 'StatusLineTabActiveEnd', { fg = '#e2a478' })
+vim.api.nvim_set_hl(0, 'StatusLineTabInactive', { bg = '#6b7089', fg = '#1e2132' })
+vim.api.nvim_set_hl(0, 'StatusLineTabInactiveStart', { bg = '#6b7089', fg = '#161821' })
+vim.api.nvim_set_hl(0, 'StatusLineTabInactiveEnd', { fg = '#6b7089' })
