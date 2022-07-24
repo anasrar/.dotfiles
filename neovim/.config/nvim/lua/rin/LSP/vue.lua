@@ -12,7 +12,7 @@ local on_attach = function(client, bufnr)
     require('rin.LSP.utils.keymap')(bufnr)
     if vim.fn.has('nvim-0.8') == 1 then
         if client.server_capabilities.documentFormattingProvider then
-            vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
+            vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.format()')
         end
     else
         if client.resolved_capabilities.document_formatting then
