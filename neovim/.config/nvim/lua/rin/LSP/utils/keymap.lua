@@ -6,7 +6,11 @@ end
 
 local mapping = function(bufnr)
     vim.cmd('command! LspDef lua vim.lsp.buf.definition()')
-    vim.cmd('command! LspFormatting lua vim.lsp.buf.formatting()')
+    if vim.fn.has('nvim-0.8') == 1 then
+        vim.cmd('command! LspFormatting lua vim.lsp.buf.format()')
+    else
+        vim.cmd('command! LspFormatting lua vim.lsp.buf.formatting()')
+    end
     vim.cmd('command! LspCodeAction lua vim.lsp.buf.code_action()')
     vim.cmd('command! LspHover lua vim.lsp.buf.hover()')
     vim.cmd('command! LspRename lua vim.lsp.buf.rename()')
