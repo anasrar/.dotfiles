@@ -1,14 +1,10 @@
-vim.cmd('hi GitSignsAdd guifg=#b4be82')
-vim.cmd('hi GitSignsChange guifg=#84a0c6')
-vim.cmd('hi GitSignsDelete guifg=#e27878')
-
 require('gitsigns').setup({
   signs = {
-    add          = {hl = 'GitSignsAdd'   , text = '▍', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
-    change       = {hl = 'GitSignsChange', text = '▍', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
-    delete       = {hl = 'GitSignsDelete', text = '▍', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-    topdelete    = {hl = 'GitSignsDelete', text = '▍', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-    changedelete = {hl = 'GitSignsChange', text = '▍', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+    add          = { hl = 'GitSignsAdd'   , text = '▍', numhl = 'GitSignsAddNr'   , linehl = 'GitSignsAddLn'    },
+    change       = { hl = 'GitSignsChange', text = '▍', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
+    delete       = { hl = 'GitSignsDelete', text = '▍', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
+    topdelete    = { hl = 'GitSignsDelete', text = '▍', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
+    changedelete = { hl = 'GitSignsChange', text = '▍', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
   },
   signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
   numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
@@ -43,6 +39,16 @@ require('gitsigns').setup({
     enable = false
   },
   on_attach = function(bufnr)
+    vim.api.nvim_set_hl(0, 'GitSignsAdd', {
+      fg = '#b4be82',
+    })
+    vim.api.nvim_set_hl(0, 'GitSignsChange', {
+      fg = '#84a0c6',
+    })
+    vim.api.nvim_set_hl(0, 'GitSignsDelete', {
+      fg = '#e27878',
+    })
+
     local gs = package.loaded.gitsigns
 
     local function map(mode, l, r, opts)
