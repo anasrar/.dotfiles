@@ -122,6 +122,11 @@ return require('packer').startup(function()
       -- # LSP Snippet
       'saadparwaiz1/cmp_luasnip',
       'L3MON4D3/LuaSnip',
+      -- # LSP UI
+      {
+        'glepnir/lspsaga.nvim',
+        branch = 'main',
+      }
     },
     config = function() require('rin.LSP.main') end
   }

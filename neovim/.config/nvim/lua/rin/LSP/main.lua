@@ -3,6 +3,8 @@
 -- # LSP utils
 require('rin.LSP.utils.icon')
 require('rin.LSP.utils.cmp')
+-- # LSP UI
+require('rin.LSP.utils.lspsaga')
 
 -- # LSP Config
 require('rin.LSP.typescript')
