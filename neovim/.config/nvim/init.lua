@@ -44,6 +44,10 @@ return require('packer').startup(function()
   --   'catppuccin/nvim', as = 'catppuccin',
   --   config = function() require('rin.theme.catppuccin') end
   -- }
+  -- use {
+  --   'marko-cerovac/material.nvim',
+  --   config = function() require('rin.theme.material') end
+  -- }
 
   -- #Buffer
   use {
