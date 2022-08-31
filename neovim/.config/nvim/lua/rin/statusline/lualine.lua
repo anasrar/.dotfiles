@@ -76,11 +76,13 @@ local setup_winbar = {
     lualine_a = {
       {
         'mode',
+        separator = { left = '', right = '' },
       },
     },
     lualine_b = {
       {
         'branch',
+        separator = { left = '', right = '' },
       },
     },
     lualine_c = {

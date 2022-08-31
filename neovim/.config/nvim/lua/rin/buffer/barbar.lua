@@ -1,8 +1,9 @@
-vim.g.bufferline = {
+require('bufferline').setup({
   animation = false,
   auto_hide = false,
   closable = false,
-}
+  tabpages = false,
+})
 
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
