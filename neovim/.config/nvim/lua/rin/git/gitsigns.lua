@@ -39,16 +39,6 @@ require('gitsigns').setup({
     enable = false
   },
   on_attach = function(bufnr)
-    vim.api.nvim_set_hl(0, 'GitSignsAdd', {
-      fg = '#b4be82',
-    })
-    vim.api.nvim_set_hl(0, 'GitSignsChange', {
-      fg = '#84a0c6',
-    })
-    vim.api.nvim_set_hl(0, 'GitSignsDelete', {
-      fg = '#e27878',
-    })
-
     local gs = package.loaded.gitsigns
 
     local function map(mode, l, r, opts)

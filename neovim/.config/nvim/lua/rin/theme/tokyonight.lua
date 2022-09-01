@@ -20,3 +20,6 @@ vim.cmd('colorscheme tokyonight')
 
 vim.api.nvim_set_hl(0, 'StatusLineTabActive', { bg= '#e0af68', fg='#15161e' })
 vim.api.nvim_set_hl(0, 'StatusLineTabInactive', { bg = '#414868', fg = '#15161e' })
+vim.api.nvim_set_hl(0, 'GitSignsAdd', { link = 'String', })
+vim.api.nvim_set_hl(0, 'GitSignsChange', { link = 'diffFile' })
+vim.api.nvim_set_hl(0, 'GitSignsDelete', { link = 'TSVariableBuiltin' })
