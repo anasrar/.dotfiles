@@ -2,8 +2,7 @@ gui:
   showIcons: true
   theme:
     activeBorderColor:
-      - white
+      - yellow
       - bold
     inactiveBorderColor:
-      - black
-      - bold
+      - white

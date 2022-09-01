@@ -11,7 +11,7 @@ set -g pane-active-border-style "fg=#9ece6a"
 
 set -g message-style "bg=#15161E,fg=#d2d4de"
 
-set -g status-right "#[bg=#9ece6a,fg=#15161E] #([ \"$(pwd)\" == $HOME ] && echo \" Home\" || (echo \"$(pwd)\" | awk \'{print \" \" A[split($1,A,\"/\")]}\')) ▐#[bg=#f7768e,fg=#15161E] ﯱ #S "
+set -g status-right "#[bg=#9ece6a,fg=#15161E] #([ \"$(pwd)\" == $HOME ] && echo \" Home\" || (echo \"$(pwd)\" | awk \'{print \" \" A[split($1,A,\"/\")]}\')) ▐#[bg=#f7768e,fg=#15161E]  #S "
 set -g status-left "#[bg=#e0af68,fg=#15161E]   ▐"
 
 set -g window-status-separator ""

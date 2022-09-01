@@ -10,7 +10,7 @@ HISTFILESIZE=3
 
 # neofetch
 alias neofetch='neofetch --ascii ~/.config/neofetch/ascii.txt --ascii_colors 6 4'
-alias neofetchimg='neofetch --ascii ~/.config/neofetch/ascii.txt --ascii_colors 6 4 --kitty --source ~/.config/neofetch/wallhaven-mpwjr9.jpg --size 180'
+alias neofetchimg='neofetch --ascii ~/.config/neofetch/ascii.txt --ascii_colors 6 4 --kitty --source ~/.config/neofetch/wallhaven-0pom5m.jpg --size 180'
 
 # tmux
 alias ttt='tmux new-session\; split-pane -h -p 57\; select-pane -t 1\; split-pane -v\; select-pane -t 3'
