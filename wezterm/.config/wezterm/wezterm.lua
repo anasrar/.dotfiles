@@ -51,7 +51,7 @@ return {
   font_size = 10.5,
   line_height = 1.0,
   
-  color_scheme = 'iceberg-dark',
+  color_scheme = 'tokyonight',
 
   disable_default_key_bindings = true,
   keys = {
