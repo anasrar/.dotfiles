@@ -20,6 +20,9 @@ alias ttttt='tmux new-session\; split-pane -h -p 57\; select-pane -t 1\; split-p
 # moc
 alias mocp='mocp -T tty'
 
+# gotop
+alias gotop='[ "$TERM" = "xterm-kitty" ] && TERM=xterm gotop || TERM=xterm-kitty gotop'
+
 # prompt
 PROMPT_COMMAND='exitcode=$?'
 ## git branch
