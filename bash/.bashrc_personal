@@ -23,6 +23,9 @@ alias mocp='mocp -T tty'
 # gotop
 alias gotop='[ "$TERM" = "xterm-kitty" ] && TERM=xterm gotop || TERM=xterm-kitty gotop'
 
+# catnip
+alias catnip='catnip -dt 1 -ct 2 -fg 6'
+
 # prompt
 PROMPT_COMMAND='exitcode=$?'
 ## git branch
