@@ -3,7 +3,7 @@ local wezterm = require('wezterm')
 return {
   -- debug_key_events = true,
   -- window_decorations = 'NONE',
-  window_background_opacity = 0.97,
+  window_background_opacity = 0.925,
   enable_tab_bar = false,
   enable_scroll_bar = false,
   window_padding = {

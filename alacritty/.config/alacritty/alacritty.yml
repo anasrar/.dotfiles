@@ -6,7 +6,7 @@ window:
     columns: 80
     lines: 24
   dynamic_padding: true
-  opacity: 0.97
+  opacity: 0.925
 
 font:
   # Recursive v1.085 Patch Nerd Font v2.1.0
