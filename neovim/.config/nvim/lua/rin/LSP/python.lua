@@ -5,9 +5,9 @@ project set up
 python -m venv .venv
 source .venv/bin/activate
 ```
-install pyright for lsp / type check
+install pylsp for lsp
 ```
-pip install pyright
+pip install python-lsp-server
 ```
 install pydocstyle for documentation lint
 ```
@@ -37,7 +37,7 @@ end
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-lspconfig.pyright.setup({
+lspconfig.pylsp.setup({
     capabilities = capabilities,
     on_attach = function(client, bufnr)
         if vim.fn.has('nvim-0.8') == 1 then
