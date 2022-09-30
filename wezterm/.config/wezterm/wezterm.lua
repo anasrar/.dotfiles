@@ -19,37 +19,70 @@ return {
     TERM = 'xterm-256color',
   },
 
-  custom_block_glyphs = false,
+  -- custom_block_glyphs = false,
+  -- font = wezterm.font(
+  --   'RecursiveMonoCslSt Nerd Font',
+  --   {
+  --     weight = 'Medium',
+  --   }
+  -- ),
+  -- font_rules= {
+  --   {
+  --     italic = true,
+  --     font = wezterm.font('RecursiveMonoCslSt Nerd Font', {
+  --       italic = true,
+  --     }),
+  --   },
+  --   {
+  --     intensity = 'Bold',
+  --     font = wezterm.font('RecursiveMonoCslSt Nerd Font', {
+  --       weight = 'ExtraBold',
+  --     }),
+  --   },
+  --   {
+  --     italic = true,
+  --     intensity = 'Bold',
+  --     font = wezterm.font('RecursiveMonoCslSt Nerd Font', {
+  --       italic = true,
+  --       weight = 'ExtraBold',
+  --     }),
+  --   },
+  -- },
+  -- font_size = 10.5,
+  -- line_height = 1.0,
+
+  custom_block_glyphs = true,
   font = wezterm.font(
-    'RecursiveMonoCslSt Nerd Font',
+    'JetBrainsMono Nerd Font',
     {
-      weight = 'Medium',
+      weight = 'DemiBold',
     }
   ),
   font_rules= {
     {
       italic = true,
-      font = wezterm.font('RecursiveMonoCslSt Nerd Font', {
+      font = wezterm.font('JetBrainsMono Nerd Font', {
         italic = true,
+        weight = 'DemiBold',
       }),
     },
     {
       intensity = 'Bold',
-      font = wezterm.font('RecursiveMonoCslSt Nerd Font', {
+      font = wezterm.font('JetBrainsMono Nerd Font', {
         weight = 'ExtraBold',
       }),
     },
     {
       italic = true,
       intensity = 'Bold',
-      font = wezterm.font('RecursiveMonoCslSt Nerd Font', {
+      font = wezterm.font('JetBrainsMono Nerd Font', {
         italic = true,
         weight = 'ExtraBold',
       }),
     },
   },
   font_size = 10.5,
-  line_height = 1.0,
+  -- line_height = 1.0,
   
   color_scheme = 'tokyonight',
 

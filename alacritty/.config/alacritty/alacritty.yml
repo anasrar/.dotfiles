@@ -10,20 +10,8 @@ window:
 
 font:
   # Recursive v1.085 Patch Nerd Font v2.1.0
-  normal:
-    family: RecursiveMonoCslSt Nerd Font
-    style: Medium
-  bold:
-    style: ExtraBold
-  italic:
-    style: Medium Italic
-  bold_italic:
-    style: ExtraBold Italic
-  size: 10.5
-  builtin_box_drawing: true
-  # JetBrainsMono v2.242 Patch Nerd Font v2.1.0
   # normal:
-  #   family: JetBrainsMono Nerd Font
+  #   family: RecursiveMonoCslSt Nerd Font
   #   style: Medium
   # bold:
   #   style: ExtraBold
@@ -31,8 +19,20 @@ font:
   #   style: Medium Italic
   # bold_italic:
   #   style: ExtraBold Italic
-  # size: 10.0
+  # size: 10.5
   # builtin_box_drawing: true
+  # JetBrainsMono v2.242 Patch Nerd Font v2.1.0
+  normal:
+    family: JetBrainsMono Nerd Font
+    style: SemiBold
+  bold:
+    style: ExtraBold
+  italic:
+    style: SemiBold Italic
+  bold_italic:
+    style: ExtraBold Italic
+  size: 10.0
+  builtin_box_drawing: true
 draw_bold_text_with_bright_colors: true
 
 colors:
