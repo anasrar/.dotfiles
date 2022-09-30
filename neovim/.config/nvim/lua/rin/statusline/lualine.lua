@@ -3,11 +3,18 @@ local setup_default = {
     lualine_a = {
       {
         'mode',
+        separator = {
+          left = '',
+          right = '',
+        },
       },
     },
     lualine_b = {
       {
         'branch',
+        separator = {
+          right = '',
+        },
       },
     },
     lualine_c = {
@@ -76,13 +83,18 @@ local setup_winbar = {
     lualine_a = {
       {
         'mode',
-        separator = { left = '', right = '' },
+        separator = {
+          left = '',
+          right = '',
+        },
       },
     },
     lualine_b = {
       {
         'branch',
-        separator = { left = '', right = '' },
+        separator = {
+          right = '',
+        },
       },
     },
     lualine_c = {
