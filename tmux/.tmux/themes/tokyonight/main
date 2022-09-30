@@ -6,17 +6,17 @@ set -g status-left-length "100"
 set -g status-right-style "none"
 set -g status-right-length "100"
 
-set -g pane-border-style "fg=#6b7089"
-set -g pane-active-border-style "fg=#9ece6a"
+set -g pane-border-style "fg=#15161e"
+set -g pane-active-border-style "fg=#9b72ef"
 
 set -g message-style "bg=#15161E,fg=#d2d4de"
 
-set -g status-right "#[bg=#9ece6a,fg=#15161E] #([ \"$(pwd)\" == $HOME ] && echo \" Home\" || (echo \"$(pwd)\" | awk \'{print \" \" A[split($1,A,\"/\")]}\')) ▐#[bg=#f7768e,fg=#15161E]  #S "
-set -g status-left "#[bg=#e0af68,fg=#15161E]   ▐"
+set -g status-right "#[bg=#15161E,fg=#7aa2f7]#[bg=#7aa2f7,fg=#15161E] #([ \"$(pwd)\" == $HOME ] && echo \"\" || (echo \"\")) │ #([ \"$(pwd)\" == $HOME ] && echo \"$USER\" || pwd | awk \'{print A[split($1,A,\"/\")]}\') #[bg=#15161E,fg=#7aa2f7] #[bg=#15161E,fg=#f7768e]#[bg=#f7768e,fg=#15161E]  │ #S #[bg=#15161E,fg=#f7768e]"
+set -g status-left ""
 
 set -g window-status-separator ""
 
-set -g window-status-format "#[bg=#6b7089,fg=#15161E] #I ┃ #W ▐"
-set -g window-status-current-format "#[bg=#e0af68,fg=#15161E] #I ┃ #W ▐"
+set -g window-status-format "#[bg=#15161E,fg=#414868]#[bg=#414868,fg=#15161E] #I │ #W #[bg=#15161E,fg=#414868] "
+set -g window-status-current-format "#[bg=#15161E,fg=#bb9af7]#[bg=#bb9af7,fg=#15161E] #I │ #W #[bg=#15161E,fg=#bb9af7] "
 
 # vi: ft=tmux
