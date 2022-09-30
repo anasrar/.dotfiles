@@ -4,4 +4,4 @@ Tokyo Night: https://github.com/folke/tokyonight.nvim/blob/main/extras/alacritty
 
 # Font
 
-Recursive Mono (Nerd Font Patch): https://github.com/arrowtype/recursive/ .
+JetBrains Mono (Nerd Font Patch): https://github.com/JetBrains/JetBrainsMono .
