@@ -50,9 +50,15 @@ return require('packer').startup(function()
   -- }
 
   -- #Buffer
+  -- use {
+  --   'romgrk/barbar.nvim',
+  --   config = function() require('rin.buffer.barbar') end
+  -- }
   use {
-    'romgrk/barbar.nvim',
-    config = function() require('rin.buffer.barbar') end
+    'akinsho/bufferline.nvim',
+    tag = 'v2.1.0',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function() require('rin.buffer.bufferline') end
   }
 
   -- # Terminal
