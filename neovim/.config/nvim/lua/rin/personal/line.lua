@@ -7,7 +7,9 @@ vim.cmd('set nowrap')
 vim.opt.list = true
 vim.opt.listchars = {
   tab = '→ ',
-  space = '·'
+  lead = '·',
+  trail = '·',
+  eol = '↵',
 }
 
 -- # Line manipulation
