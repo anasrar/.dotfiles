@@ -1,0 +1,297 @@
+(
+    // Maximum number of notifications to show at any one time.
+    // A value of 0 means that there is no limit.
+    max_notifications: 0,
+
+    // The default timeout, in miliseconds, for notifications that don't have an initial timeout set.
+    // 1000ms = 1s.
+    timeout: 10000,
+
+    // `poll_interval` decides decides how often (in milliseconds) Wired checks for new notifications, events,
+    // draws notifications (if necessary), etc.
+    // Note that when no notifications are present, Wired always polls at 500ms.
+    // 16ms ~= 60hz / 7ms ~= 144hz.
+    poll_interval: 16,
+
+    // Wired will pause notifications if you are idle (no mouse or keyboard input) for longer than
+    // `idle_threshold` seconds.
+    // Note that notifications will not be automatically unpaused on wake, and will need to be manually
+    // cleared, unless `unpause_on_input` is set to true.
+    // Also note that no distinction is made between manually paused and idle paused notifications.
+    // If `idle_threshold` is not specified, the behavior will be disabled entirely.
+    //idle_threshold: 3600,
+
+    // Notifications will spawn paused, and have to be manually unpaused or cleared by the user,
+    // unless `unpause_on_input` is also set.
+    //notifications_spawn_paused: false,
+
+    // Unpause notifications when we receive any input after being idle for longer than 1 second.
+    // Note that no distinction is made between manually paused notifications and idle paused/spawned notifications.
+    //unpause_on_input: false,
+
+    // Enable/disable replacement functionality.
+    // If this is disabled, replacement requests will just send a new notification.
+    // E.g., with replacing_enabled: true, Pidgin will only show the latest message from each contact,
+    // instead of sending a new one for each message.
+    // Default: true
+    //replacing_enabled: true,
+
+    // Whether a notification should reset its timeout when it is replaced.
+    // No effect if replacing_enabled is set to false.
+    // Default: false
+    //replacing_resets_timeout: false,
+
+    // Some apps/programs close notifications on their own by sending a request to dbus.
+    // Sometimes this is not desired.
+    // Default: true
+    //closing_enabled: true,
+
+    // How many notifications are kept in history.
+    // Each notification is roughly 256 bytes (excluding buffers!), so there's some math to do here.
+    // Default: 10
+    //history_length: 10,
+
+    // When a `NotificationBlock` has monitorr: -1 (i.e. should follow active monitor), then what input
+    // should we use to determine the active monitor?
+    // Options: Mouse, Window
+    // Default: Mouse
+    //focus_follows: Mouse,
+
+    // Enable printing notification data to a file.
+    // Useful for scripting purposes.
+    // The data is written as JSON.
+    // Default: None
+    //print_to_file: "/tmp/wired.log",
+
+    // Minimum window width and height.  This is used to create the base rect that the notification
+    // grows within.
+    // The notification window will never be smaller than this.
+    // A value of 1 means that the window will generally always resize with notification, unless
+    // you have a 1x1 pixel notification...
+    // Generally, you shouldn't need to set this.
+    //min_window_width: 1,
+    //min_window_height: 1,
+
+    // Enable/disable debug rendering.
+    debug: false,
+    debug_color: Color(r: 0.0, g: 1.0, b: 0.0, a: 1.0), // Primary color for debug rectangles.
+    debug_color_alt: Color(r: 1.0, g: 0.0, b: 0.0, a: 1.0), // Secondary color for debug rectangles.
+
+    layout_blocks: [
+        (
+            name: "base",
+            parent: "",
+            hook: (parent_anchor: TR, self_anchor: TR),
+            offset: Vec2(x: -16.0, y: 16.0),
+            params: NotificationBlock((
+                monitor: 0,
+                border_width: 0,
+                border_rounding: 0.0,
+                background_color: (hex: "#15161e"),
+                border_color: (hex: "#15161e"),
+
+                gap: (x: 0.0, y: 12.0),
+                notification_hook: (parent_anchor: BL, self_anchor: TL),
+            )),
+        ),
+
+        (
+            name: "summary",
+            parent: "base",
+            hook: (parent_anchor: MR, self_anchor: BL),
+            offset: (x: 0.0, y: 0.0),
+            params: TextBlock((
+                text: "%s",
+                font: "Inter V Bold 10",
+                ellipsize: Middle,
+                color: (hex: "#c0caf5"),
+                padding: (left: 12.0, right: 12.0, top: 12.0, bottom: 12.0),
+                dimensions: (
+                    width: (min: 190, max: 190),
+                    height: (min: 0, max: 0),
+                ),
+                dimensions_image_hint: (
+                    width: (min: 136, max: 136),
+                    height: (min: 0, max: 0)
+                ),
+                dimensions_image_app: (
+                    width: (min: 136, max: 136),
+                    height: (min: 0, max: 0)
+                ),
+            )),
+        ),
+
+        (
+            name: "body",
+            parent: "summary",
+            hook: (parent_anchor: BL, self_anchor: TL),
+            offset: (x: 0.0, y: 0.0),
+            render_criteria: [ Body ],
+            render_anti_criteria: [ AppName("progress") ],
+            params: ScrollingTextBlock((
+                text: "%b",
+                font: "Inter V Medium 9.5",
+                color: (hex: "#c0caf5"),
+                padding: (left: 12.0, right: 12.0, top: 0.0, bottom: 12.0),
+                width: (min: 190, max: 190),
+                width_image_hint: (min: 136, max: 136),
+                width_image_app: (min: 136, max: 136),
+                scroll_speed: 0.1,
+                lhs_dist: 10.0,
+                rhs_dist: 10.0,
+                scroll_t: 1.0,
+            )),
+        ),
+
+
+        (
+            name: "image",
+            parent: "summary",
+            hook: (parent_anchor: TL, self_anchor: TR),
+            offset: (x: 0, y: 0),
+            render_criteria: [ AppImage, HintImage ],
+            params: ImageBlock((
+                image_type: HintThenApp,
+                padding: (left: 12.0, right: 0.0, top: 12.0, bottom: 12.0),
+                rounding: 4.0,
+                scale_width: 42,
+                scale_height: 42,
+                filter_mode: CatmullRom,
+            )),
+        ),
+
+        (
+            name: "progress",
+            parent: "summary",
+            offset: (x: 0, y: 0.0),
+            hook: (parent_anchor: BL, self_anchor: TL),
+            render_criteria: [ Progress ],
+            render_anti_criteria: [ Body ],
+            params: ProgressBlock((
+                padding: (left: 12.0, right: 12.0, top: 0.0, bottom: 12.0),
+                border_width: 0.0,
+                border_rounding: 4.0,
+                fill_rounding: 4.0,
+                border_color: (hex: "#595e74"),
+                background_color: (hex: "#595e74"),
+                fill_color: (hex: "#c0caf5"),
+                width: -1.0,
+                height: 8.0,
+            )),
+        ),
+
+        (
+            name: "button_base",
+            parent: "body",
+            offset: (x: 12.0, y: 0),
+            hook: (parent_anchor: BL, self_anchor: TL),
+            render_criteria: [ ActionOther(0) ],
+            params: TextBlock((
+                text: "",
+                padding: (left: 0.0, right: 0.0, top: 0.0, bottom: 20.0),
+                font: "Inter V Medium 9.5",
+                color: (hex: "#c0caf5"),
+                dimensions: (
+                    width: (min: 190, max: 190),
+                    height: (min: 0, max: 0),
+                ),
+                dimensions_image_hint: (
+                    width: (min: 136, max: 136),
+                    height: (min: 0, max: 0)
+                ),
+                dimensions_image_app: (
+                    width: (min: 136, max: 136),
+                    height: (min: 0, max: 0)
+                ),
+            )),
+        ),
+
+        (
+            name: "button_0",
+            parent: "button_base",
+            offset: (x: 0, y: 0),
+            hook: (parent_anchor: TL, self_anchor: TL),
+            render_criteria: [ ActionOther(0) ],
+            params: ButtonBlock((
+                text: "%a",
+                font: "Inter V Medium 9.5",
+                action: OtherAction(0),
+                padding: (left: 8.0, right: 8.0, top: 4.0, bottom: 4.0),
+                border_width: 2.0,
+                border_rounding: 6.0,
+                text_color: (hex: "#c0caf5"),
+                border_color: (hex: "#373a48"),
+                border_color_hovered: (hex: "#c0caf5"),
+                background_color: (hex: "#090a0e"),
+                dimensions: (
+                    width:  (min: -1, max: -1),
+                    height: (min: 0, max: 0)
+                ),
+            )),
+        ),
+
+        (
+            name: "button_1",
+            parent: "button_0",
+            offset: (x: 8, y: 0),
+            hook: (parent_anchor: TR, self_anchor: TL),
+            render_criteria: [ ActionOther(1) ],
+            params: ButtonBlock((
+                text: "%a",
+                font: "Inter V Medium 9.5",
+                action: OtherAction(1),
+                padding: (left: 8.0, right: 8.0, top: 4.0, bottom: 4.0),
+                border_width: 2.0,
+                border_rounding: 6.0,
+                text_color: (hex: "#c0caf5"),
+                border_color: (hex: "#373a48"),
+                border_color_hovered: (hex: "#c0caf5"),
+                background_color: (hex: "#090a0e"),
+                dimensions: (
+                    width:  (min: -1, max: -1),
+                    height: (min: 0, max: 0)
+                ),
+            )),
+        ),
+
+        (
+            name: "button_2",
+            parent: "button_1",
+            offset: (x: 8, y: 0),
+            hook: (parent_anchor: TR, self_anchor: TL),
+            render_criteria: [ ActionOther(2) ],
+            params: ButtonBlock((
+                text: "%a",
+                font: "Inter V Medium 9.5",
+                action: OtherAction(2),
+                padding: (left: 8.0, right: 8.0, top: 4.0, bottom: 4.0),
+                border_width: 2.0,
+                border_rounding: 6.0,
+                text_color: (hex: "#c0caf5"),
+                border_color: (hex: "#373a48"),
+                border_color_hovered: (hex: "#c0caf5"),
+                background_color: (hex: "#090a0e"),
+                dimensions: (
+                    width:  (min: -1, max: -1),
+                    height: (min: 0, max: 0)
+                ),
+            )),
+        ),
+
+
+    ],
+
+    // https://github.com/Toqozz/wired-notify/wiki/Shortcuts
+    shortcuts: ShortcutsConfig (
+        notification_interact: 1,
+        notification_close: 3,
+        // notification_closeall: 99,
+        // notification_pause: 99,
+
+        notification_action1: 8,
+        // notification_action2: 99,
+        // notification_action3: 99,
+        // notification_action4: 99,
+    ),
+)
+// vi: ft=rust
