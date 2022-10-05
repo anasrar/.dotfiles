@@ -1,0 +1,4 @@
+#!/usr/bin/sh
+
+STATUS=$(pulsemixer --id $(pulsemixer --list-sources | grep ", Default" | sed -E 's/Source:(.*)ID: (.*), (.*)/\2/g' | awk -F ", " '{print $1}') --toggle-mute --get-mute)
+notify-send -i $([[ $STATUS == "1" ]] && echo "$HOME/.local/share/icons/Grade-orange-dark/symbolic/status/microphone-sensitivity-muted-symbolic.svg" || echo "$HOME/.local/share/icons/Grade-orange-dark/symbolic/status/microphone-sensitivity-high-symbolic.svg") "Default Mic Source" $([[ $STATUS == "1" ]] && echo "Mute" || echo "Unmute")
