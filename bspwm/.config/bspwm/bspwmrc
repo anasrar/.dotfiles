@@ -1,0 +1,78 @@
+#! /bin/sh
+
+# x setting
+xrdb -merge ~/.config/bspwm/Xresources &
+
+killall -q sxhkd; sxhkd &
+
+bspc monitor -d 0 1 2 3 4 5 6
+
+# new node on left side
+bspc config initial_polarity first_child
+
+bspc config border_width              3
+bspc config focused_border_color      '#9b72ef'
+bspc config normal_border_color       '#414868'
+bspc config window_gap                6
+
+bspc config split_ratio               0.5
+bspc config borderless_monocle        false
+bspc config gapless_monocle           false
+
+bspc rule -a 'firefox' desktop='^2' follow=on
+bspc rule -a 'Gimp-2.10' desktop='^3' follow=on
+bspc rule -a 'vlc' desktop='^4' follow=on
+bspc rule -a 'spotify' desktop='^5' follow=on
+bspc rule -a 'discord' desktop='^7' follow=on
+
+# list floating window
+
+bspc rule -a 'Thunar' state=floating center=on
+bspc rule -a 'Nemo' state=floating center=on
+bspc rule -a 'qpwgraph' state=floating center=on
+bspc rule -a 'Viewnior' state=floating center=on
+bspc rule -a 'Gnome-screenshot' state=floating center=on
+bspc rule -a 'File-roller' state=floating center=on
+bspc rule -a 'Blueman-manager' state=floating center=on
+bspc rule -a 'Lxappearance' state=floating center=on
+bspc rule -a 'SimpleScreenRecorder' state=floating center=on
+bspc rule -a '*:*:Picture in picture' state=floating center=on
+bspc rule -a '*:*:Picture-in-Picture' state=floating center=on
+
+# auto start
+
+## lock screen
+# killall -q light-locker; light-locker &
+
+## cursor
+xsetroot -cursor_name left_ptr &
+
+## wallpaper
+killall -q feh; ~/.fehbg &
+
+## state
+killall -q sate; sate start &
+
+## eww widget
+eww --config "$HOME/.config/eww/sidebar/" kill
+eww --config "$HOME/.config/eww/sidebar/" daemon
+eww --config "$HOME/.config/eww/sidebar/" open bar
+
+## notification daemon
+killall -q wired; wired &
+
+## thunar daemon
+killall -q thunar; thunar --daemon &
+
+## polkit
+/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
+
+## system tray
+killall -q stalonetray; stalonetray &
+
+## applet
+killall -q nm-applet; nm-applet &
+killall -q blueman-applet; blueman-applet &
+
+## compositor
+killall -q picom; picom -b &
