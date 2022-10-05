@@ -1,0 +1,12 @@
+host: "localhost" # default localhost
+port: 9214 # default 9123
+states:
+  brightness:
+    default: "5"
+    initial: "echo 0 > /tmp/sate_brightness_notify; echo \"$(brightnessctl g):$(brightnessctl m)\" | awk -F \":\" {'printf(\"%.0f\\n\", $1/$2*100)'}"
+    onset:
+      - "brightnessctl set %s%%"
+      - 'notify-send -p -r $(cat /tmp/sate_brightness_notify) -i "$HOME/.local/share/icons/Grade-orange-dark/symbolic/status/display-brightness-symbolic.svg" Brightness --hint int:value:%s > /tmp/sate_brightness_notify'
+    dispatch:
+      increases: 'awk "BEGIN {result = %s+5; print result < 100 ? result : 100 }"'
+      decreases: 'awk "BEGIN {result = %s-5; print result >= 0 ? result : 0 }"'
