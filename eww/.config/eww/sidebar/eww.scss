@@ -1,0 +1,232 @@
+$font-main: "Inter V";
+$font-monospace: "JetBrains Mono";
+$font-icon: "tabler-icons";
+$color-bg: #1a1b26;
+$color-fg: #c0caf5;
+$color-black: #15161e;
+$color-red: #f7768e;
+$color-green: #9ece6a;
+$color-yellow: #e0af68;
+$color-blue: #7aa2f7;
+$color-magenta: #bb9af7;
+$color-cyan: #7dcfff;
+$color-white: #a9b1d6;
+
+* {
+  all: unset;
+}
+
+// # tooltip
+tooltip {
+  color: $color-fg;
+  background-color: darken($color-bg, $amount: 7.5%);
+  font-family: $font-main;
+  font-weight: 600;
+}
+
+// # bar
+
+.bar {
+  color: $color-fg;
+  background-color: darken($color-bg, 2.5%);
+  font-family: $font-main;
+  font-size: 12px;
+}
+
+.icon {
+  font-family: $font-icon;
+  font-size: 16px;
+}
+
+.label_small {
+  font-weight: 600;
+  font-size: 8px;
+}
+
+.c_progress {
+  color: $color-fg;
+  background-color: rgba($color: $color-fg, $alpha: 0.25);
+}
+
+.c_progress_box {
+  min-width: 30px;
+  min-height: 30px;
+}
+
+.c_progress_label {
+  padding: 10px;
+  color: currentColor;
+  background-color: darken($color-bg, 8%);
+  font-weight: 600;
+  font-size: 8px;
+
+  &.icon {
+    padding: 0;
+    font-size: 16px;
+  }
+}
+
+.section_top {
+  padding: 8px 0;
+}
+
+.section_bottom {
+  padding: 8px 0;
+}
+
+.rofi {
+  margin: 0 6px;
+  padding: 3px 0;
+  border: 3px solid #a1b4ef;
+  border-radius: 6px;
+  color: #a9b1d6;
+  background-color: darken($color-bg, 8%);
+
+  & .icon {
+    font-family: $font-icon;
+    font-size: 16px;
+  }
+}
+
+.desktop_item {
+  margin: 0 6px;
+  padding: 3px 0;
+  border: 3px solid rgba($color: #a1b4ef, $alpha: 0.25);
+  border-radius: 6px;
+  color: #a1b4ef;
+  background-color: darken($color-bg, 8%);
+
+  &.current {
+    color: adjust-hue($color: #f494c7, $degrees: -10deg);
+    border-color: currentColor;
+  }
+
+  & .desktop_item_icon {
+    font-family: $font-icon;
+    font-size: 16px;
+  }
+}
+
+.color_notify {
+  color: #d680ec;
+  background-color: rgba($color: #d680ec, $alpha: 0.25);
+}
+
+.color_notify_paused {
+  color: #aba8cb;
+  background-color: rgba($color: #d680ec, $alpha: 0.25);
+}
+
+.color_volume {
+  color: #79bdf5;
+  background-color: rgba($color: #79bdf5, $alpha: 0.25);
+}
+
+.color_volume_muted {
+  color: #f57979;
+  background-color: rgba($color: #f57979, $alpha: 0.25);
+}
+
+.color_brightness {
+  color: #eff780;
+  background-color: rgba(#eff780, $alpha: 0.25);
+}
+
+.color_battery_low {
+  color: saturate($color-red, 75%);
+  background-color: rgba($color: saturate($color-red, 75%), $alpha: 0.25);
+}
+
+.color_battery_charging {
+  color: saturate($color-green, 75%);
+  background-color: rgba($color: saturate($color-green, 75%), $alpha: 0.25);
+}
+
+.color_battery_discharging {
+  color: #7a95e9;
+  background-color: rgba($color: #7a95e9, $alpha: 0.25);
+}
+
+.color_power {
+  color: #e97acc;
+  background-color: rgba($color: #e97acc, $alpha: 0.25);
+}
+
+.date {
+  font-family: $font-main;
+  font-weight: 800;
+  font-size: 9px;
+}
+
+// # notification base
+
+.panel_container {
+  padding: 8px 8px 11px 8px;
+  border-radius: 6px;
+  color: $color-fg;
+  background-color: darken($color-bg, 2.5%);
+  font-family: $font-main;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.panel_progress {
+  trough {
+    min-width: 140px;
+    min-height: 8px;
+    border-radius: 4px;
+    background-color: rgba($color: $color-fg, $alpha: 0.4);
+
+    // # progress
+    progress {
+      min-height: 8px;
+      border-radius: 4px;
+      background-color: $color-fg;
+    }
+
+    // # scale or slider
+    highlight {
+      min-height: 8px;
+      border-radius: 4px;
+      background-color: $color-fg;
+    }
+  }
+}
+
+.panel_scale {
+  @extend .panel_progress;
+}
+
+.panel_button {
+  padding: 4px 8px;
+  border: 2px solid rgba($color: $color-fg, $alpha: 0.25);
+  border-radius: 4px;
+  color: $color-fg;
+  background-color: darken($color-bg, 8%);
+
+  &:hover {
+    border-color: $color-fg;
+  }
+}
+
+// # calendar
+
+.calendar {
+  font-family: $font-main;
+
+  calendar {
+    &.highlight {
+      color: $color-green;
+    }
+
+    &:selected {
+      border-radius: 3px;
+      color: $color-bg;
+      background-color: $color-green;
+    }
+
+    &:indeterminate {
+      color: rgba($color: $color-fg, $alpha: 0.5);
+    }
+  }
+}

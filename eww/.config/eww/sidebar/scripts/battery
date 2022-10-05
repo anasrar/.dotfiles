@@ -1,0 +1,80 @@
+#!/usr/bin/sh
+
+TARGET_MODEL="45N1127"
+LAST_STATE="discharging"
+LAST_PERCENTAGE="50"
+
+SAFE_UNPLUG_FLAG="false"
+LOW_FLAG="false"
+
+fetch(){
+  DEVICES=$(upower -e | grep -e "battery_\|headset_")
+  RESULT=""
+
+  for DEVICE in $DEVICES
+  do
+    if [[ "" != $RESULT ]]
+    then
+      RESULT=$(echo $RESULT ", ")
+    fi
+
+    MODEL=$(upower -i $DEVICE | grep "model:" | awk -F "model:                " '{print $2}')
+    PERCENTAGE=$(upower -i $DEVICE | grep "percentage:" | awk -F "percentage:          " '{print $2}' | sed -E 's/%//g')
+    STATE=$(upower -i $DEVICE | grep "state:" | awk -F "state:               " '{print $2}')
+    RESULT=$(echo $RESULT "[\"$MODEL\", \"$PERCENTAGE\", \"$STATE\"]")
+
+
+    if [[ $TARGET_MODEL == $MODEL ]]
+    then
+      if [[ $1 == "notify" ]]
+      then
+        if [[ $STATE == "charging" ]]
+        then
+          # notification charging
+          if [[ $LAST_STATE != $STATE ]]
+          then
+            notify-send -i "$HOME/.local/share/icons/Grade-orange-dark/symbolic/status/battery-full-charged-symbolic.svg" "Battery" "Your Battery Is Charging"
+          fi
+          # notification safe to unplug
+          if [[ $PERCENTAGE > "93" ]] && [[ $SAFE_UNPLUG_FLAG == "false" ]]
+          then
+            SAFE_UNPLUG_FLAG="true"
+            notify-send -i "$HOME/.local/share/icons/Grade-orange-dark/symbolic/status/battery-full-symbolic.svg" "Battery" "Your Battery Is Safe to Unplug"
+          fi
+        fi
+
+        if [[ $STATE == "discharging" ]]
+        then
+          # notification discharging
+          if [[ $LAST_STATE != $STATE ]]
+          then
+            LOW_FLAG="false"
+            SAFE_UNPLUG_FLAG="false"
+            notify-send -i "$HOME/.local/share/icons/Grade-orange-dark/symbolic/status/battery-full-symbolic.svg" "Battery" "Your Battery Is Discharging"
+          fi
+          # notification low battery
+          if [[ $PERCENTAGE < "31" ]] && [[ $LOW_FLAG == "false" ]]
+          then
+            LOW_FLAG="true"
+            notify-send -i "$HOME/.local/share/icons/Grade-orange-dark/symbolic/status/battery-empty-symbolic.svg" "Battery" "Your Battery Is Low"
+          fi
+        fi
+      fi
+
+      LAST_STATE=$(echo $STATE)
+      LAST_PERCENTAGE=$(echo $PERCENTAGE)
+    fi
+
+  done
+  echo "[$RESULT]"
+}
+
+case "$1" in
+  --list)
+    fetch ""
+    while true; do
+      sleep 60s
+      fetch "notify"
+    done
+  ;;
+esac

@@ -1,0 +1,1 @@
+i3lock --bar-indicator --bar-color 00000000 --bar-count 1 --color 1a1b26cc --clock --date-size 18 --date-font "Inter V" --date-color c0caf5ff --time-size 52 --time-font "Inter V" --time-color c0caf5ff --wrong-color f7768eff --verif-color 7aa2f7ff --keyhl-color a9b1d699 --bshl-color f7768e99

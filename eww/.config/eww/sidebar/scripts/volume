@@ -1,0 +1,57 @@
+#!/usr/bin/sh
+
+MUTE="0"
+VOLUME="0"
+
+notify(){
+  notify-send -p -r $(cat /tmp/volume_notify) -i $([[ $1 == "1" ]] && echo "$HOME/.local/share/icons/Grade-orange-dark/symbolic/status/audio-volume-muted-blocking-symbolic.svg" || echo "$HOME/.local/share/icons/Grade-orange-dark/symbolic/status/audio-volume-high-symbolic.svg") "Volume" --hint "int:value:$2 " > /tmp/volume_notify
+}
+
+fetch(){
+  SINKS=$(pactl -f json list sinks)
+
+  CURRENT_MUTE=$(pulsemixer --get-mute)
+  CURRENT_VOLUME=$(pulsemixer --get-volume | awk -F " " '{print ($1+$2)/2}')
+
+  [[ $1 == "notify" ]] && [[ $CURRENT_VOLUME != $VOLUME ]] && notify $CURRENT_MUTE $CURRENT_VOLUME
+  [[ $1 == "notify" ]] && [[ $CURRENT_MUTE != $MUTE ]] && notify $CURRENT_MUTE $CURRENT_VOLUME
+  MUTE=$(echo $CURRENT_MUTE)
+  VOLUME=$(echo $CURRENT_VOLUME)
+
+  echo "{\"mute\": \"$CURRENT_MUTE\", \"value\": $VOLUME}"
+}
+
+list(){
+  echo "" | awk -F ":" '{printf "["}'
+  INDEX=0
+  pulsemixer --list-sinks | grep "Sink:" | while read -r SINK
+  do
+    VOLUME=$(echo $SINK | sed -E "s/(.*)Volumes: \['(.*)%', '(.*)%'\](.*)/\2 \3/g" | awk -F " " '{print ($1+$2)/2}')
+    FOO="ME"
+    [[ $INDEX != 0 ]] && echo "" | awk -F ":" '{printf ", "}'
+    echo $SINK | sed -E 's/(Sink: ID: |Name: |Mute: |, Default)//g' | awk -F ", " -v volume="$VOLUME" '{printf "[\"%s\", \"%s\", %d, %d]", $1, $2, $3, volume}'
+    INDEX=$((INDEX+1))
+  done
+  echo "" | awk -F ":" '{printf "]\n"}'
+}
+
+case "$1" in
+  --fetch)
+    [[ ! -f /tmp/volume_notify ]] && echo "0" > /tmp/volume_notify
+    fetch ""
+    pactl subscribe |
+    grep --line-buffered "Event 'change' on sink" |
+    while read -r _; do
+      fetch "notify"
+    done
+  ;;
+  --list)
+    list
+    pactl subscribe |
+    grep --line-buffered "Event 'change' on sink" |
+    while read -r _; do
+      list
+    done
+  ;;
+esac
+

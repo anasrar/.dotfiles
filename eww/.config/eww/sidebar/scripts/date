@@ -1,0 +1,12 @@
+#!/usr/bin/sh
+
+fetch(){
+  TZ='Asia/Tokyo' date '+["%y", "%b", "%d", "%I", "%M", "%P"]'
+}
+
+fetch
+while true;
+do
+  sleep 60s
+  fetch
+done

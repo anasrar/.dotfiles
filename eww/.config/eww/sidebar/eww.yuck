@@ -1,0 +1,543 @@
+; # bar
+
+(defwindow bar
+  :monitor 0
+  :geometry (geometry
+    :x "0"
+    :y "0"
+    :width "42px"
+    :height "100%"
+    :anchor "top left"
+  )
+  :stacking "bg"
+  :reserve (struts
+    :distance "42px"
+    :side "left"
+  )
+  :windowtype "dock"
+  :wm-ignore false
+  (box
+    :orientation "v" 
+    :space-evenly false
+    (top)
+    (bottom)
+  )
+)
+
+(defwidget top []
+  (box
+    :class "section_top"
+    :orientation "v"
+    :valign "start"
+    :space-evenly false
+    :spacing 12
+    (eventbox
+      :cursor "pointer"
+      :onclick `rofi -show drun &`
+      :tooltip "Run"
+      (box
+        :class "rofi"
+        (label
+          :class "icon"
+          :text ""
+        )
+      )
+    )
+    (workspaces)
+  )
+)
+
+(defwidget bottom []
+  (box
+    :class "section_bottom"
+    :orientation "v"
+    :vexpand true
+    :valign "end"
+    :space-evenly false
+    :spacing 12
+    (box
+      :orientation "v"
+      :valign "end"
+      :space-evenly false
+      :spacing 8
+      (notify)
+      (volume)
+      (brightness)
+      (battery)
+      (power)
+    )
+    (date)
+  )
+)
+
+(deflisten current_desktop
+  :initial "0"
+  `xprop -spy -root _NET_CURRENT_DESKTOP | sed -ur 's/(.+) = ([0-9]+)/\\2/'`
+)
+
+(defvar desktops
+  `[["", "0", "Code"], ["", "1", "Browser"], ["", "2", "Creative"], ["", "3", "Entertainment"], ["", "4", "Music"], ["", "5", "Setting"], ["", "6", "Contact"]]`
+)
+
+(defwidget workspaces []
+  (box
+    :class "workspaces"
+    :orientation "v"
+    :space-evenly false
+    :spacing 8
+    (for desktop in desktops
+      (eventbox
+        :cursor "pointer"
+        :onclick {"bspc desktop -f " + desktop[1]}
+        :tooltip {desktop[2]}
+        (box
+          :class {current_desktop == desktop[1] ? "desktop_item current" : "desktop_item"}
+          (label
+            :class "desktop_item_icon"
+            :text {desktop[0]}
+          )
+        )
+      )
+    )
+  )
+)
+
+(defvar is_notify_paused
+  "false"
+)
+
+(defwidget notify []
+  (eventbox
+    :cursor "pointer"
+    :onclick {is_notify_paused == "false" ? `${EWW_CMD} update is_notify_paused=true; wired -d all; wired -z on;` : `${EWW_CMD} update is_notify_paused=false; wired -z off; notify-send -i "$HOME/.local/share/icons/Grade-orange-dark/symbolic/status/notification-new-symbolic.svg" Notification "Notification Has Been Enable"`}
+    :tooltip {is_notify_paused ? "Notification Disable" : "Notification Enable"}
+    (circular-progress
+      :class {is_notify_paused ? "c_progress color_notify_paused" : "c_progress color_notify"}
+      :value 100
+      :start-at 75
+      :thickness 4
+      :clockwise true
+      (box
+        :class "c_progress_box"
+        (label
+          :class "c_progress_label icon"
+          :text {is_notify_paused ? "" : ""}
+        )
+      )
+    )
+  )
+)
+
+(deflisten current_volume
+  :initial "{}"
+  `./scripts/volume --fetch`
+)
+
+(defvar is_volume_panel_open
+  "false"
+)
+
+(defwidget volume []
+  (eventbox
+    :cursor "pointer"
+    :onclick {is_volume_panel_open == "false" ? "${EWW_CMD} update is_volume_panel_open=true; ${EWW_CMD} open volume" : "${EWW_CMD} update is_volume_panel_open=false; ${EWW_CMD} close volume"}
+    :onmiddleclick `pulsemixer --toggle-mute`
+    :tooltip {`Volume ${current_volume["value"]}%`}
+    (circular-progress
+      :class { current_volume["mute"] == "1" ? "c_progress color_volume_muted" : "c_progress color_volume" }
+      :value {current_volume["value"]}
+      :start-at 75
+      :thickness 4
+      :clockwise true
+      (box
+        :class "c_progress_box"
+        (label
+          :class "c_progress_label icon"
+          :text { current_volume["mute"] == "1" ? "" : "" }
+        )
+      )
+    )
+  )
+)
+
+(deflisten current_brightness
+  :initial "50"
+  `sate watch brightness`
+)
+
+(defvar is_brightness_panel_open
+  "false"
+)
+
+(defwidget brightness []
+  (eventbox
+    :cursor "pointer"
+    :onclick {is_brightness_panel_open == "false" ? "${EWW_CMD} update is_brightness_panel_open=true; ${EWW_CMD} open brightness" : "${EWW_CMD} update is_brightness_panel_open=false; ${EWW_CMD} close brightness"}
+    :tooltip {`Brightness ${current_brightness}%`}
+    (circular-progress
+      :class "c_progress color_brightness"
+      :value current_brightness
+      :start-at 75
+      :thickness 4
+      :clockwise true
+      (box
+        :class "c_progress_box"
+        (label
+          :class "c_progress_label icon"
+          :text ""
+        )
+      )
+    )
+  )
+)
+
+(deflisten battery_list
+  :initial "[]"
+  `./scripts/battery --list`
+)
+
+(defvar is_battery_list_open
+  "false"
+)
+
+(defwidget battery []
+  (eventbox
+    :cursor "pointer"
+    :onclick {is_battery_list_open == "false" ? "${EWW_CMD} update is_battery_list_open=true; ${EWW_CMD} open battery" : "${EWW_CMD} update is_battery_list_open=false; ${EWW_CMD} close battery"}
+    :tooltip {`Battery ${battery_list[0][1]}%`}
+    (circular-progress
+      :class { battery_list[0][2] == "charging" ? "c_progress color_battery_charging" : battery_list[0][1] < 31 ? "c_progress color_battery_low" : "c_progress color_battery_discharging" }
+      :value {battery_list[0][1]}
+      :start-at 75
+      :thickness 4
+      :clockwise true
+      (box
+        :class "c_progress_box"
+        (label
+          :class "c_progress_label icon"
+          :text ""
+        )
+      )
+    )
+  )
+)
+
+(defvar is_power_panel_open
+  "false"
+)
+
+(defwidget power []
+  (eventbox
+    :cursor "pointer"
+    :onclick {is_power_panel_open == "false" ? "${EWW_CMD} update is_power_panel_open=true; ${EWW_CMD} open power" : "${EWW_CMD} update is_power_panel_open=false; ${EWW_CMD} close power"}
+    :tooltip "Power Menu"
+    (circular-progress
+      :class "c_progress color_power"
+      :value 100
+      :start-at 75
+      :thickness 4
+      :clockwise true
+      (box
+        :class "c_progress_box"
+        (label
+          :class "c_progress_label icon"
+          :text ""
+        )
+      )
+    )
+  )
+)
+
+(deflisten time
+  :initial "[]"
+  `./scripts/date`
+)
+
+(defvar is_calendar_panel_open
+  "false"
+)
+
+(defwidget date []
+  (eventbox
+    :cursor "pointer"
+    :onclick {is_calendar_panel_open == "false" ? "${EWW_CMD} update is_calendar_panel_open=true; ${EWW_CMD} open calendar" : "${EWW_CMD} update is_calendar_panel_open=false; ${EWW_CMD} close calendar"}
+    (box
+      :orientation "v"
+      :class "date"
+      :spacing 2
+      :tooltip {`${time[0]} ${time[1]} ${time[3]} - ${time[3]}:${time[4]} ${time[5]}`}
+      (label
+        :text {`${time[3]}:${time[4]}`}
+      )
+      (label
+        :text {`${time[2]} ${time[1]}`}
+      )
+    )
+  )
+)
+
+(deflisten volume_list
+  :initial "{}"
+  `./scripts/volume --list`
+)
+
+; # volume panel
+
+(defwindow volume
+  :monitor 0
+  :geometry (geometry
+    :x "58px"
+    :y "-160px"
+    :width "150px"
+    :anchor "bottom left"
+  )
+  :stacking "fg"
+  :wm-ignore true
+  (box
+    :class "panel_container"
+    :space-evenly false
+    :orientation "v"
+    :spacing 10
+    (button
+      :class "panel_button"
+      :onclick `alacritty -e pulsemixer &> /dev/null &`
+      " Open Mixer"
+    )
+    (for sink in volume_list
+      (box
+        :space-evenly false
+        :orientation "v"
+        :spacing 8
+        (box
+          :space-evenly false
+          :orientation "h"
+          :spacing 12
+          (eventbox
+            :cursor "pointer"
+            :onclick {`pulsemixer --id ${sink[0]} --toggle-mute`}
+            (label
+              :halign "start"
+              :text {sink[2] == "1" ? "" : ""}
+            )
+          )
+          (label
+            :halign "start"
+            :text {sink[1]}
+          )
+          (label
+            :hexpand true
+            :halign "end"
+            :text {sink[3] + "%"}
+          )
+        )
+        (eventbox
+          :cursor "pointer"
+          (scale
+            :class "panel_scale battery_list"
+            :orientation "h"
+            :onchange `pulsemixer --id ${sink[0]} --set-volume {}`
+            :value {sink[3]}
+          )
+        )
+      )
+      
+    )
+  )
+)
+
+; # brightness panel
+
+(defwindow brightness
+  :monitor 0
+  :geometry (geometry
+    :x "58px"
+    :y "-122px"
+    :anchor "bottom left"
+  )
+  :stacking "fg"
+  :wm-ignore true
+  (box
+    :class "panel_container"
+    :orientation "v"
+    (box
+      :space-evenly false
+      :orientation "v"
+      :spacing 6
+      (box
+        :orientation "h"
+        :space-evenly false
+        (label
+          :halign "start"
+          :text "Brightness"
+        )
+        (label
+          :hexpand true
+          :halign "end"
+          :text {current_brightness + "%"}
+        )
+      )
+      (eventbox
+        :cursor "pointer"
+        (scale
+          :class "panel_scale"
+          :orientation "h"
+          :onchange "sate set brightness {}"
+          :min 0
+          :max 100
+          :value current_brightness
+        )
+      )
+    )
+  )
+)
+
+; # battery panel
+
+(defwindow battery
+  :monitor 0
+  :geometry (geometry
+    :x "58px"
+    :y "-84px"
+    :width "150px"
+    :anchor "bottom left"
+  )
+  :stacking "fg"
+  :wm-ignore true
+  (box
+    :class "panel_container"
+    :space-evenly false
+    :orientation "v"
+    :spacing 10
+    (for item in battery_list
+      (box
+        :space-evenly false
+        :orientation "v"
+        :spacing 6
+        (box
+          :space-evenly false
+          :orientation "h"
+          (label
+            :halign "start"
+            :text {item[0]}
+          )
+          (label
+            :hexpand true
+            :halign "end"
+            :text {item[1] + "%"}
+          )
+        )
+        (progress
+          :class "panel_progress"
+          :orientation "h"
+          :value {item[1]}
+        )
+      )
+    )
+  )
+)
+
+; # power panel
+
+(defwindow power
+  :monitor 0
+  :geometry (geometry
+    :x "58px"
+    :y "-46px"
+    :width "150px"
+    :anchor "bottom left"
+  )
+  :stacking "fg"
+  :wm-ignore true
+  (box
+    :class "panel_container"
+    :space-evenly false
+    :orientation "v"
+    :spacing 8
+    (button
+      :class "panel_button"
+      :onclick `bspc quit`
+      (box
+        :space-evenly false
+        :orientation "h"
+        :spacing 8
+        (label
+          :text ""
+        )
+        (label
+          :text "Sign Out"
+        )
+      )
+    )
+    (button
+      :class "panel_button"
+      :onclick `${EWW_CMD} close power; ${EWW_CMD} update is_power_panel_open=false; ./scripts/lock`
+      (box
+        :space-evenly false
+        :orientation "h"
+        :spacing 8
+        (label
+          :text ""
+        )
+        (label
+          :text "Lock"
+        )
+      )
+    )
+    (button
+      :class "panel_button"
+      :onclick `reboot`
+      (box
+        :space-evenly false
+        :orientation "h"
+        :spacing 8
+        (label
+          :text ""
+        )
+        (label
+          :text "Reboot"
+        )
+      )
+    )
+    (button
+      :class "panel_button"
+      :onclick `shutdown now`
+      (box
+        :space-evenly false
+        :orientation "h"
+        :spacing 8
+        (label
+          :text ""
+        )
+        (label
+          :text "Shut Down"
+        )
+      )
+    )
+  )
+)
+
+; # calendar panel
+
+(defwindow calendar
+  :monitor 0
+  :geometry (geometry
+    :x "58px"
+    :y "-16px"
+    :width "150px"
+    :anchor "bottom left"
+  )
+  :stacking "fg"
+  :wm-ignore true
+  (box
+    :class "panel_container"
+    :space-evenly false
+    :orientation "v"
+    :spacing 10
+    (calendar
+      :class "calendar"
+      :show-details true
+      :show-heading true
+      :show-day-names true
+    )
+  )
+)
