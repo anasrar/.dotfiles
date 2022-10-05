@@ -1,0 +1,90 @@
+configuration {
+  modes: "windowcd,drun";
+  font: "Inter V SemiBold 9";
+  show-icons: true;
+  display-drun: "";
+  display-windowcd: "";
+  display-filebrowser: "";
+  disable-history: true;
+  drun-display-format: "{name}";
+  sidebar-mode: false;
+}
+
+@theme "/dev/null"
+
+* {
+  bg: #15161e;
+  fg: #A0A8CD;
+  prompt: #21222D;
+  button-selected: #9FBBF3;
+  background-color: @bg;
+  text-color: @fg;
+}
+
+window {
+  padding: 8px;
+  width: 290px;
+}
+
+prompt {
+  background-color: @prompt;
+  enabled: true;
+}
+
+entry {
+  background-color: @prompt;
+  expand: true;
+  placeholder-color: @fg;
+  placeholder: "Search";
+}
+
+inputbar {
+  children: [ prompt, entry ];
+  background-color: @prompt;
+  border-radius: 4px;
+  expand: false;
+  margin: 0;
+  padding: 8px;
+}
+
+listview {
+  columns: 3;
+  lines: 3;
+  fixed-columns: true;
+  cycle: false;
+  layout: vertical;
+}
+
+mainbox {
+  children: [ inputbar, listview ];
+  spacing: 12px;
+}
+
+element {
+  orientation: vertical;
+  padding: 16px 8px;
+}
+
+element-icon {
+  horizontal-align: 0.5;
+  size: 32px;
+}
+
+element-text {
+  expand: true;
+  horizontal-align: 0.5;
+  margin: 0.5% 0.5% -0.5% 0.5%;
+  vertical-align: 0.5;
+}
+
+element-text, element-icon {
+  background-color: inherit;
+  text-color: inherit;
+}
+
+element selected {
+  border-radius: 6px;
+  background-color: #090a0e;
+}
+
+/* vim: ft=css
