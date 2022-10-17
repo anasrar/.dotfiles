@@ -8,7 +8,7 @@ npm i -g vscode-langservers-extracted @fsouza/prettierd
 local lspconfig = require('lspconfig')
 local null_ls = require('null-ls')
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 lspconfig.cssls.setup({
   capabilities = capabilities,
