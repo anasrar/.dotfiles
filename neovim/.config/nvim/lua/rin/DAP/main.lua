@@ -110,3 +110,25 @@ require('rin.DAP.python')
 require('rin.DAP.typescript')
 require('rin.DAP.cpp')
 require('rin.DAP.go')
+
+-- ## DAP `launch.json`
+require('dap.ext.vscode').load_launchjs(nil, {
+  ['python'] = {
+    'python',
+  },
+  ['pwa-node'] = {
+    'javascript',
+    'typescript',
+  },
+  ['node'] = {
+    'javascript',
+    'typescript',
+  },
+  ['cppdbg'] = {
+    'c',
+    'cpp',
+  },
+  ['dlv'] = {
+    'go',
+  },
+})
