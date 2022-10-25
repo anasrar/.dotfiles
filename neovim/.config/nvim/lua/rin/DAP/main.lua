@@ -106,10 +106,10 @@ buf_map('n', '<Leader>dw[', ':lua require(\'dapui\').toggle(1)<CR>')
 buf_map('n', '<Leader>dw]', ':lua require(\'dapui\').toggle(2)<CR>')
 
 -- # DAP Config
-require('rin.DAP.python')
-require('rin.DAP.typescript')
-require('rin.DAP.cpp')
-require('rin.DAP.go')
+require('rin.DAP.languages.python')
+require('rin.DAP.languages.typescript')
+require('rin.DAP.languages.cpp')
+require('rin.DAP.languages.go')
 
 -- ## DAP `launch.json`
 require('dap.ext.vscode').load_launchjs(nil, {
