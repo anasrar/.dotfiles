@@ -48,8 +48,8 @@ keymap({ 'i', 's' }, '<C-l>', function()
 end)
 
 -- # Snippet
-luasnip.add_snippets('all', require('rin.LSP.luasnip.all'))
-luasnip.add_snippets('typescript', require('rin.LSP.luasnip.typescript'))
-luasnip.add_snippets('typescriptreact', require('rin.LSP.luasnip.typescriptreact'))
-luasnip.add_snippets('lua', require('rin.LSP.luasnip.lua'))
-luasnip.add_snippets('prisma', require('rin.LSP.luasnip.prisma'))
+luasnip.add_snippets('all', require('rin.LSP.luasnip.languages.all'))
+luasnip.add_snippets('typescript', require('rin.LSP.luasnip.languages.typescript'))
+luasnip.add_snippets('typescriptreact', require('rin.LSP.luasnip.languages.typescriptreact'))
+luasnip.add_snippets('lua', require('rin.LSP.luasnip.languages.lua'))
+luasnip.add_snippets('prisma', require('rin.LSP.luasnip.languages.prisma'))
