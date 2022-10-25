@@ -18,31 +18,28 @@ end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-if require('null-ls.utils').make_conditional_utils().root_has_file({ 'deno.json' }) then
-    lspconfig.denols.setup({
-        capabilities = capabilities,
-        single_file_support = true,
-        init_options = {
-          enable = true,
-          lint = true,
-          unstable = false
-        },
-        on_attach = function(client, bufnr)
-            client.server_capabilities.documentFormattingProvider = false
-            client.server_capabilities.documentRangeFormattingProvider = false
-            on_attach(client, bufnr)
-        end,
-        root_dir = lspconfig.util.root_pattern('deno.json'),
-    })
-end
+lspconfig.denols.setup({
+    capabilities = capabilities,
+    init_options = {
+      enable = true,
+      lint = true,
+      unstable = false
+    },
+    on_attach = function(client, bufnr)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+        on_attach(client, bufnr)
+    end,
+    root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
+})
 
 null_ls.register({
     name = 'null-ls-deno',
     sources = {
         null_ls.builtins.formatting.deno_fmt.with({
-          filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+          filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'markdown', 'json', 'jsonc' },
           condition = function(utils)
-              return utils.root_has_file({ 'deno.json' })
+              return utils.root_has_file({ 'deno.json', 'deno.jsonc' })
           end,
         }),
     },
