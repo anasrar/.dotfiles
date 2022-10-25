@@ -7,16 +7,16 @@ require('rin.LSP.utils.cmp')
 require('rin.LSP.utils.lspsaga')
 
 -- # LSP Config
-require('rin.LSP.typescript')
-require('rin.LSP.css')
-require('rin.LSP.svelte')
-require('rin.LSP.vue')
-require('rin.LSP.deno')
-require('rin.LSP.go')
-require('rin.LSP.cpp')
-require('rin.LSP.python')
+require('rin.LSP.languages.typescript')
+require('rin.LSP.languages.css')
+require('rin.LSP.languages.svelte')
+require('rin.LSP.languages.vue')
+require('rin.LSP.languages.deno')
+require('rin.LSP.languages.go')
+require('rin.LSP.languages.cpp')
+require('rin.LSP.languages.python')
 -- format some markup and dif file
-require('rin.LSP.prettier')
+require('rin.LSP.languages.prettier')
 
 -- # LuaSnip
 require('rin.LSP.luasnip.main')
