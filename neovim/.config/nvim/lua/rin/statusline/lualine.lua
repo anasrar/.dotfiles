@@ -21,6 +21,14 @@ local setup_winbar = {
       },
     },
     lualine_c = {
+      {
+        'lsp_progress',
+        display_components = { 'lsp_client_name', 'spinner', { 'title', 'percentage', 'message' } },
+        timer = { progress_enddelay = 500, spinner = 1000, lsp_client_name_enddelay = 1000 },
+        spinner_symbols = { '⠟', '⠯', '⠷', '⠾', '⠽', '⠻' },
+        message = { commenced = 'In Progress', completed = 'Completed' },
+        max_message_length = 30,
+      },
     },
     lualine_x = {
       {
@@ -41,6 +49,7 @@ local setup_winbar = {
     lualine_c = {
       {
         'filename',
+        path = 1,
         symbols = {
           modified = ' 洛',
           readonly = ' ',

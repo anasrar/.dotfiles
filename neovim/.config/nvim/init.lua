@@ -106,6 +106,10 @@ return require('packer').startup(function()
   -- # Status line
   use {
     'nvim-lualine/lualine.nvim',
+    requires = {
+      -- # LSP Progress
+      'WhoIsSethDaniel/lualine-lsp-progress.nvim',
+    },
     config = function() require('rin.statusline.lualine') end
   }
 
