@@ -77,12 +77,12 @@ dap.listeners.after.event_initialized['dapui_config'] = function()
   vim.cmd('tabfirst|tabnext')
   dapui.open()
 end
-dap.listeners.before.event_terminated['dapui_config'] = function()
-  dapui.close()
-end
-dap.listeners.before.event_exited['dapui_config'] = function()
-  dapui.close()
-end
+-- dap.listeners.before.event_terminated['dapui_config'] = function()
+--   dapui.close()
+-- end
+-- dap.listeners.before.event_exited['dapui_config'] = function()
+--   dapui.close()
+-- end
 
 -- # Keymap
 local buf_map = function(mode, lhs, rhs, opts)

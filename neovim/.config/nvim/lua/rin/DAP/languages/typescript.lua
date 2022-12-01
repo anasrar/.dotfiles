@@ -130,9 +130,10 @@ for i, ext in ipairs(exts) do
       name = 'Launch Test Current File (pwa-node with vitest)',
       cwd = vim.fn.getcwd(),
       program = '${workspaceFolder}/node_modules/vitest/vitest.mjs',
-      args = { 'run', '${file}' },
+      args = { '--inspect-brk', '--threads', 'false', 'run', '${file}' },
       autoAttachChildProcesses = true,
       smartStep = true,
+      console = 'integratedTerminal',
       skipFiles = { '<node_internals>/**', 'node_modules/**' },
     },
     {
