@@ -22,7 +22,7 @@ dap.configurations.python = {
   {
     type = 'python',
     request = 'launch',
-    name = 'Launch Program',
+    name = 'Launch Current File',
     program = '${file}',
     pythonPath = function()
       local cwd = vim.fn.getcwd()

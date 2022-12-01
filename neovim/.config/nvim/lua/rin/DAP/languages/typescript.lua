@@ -79,7 +79,7 @@ for i, ext in ipairs(exts) do
     {
       type = 'pwa-node',
       request = 'launch',
-      name = 'Launch Program (pwa-node)',
+      name = 'Launch Current File (pwa-node)',
       cwd = vim.fn.getcwd(),
       args = { '${file}' },
       sourceMaps = true,
@@ -88,7 +88,7 @@ for i, ext in ipairs(exts) do
     {
       type = 'pwa-node',
       request = 'launch',
-      name = 'Launch Program (pwa-node with ts-node)',
+      name = 'Launch Current File (pwa-node with ts-node)',
       cwd = vim.fn.getcwd(),
       runtimeArgs = { '--loader', 'ts-node/esm' },
       runtimeExecutable = 'node',
@@ -104,7 +104,7 @@ for i, ext in ipairs(exts) do
     {
       type = 'pwa-node',
       request = 'launch',
-      name = 'Launch Program (pwa-node with deno)',
+      name = 'Launch Current File (pwa-node with deno)',
       cwd = vim.fn.getcwd(),
       runtimeArgs = { 'run', '--inspect-brk', '--allow-all', '${file}' },
       runtimeExecutable = 'deno',
@@ -113,7 +113,7 @@ for i, ext in ipairs(exts) do
     {
       type = 'pwa-node',
       request = 'launch',
-      name = 'Launch Test Program (pwa-node with jest)',
+      name = 'Launch Test Current File (pwa-node with jest)',
       cwd = vim.fn.getcwd(),
       runtimeArgs = { '${workspaceFolder}/node_modules/.bin/jest' },
       runtimeExecutable = 'node',
@@ -127,7 +127,7 @@ for i, ext in ipairs(exts) do
     {
       type = 'pwa-node',
       request = 'launch',
-      name = 'Launch Test Program (pwa-node with vitest)',
+      name = 'Launch Test Current File (pwa-node with vitest)',
       cwd = vim.fn.getcwd(),
       program = '${workspaceFolder}/node_modules/vitest/vitest.mjs',
       args = { 'run', '${file}' },
@@ -138,7 +138,7 @@ for i, ext in ipairs(exts) do
     {
       type = 'pwa-node',
       request = 'launch',
-      name = 'Launch Test Program (pwa-node with deno)',
+      name = 'Launch Test Current File (pwa-node with deno)',
       cwd = vim.fn.getcwd(),
       runtimeArgs = { 'test', '--inspect-brk', '--allow-all', '${file}' },
       runtimeExecutable = 'deno',

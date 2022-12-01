@@ -50,7 +50,7 @@ dap.configurations.go = {
   {
     type = 'dlv',
     request = 'launch',
-    name = 'Launch Program (Delve)',
+    name = 'Launch Current File (Delve)',
     program = '${file}',
   },
   {
@@ -62,7 +62,7 @@ dap.configurations.go = {
   {
     type = 'dlv',
     request = 'launch',
-    name = 'Launch Debug Test (Delve)',
+    name = 'Launch Debug Test Current File (Delve)',
     mode = 'test',
     program = '${file}',
   },
