@@ -1,7 +1,7 @@
 local command_name_setup = 'RinSetupWindow'
 local command_name_clear = 'RinClearWindow'
 local tab_key = 'RinWindow'
-local setup = '72vs | sp | wincmd l'
+local setup = '60vs | sp | wincmd l'
 local clear = 'wincmd q'
 
 local get_var = function()
