@@ -1,6 +1,29 @@
+local function LSP()
+  local msg = require('lsp-status').status()
+  local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+  local clients = vim.lsp.get_active_clients()
+  if next(clients) == nil then
+    return msg
+  end
+  for _, client in ipairs(clients) do
+    local filetypes = client.config.filetypes
+    if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+      return "聯" .. client.name .. msg
+    end
+  end
+  return msg
+end
+
 local setup_winbar = {
   options = {
     globalstatus = true,
+    disabled_filetypes = {
+      statusline = {
+      },
+      winbar = {
+        'dap-repl',
+      },
+    },
   },
   sections = {
     lualine_a = {
@@ -22,12 +45,8 @@ local setup_winbar = {
     },
     lualine_c = {
       {
-        'lsp_progress',
-        display_components = { 'lsp_client_name', 'spinner', { 'title', 'percentage', 'message' } },
-        timer = { progress_enddelay = 500, spinner = 1000, lsp_client_name_enddelay = 1000 },
-        spinner_symbols = { '⠟', '⠯', '⠷', '⠾', '⠽', '⠻' },
-        message = { commenced = 'In Progress', completed = 'Completed' },
-        max_message_length = 30,
+        LSP,
+        separator = '',
       },
     },
     lualine_x = {

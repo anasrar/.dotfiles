@@ -107,8 +107,6 @@ return require('packer').startup(function()
   use {
     'nvim-lualine/lualine.nvim',
     requires = {
-      -- # LSP Progress
-      'WhoIsSethDaniel/lualine-lsp-progress.nvim',
     },
     config = function() require('rin.statusline.lualine') end
   }
@@ -136,6 +134,8 @@ return require('packer').startup(function()
       -- # LSP Snippet
       'saadparwaiz1/cmp_luasnip',
       'L3MON4D3/LuaSnip',
+      -- # LSP Status
+      'nvim-lua/lsp-status.nvim',
       -- # LSP UI
       {
         'glepnir/lspsaga.nvim',
