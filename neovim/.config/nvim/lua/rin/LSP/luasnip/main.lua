@@ -49,7 +49,10 @@ end)
 
 -- # Snippet
 luasnip.add_snippets('all', require('rin.LSP.luasnip.languages.all'))
+luasnip.add_snippets('javascript', require('rin.LSP.luasnip.languages.javascript'))
+luasnip.add_snippets('javascriptreact', require('rin.LSP.luasnip.languages.javascriptreact'))
 luasnip.add_snippets('typescript', require('rin.LSP.luasnip.languages.typescript'))
 luasnip.add_snippets('typescriptreact', require('rin.LSP.luasnip.languages.typescriptreact'))
+luasnip.add_snippets('astro', require('rin.LSP.luasnip.languages.astro'))
 luasnip.add_snippets('lua', require('rin.LSP.luasnip.languages.lua'))
 luasnip.add_snippets('prisma', require('rin.LSP.luasnip.languages.prisma'))
