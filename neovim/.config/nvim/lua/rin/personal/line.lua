@@ -1,28 +1,38 @@
--- # Line
+local M = {}
 
-vim.cmd('set relativenumber')
-vim.cmd('set number')
-vim.cmd('set nowrap')
+M.setup = function()
+  -- # Line
 
-vim.opt.list = true
-vim.opt.listchars = {
-  tab = '→ ',
-  lead = '·',
-  trail = '·',
-  eol = '↵',
-}
+  vim.cmd("set relativenumber")
+  vim.cmd("set number")
+  vim.cmd("set nowrap")
 
--- # Line manipulation
+  vim.opt.list = true
+  vim.opt.listchars = {
+    tab = "→ ",
+    lead = "·",
+    trail = "·",
+    eol = "↵",
+  }
 
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
+  -- # Line manipulation
 
--- # Move Line
+  local map = vim.api.nvim_set_keymap
+  local opts = { noremap = true, silent = true }
 
-map('n', '<A-k>', ':move -2<CR>', opts)
-map('n', '<A-j>', ':move +1<CR>', opts)
+  -- # Move Line
 
--- # Duplicate Line
+  map("n", "<A-k>", ":move -2<CR>", opts)
+  map("n", "<A-j>", ":move +1<CR>", opts)
 
-map('n', '<A-K>', ':copy .<CR>:move -2<CR>', opts)
-map('n', '<A-J>', ':copy .<CR>', opts)
+  -- # Duplicate Line
+
+  map("n", "<A-K>", ":copy .<CR>:move -2<CR>", opts)
+  map("n", "<A-J>", ":copy .<CR>", opts)
+end
+
+if not pcall(debug.getlocal, 4, 1) then
+  M.setup()
+end
+
+return M

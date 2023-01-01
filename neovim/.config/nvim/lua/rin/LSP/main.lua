@@ -1,30 +1,65 @@
 -- # LSP
 
--- # LSP utils
-require('rin.LSP.utils.icon')
-require('rin.LSP.utils.cmp')
--- # LSP UI
-require('rin.LSP.utils.lspsaga')
--- # LSP Status
-local lsp_status = require('lsp-status')
-lsp_status.register_progress()
-lsp_status.config({
-  status_symbol = "",
-  show_filename = true,
-  diagnostics = false,
-})
--- # LSP Config
-require('rin.LSP.languages.typescript')
-require('rin.LSP.languages.css')
-require('rin.LSP.languages.svelte')
-require('rin.LSP.languages.vue')
-require('rin.LSP.languages.astro')
-require('rin.LSP.languages.deno')
-require('rin.LSP.languages.go')
-require('rin.LSP.languages.cpp')
-require('rin.LSP.languages.python')
--- format some markup and dif file
-require('rin.LSP.languages.prettier')
+local M = {}
 
--- # LuaSnip
-require('rin.LSP.luasnip.main')
+M.plugin = {
+  "neovim/nvim-lspconfig",
+  dependencies = {
+    -- # LSP Hook
+    {
+      "jose-elias-alvarez/null-ls.nvim",
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+      },
+    },
+    "jose-elias-alvarez/nvim-lsp-ts-utils", -- null-ls for TS project
+    -- # LSP Completion
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-nvim-lsp-signature-help",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-cmdline",
+    "hrsh7th/nvim-cmp",
+    -- # LSP Snippet
+    "saadparwaiz1/cmp_luasnip",
+    "L3MON4D3/LuaSnip",
+    -- # LSP UI
+    {
+      "glepnir/lspsaga.nvim",
+      branch = "main",
+    },
+  },
+  event = "VeryLazy",
+  config = function()
+    M.setup()
+  end,
+}
+
+M.setup = function()
+  -- # LSP utils
+  require("rin.LSP.utils.icon")
+  require("rin.LSP.utils.cmp")
+  -- # LSP UI
+  require("rin.LSP.utils.lspsaga")
+  -- # LSP Config
+  require("rin.LSP.languages.typescript")
+  require("rin.LSP.languages.css")
+  require("rin.LSP.languages.svelte")
+  require("rin.LSP.languages.vue")
+  require("rin.LSP.languages.astro")
+  require("rin.LSP.languages.deno")
+  require("rin.LSP.languages.go")
+  require("rin.LSP.languages.cpp")
+  require("rin.LSP.languages.python")
+  -- format some markup and dif file
+  require("rin.LSP.languages.prettier")
+
+  -- # LuaSnip
+  require("rin.LSP.luasnip.main")
+end
+
+if not pcall(debug.getlocal, 4, 1) then
+  M.setup()
+end
+
+return M
