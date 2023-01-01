@@ -1,0 +1,12 @@
+#!/usr/bin/sh
+
+# change directory to project
+
+# dependency: find cat fzf tmux basename dirname "nerd font"
+
+# create $HOME/.ctp-entry and add path each line
+
+TARGET=$(find $(cat $HOME/.ctp-entry) -mindepth 1 -maxdepth 1 -type d | fzf --prompt "   " --pointer " " --color 16)
+if [[ $TARGET != "" ]]; then
+  cd $TARGET
+fi
