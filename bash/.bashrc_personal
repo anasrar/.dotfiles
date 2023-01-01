@@ -17,6 +17,10 @@ alias ttt='tmux new-session\; split-pane -h -p 57\; select-pane -t 1\; split-pan
 alias ttt1='tmux new-session\; split-pane -v -p 40\; split-pane -h -p 50\; select-pane -t 1'
 alias ttttt='tmux new-session\; split-pane -h -p 57\; select-pane -t 1\; split-pane -v\; select-pane -t 3\; new-window\; new-window\; split-pane -v -p 40\; split-pane -h -p 66\; split-pane -h -p 50\; select-pane -t 1\; select-window -t 1'
 
+alias attt='tmux split-pane -h -p 57\; select-pane -t 1\; split-pane -v\; select-pane -t 3 && clear'
+alias attt1='tmux split-pane -v -p 40\; split-pane -h -p 50\; select-pane -t 1 && clear'
+alias attttt='tmux split-pane -h -p 57\; select-pane -t 1\; split-pane -v\; select-pane -t 3\; new-window\; new-window\; split-pane -v -p 40\; split-pane -h -p 66\; split-pane -h -p 50\; select-pane -t 1\; select-window -t 1 && clear'
+
 # moc
 alias mocp='mocp -T tty'
 
