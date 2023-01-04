@@ -28,11 +28,11 @@ M.setup = function()
   end
 
   -- # Sign
-  vim.fn.sign_define("DapBreakpoint", {text="🟥", texthl="", linehl="", numhl=""})
-  vim.fn.sign_define("DapBreakpointCondition", {text="🟧", texthl="", linehl="", numhl=""})
-  vim.fn.sign_define("DapLogPoint", {text="🟩", texthl="", linehl="", numhl=""})
-  vim.fn.sign_define("DapStopped", {text="🈁", texthl="", linehl="", numhl=""})
-  vim.fn.sign_define("DapBreakpointRejected", {text="⬜", texthl="", linehl="", numhl=""})
+  vim.fn.sign_define("DapBreakpoint", { text = "🟥", texthl = "", linehl = "", numhl = "" })
+  vim.fn.sign_define("DapBreakpointCondition", { text = "🟧", texthl = "", linehl = "", numhl = "" })
+  vim.fn.sign_define("DapLogPoint", { text = "🟩", texthl = "", linehl = "", numhl = "" })
+  vim.fn.sign_define("DapStopped", { text = "🈁", texthl = "", linehl = "", numhl = "" })
+  vim.fn.sign_define("DapBreakpointRejected", { text = "⬜", texthl = "", linehl = "", numhl = "" })
 
   -- # DAP Virtual Text
   dap_virtual_text.setup({
@@ -66,7 +66,7 @@ M.setup = function()
     layouts = {
       {
         elements = {
-        -- Elements can be strings or table with id and size keys.
+          -- Elements can be strings or table with id and size keys.
           { id = "scopes", size = 0.25 },
           "breakpoints",
           "stacks",
@@ -93,7 +93,7 @@ M.setup = function()
       },
     },
     windows = { indent = 1 },
-    render = { 
+    render = {
       max_type_length = nil,
     }
   })
@@ -109,25 +109,21 @@ M.setup = function()
   -- end
 
   -- # Keymap
-  local buf_map = function(mode, lhs, rhs, opts)
-    vim.api.nvim_set_keymap(mode, lhs, rhs, opts or {
-      silent = true,
-    })
-  end
+  local keymap = require("rin.utils.keymap").keymap
 
-  buf_map("n", "<Leader>di", ":lua require(\"dap\").toggle_breakpoint()<CR>")
-  buf_map("n", "<Leader>dI", ":lua require(\"dap\").set_breakpoint(vim.fn.input(\"Breakpoint condition: \"))<CR>")
-  buf_map("n", "<Leader>dp", ":lua require(\"dap\").set_breakpoint(nil, nil, vim.fn.input(\"Log point message: \"))<CR>")
-  buf_map("n", "<Leader>ds", ":lua require(\"dap\").continue()<CR>")
-  buf_map("n", "<Leader>dl", ":lua require(\"dap\").run_to_cursor()<CR>")
-  buf_map("n", "<Leader>dS", ":lua require(\"dap\").disconnect()<CR>")
-  buf_map("n", "<Leader>dn", ":lua require(\"dap\").step_over()<CR>")
-  buf_map("n", "<Leader>dN", ":lua require(\"dap\").step_into()<CR>")
-  buf_map("n", "<Leader>do", ":lua require(\"dap\").step_out()<CR>")
+  keymap("n", "<Leader>di", dap.toggle_breakpoint)
+  keymap("n", "<Leader>dI", ":lua require(\"dap\").set_breakpoint(vim.fn.input(\"Breakpoint condition: \"))<CR>")
+  keymap("n", "<Leader>dp", ":lua require(\"dap\").set_breakpoint(nil, nil, vim.fn.input(\"Log point message: \"))<CR>")
+  keymap("n", "<Leader>ds", ":lua require(\"dap\").continue()<CR>")
+  keymap("n", "<Leader>dl", ":lua require(\"dap\").run_to_cursor()<CR>")
+  keymap("n", "<Leader>dS", ":lua require(\"dap\").disconnect()<CR>")
+  keymap("n", "<Leader>dn", ":lua require(\"dap\").step_over()<CR>")
+  keymap("n", "<Leader>dN", ":lua require(\"dap\").step_into()<CR>")
+  keymap("n", "<Leader>do", ":lua require(\"dap\").step_out()<CR>")
 
-  buf_map("n", "<Leader>dww", ":lua require(\"dapui\").toggle()<CR>")
-  buf_map("n", "<Leader>dw[", ":lua require(\"dapui\").toggle(1)<CR>")
-  buf_map("n", "<Leader>dw]", ":lua require(\"dapui\").toggle(2)<CR>")
+  keymap("n", "<Leader>dww", ":lua require(\"dapui\").toggle()<CR>")
+  keymap("n", "<Leader>dw[", ":lua require(\"dapui\").toggle(1)<CR>")
+  keymap("n", "<Leader>dw]", ":lua require(\"dapui\").toggle(2)<CR>")
 
   -- # DAP Config
   require("rin.DAP.languages.python")

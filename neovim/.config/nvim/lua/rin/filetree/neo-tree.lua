@@ -29,7 +29,7 @@ M.setup = function()
     enable_git_status = true,
     enable_diagnostics = true,
     sort_case_insensitive = false, -- used when sorting files and directories in the tree
-    sort_function = nil , -- use a custom function for sorting files and directories in the tree 
+    sort_function = nil, -- use a custom function for sorting files and directories in the tree
     -- sort_function = function (a,b)
     --       if a.type == b.type then
     --           return a.path > b.path
@@ -46,8 +46,8 @@ M.setup = function()
         padding = 1, -- extra padding on left hand side
         -- indent guides
         with_markers = true,
-        indent_marker = "┣",
-        last_indent_marker = "┗",
+        indent_marker = "├─",
+        last_indent_marker = "└─ ",
         highlight = "NeoTreeIndentMarker",
         -- expander config, needed for nesting files
         with_expanders = nil, -- if nil and file nesting is enabled, will enable expanders
@@ -78,8 +78,8 @@ M.setup = function()
           -- Change type
           added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
           modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
-          deleted   = "",-- this can only be used in the git_status source
-          renamed   = "",-- this can only be used in the git_status source
+          deleted   = "", -- this can only be used in the git_status source
+          renamed   = "", -- this can only be used in the git_status source
           -- Status type
           untracked = "",
           ignored   = "",
@@ -97,9 +97,9 @@ M.setup = function()
         nowait = true,
       },
       mappings = {
-        ["<space>"] = { 
-            "toggle_node", 
-            nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use 
+        ["<space>"] = {
+          "toggle_node",
+          nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
         },
         ["<2-LeftMouse>"] = "open",
         ["<cr>"] = "open",
@@ -110,7 +110,7 @@ M.setup = function()
         ["t"] = "open_tabnew",
         ["w"] = "open_with_window_picker",
         ["C"] = "close_node",
-        ["a"] = { 
+        ["a"] = {
           "add",
           -- some commands may take optional config options, see `:h neo-tree-mappings` for details
           config = {
@@ -155,15 +155,15 @@ M.setup = function()
         },
       },
       follow_current_file = false, -- This will find and focus the file in the active buffer every
-                                   -- time the current file is changed while the tree is open.
+      -- time the current file is changed while the tree is open.
       group_empty_dirs = false, -- when true, empty folders will be grouped together
       hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
-                                              -- in whatever position is specified in window.position
-                            -- "open_current",  -- netrw disabled, opening a directory opens within the
-                                              -- window like netrw would, regardless of window.position
-                            -- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
+      -- in whatever position is specified in window.position
+      -- "open_current",  -- netrw disabled, opening a directory opens within the
+      -- window like netrw would, regardless of window.position
+      -- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
       use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
-                                      -- instead of relying on nvim autocmd events.
+      -- instead of relying on nvim autocmd events.
       window = {
         mappings = {
           ["<bs>"] = "navigate_up",
@@ -179,7 +179,7 @@ M.setup = function()
     },
     buffers = {
       follow_current_file = true, -- This will find and focus the file in the active buffer every
-                                   -- time the current file is changed while the tree is open.
+      -- time the current file is changed while the tree is open.
       group_empty_dirs = true, -- when true, empty folders will be grouped together
       show_unloaded = true,
       window = {
@@ -207,7 +207,9 @@ M.setup = function()
   });
 
   -- # Keymap
-  vim.api.nvim_set_keymap("n", "<Leader>e", ":NeoTreeFloatToggle<CR>", { silent = true })
+  local keymap = require("rin.utils.keymap").keymap
+
+  keymap("n", "<Leader>e", ":NeoTreeFloatToggle<CR>")
 end
 
 if not pcall(debug.getlocal, 4, 1) then

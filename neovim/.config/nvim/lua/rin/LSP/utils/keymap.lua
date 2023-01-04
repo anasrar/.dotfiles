@@ -1,9 +1,3 @@
-local buf_map = function(bufnr, mode, lhs, rhs, opts)
-  vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts or {
-    silent = true,
-  })
-end
-
 local mapping = function(bufnr)
   vim.cmd("command! LspDef lua vim.lsp.buf.definition()")
   vim.cmd("command! LspFormatting lua vim.lsp.buf.format()")
@@ -17,16 +11,19 @@ local mapping = function(bufnr)
   vim.cmd("command! LspDiagNext lua vim.diagnostic.goto_next()")
   vim.cmd("command! LspDiagLine lua vim.diagnostic.open_float()")
   vim.cmd("command! LspSignatureHelp lua vim.lsp.buf.signature_help()")
-  buf_map(bufnr, "n", "<Leader>lf", ":Lspsaga lsp_finder<CR>")
-  buf_map(bufnr, "n", "<Leader>ld", ":LspDef<CR>")
-  buf_map(bufnr, "n", "<Leader>lr", ":Lspsaga rename<CR>")
-  buf_map(bufnr, "n", "<Leader>lt", ":LspTypeDef<CR>")
-  buf_map(bufnr, "n", "<Leader>lj", ":LspHover<CR>")
-  buf_map(bufnr, "n", "<Leader>l[", ":LspDiagPrev<CR>")
-  buf_map(bufnr, "n", "<Leader>l]", ":LspDiagNext<CR>")
-  buf_map(bufnr, "n", "<Leader>la", ":Lspsaga code_action<CR>")
-  buf_map(bufnr, "n", "<Leader>ll", ":LspDiagLine<CR>")
-  buf_map(bufnr, "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>")
+
+  local buf_keymap = require("rin.utils.keymap").buf_keymap
+
+  buf_keymap(bufnr, "n", "<Leader>lf", ":Lspsaga lsp_finder<CR>")
+  buf_keymap(bufnr, "n", "<Leader>ld", ":LspDef<CR>")
+  buf_keymap(bufnr, "n", "<Leader>lr", ":Lspsaga rename<CR>")
+  buf_keymap(bufnr, "n", "<Leader>lt", ":LspTypeDef<CR>")
+  buf_keymap(bufnr, "n", "<Leader>lj", ":LspHover<CR>")
+  buf_keymap(bufnr, "n", "<Leader>l[", ":LspDiagPrev<CR>")
+  buf_keymap(bufnr, "n", "<Leader>l]", ":LspDiagNext<CR>")
+  buf_keymap(bufnr, "n", "<Leader>la", ":Lspsaga code_action<CR>")
+  buf_keymap(bufnr, "n", "<Leader>ll", ":LspDiagLine<CR>")
+  buf_keymap(bufnr, "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>")
 end
 
 return mapping

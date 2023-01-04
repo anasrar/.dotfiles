@@ -23,15 +23,14 @@ M.setup = function()
     tabpages = false,
   })
 
-  local map = vim.api.nvim_set_keymap
-  local opts = { noremap = true, silent = true }
+  local keymap = require("rin.utils.keymap").keymap
 
-  map("n", "<A-,>", ":BufferPrevious<CR>", opts)
-  map("n", "<A-.>", ":BufferNext<CR>", opts)
-  map("n", "<A-<>", ":BufferMovePrevious<CR>", opts)
-  map("n", "<A->>", ":BufferMoveNext<CR>", opts)
-  map("n", "<A-w>", ":BufferClose<CR>", opts)
-  map("n", "<A-W>", ":BufferClose!<CR>", opts)
+  keymap("n", "<A-,>", ":BufferPrevious<CR>")
+  keymap("n", "<A-.>", ":BufferNext<CR>")
+  keymap("n", "<A-<>", ":BufferMovePrevious<CR>")
+  keymap("n", "<A->>", ":BufferMoveNext<CR>")
+  keymap("n", "<A-w>", ":BufferClose<CR>")
+  keymap("n", "<A-W>", ":BufferClose!<CR>")
 end
 
 if not pcall(debug.getlocal, 4, 1) then

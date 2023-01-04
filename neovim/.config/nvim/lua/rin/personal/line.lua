@@ -17,18 +17,17 @@ M.setup = function()
 
   -- # Line manipulation
 
-  local map = vim.api.nvim_set_keymap
-  local opts = { noremap = true, silent = true }
+  local keymap = require("rin.utils.keymap").keymap
 
   -- # Move Line
 
-  map("n", "<A-k>", ":move -2<CR>", opts)
-  map("n", "<A-j>", ":move +1<CR>", opts)
+  keymap("n", "<A-k>", ":move -2<CR>")
+  keymap("n", "<A-j>", ":move +1<CR>")
 
   -- # Duplicate Line
 
-  map("n", "<A-K>", ":copy .<CR>:move -2<CR>", opts)
-  map("n", "<A-J>", ":copy .<CR>", opts)
+  keymap("n", "<A-K>", ":copy .<CR>:move -2<CR>")
+  keymap("n", "<A-J>", ":copy .<CR>")
 end
 
 if not pcall(debug.getlocal, 4, 1) then

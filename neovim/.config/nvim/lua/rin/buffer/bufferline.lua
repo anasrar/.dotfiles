@@ -69,15 +69,14 @@ M.setup = function()
     },
   })
 
-  local map = vim.api.nvim_set_keymap
-  local opts = { noremap = true, silent = true }
+  local keymap = require("rin.utils.keymap").keymap
 
-  map("n", "<A-,>", ":BufferLineCyclePrev<CR>", opts)
-  map("n", "<A-.>", ":BufferLineCycleNext<CR>", opts)
-  map("n", "<A-<>", ":BufferLineMovePrev<CR>", opts)
-  map("n", "<A->>", ":BufferLineMoveNext<CR>", opts)
-  map("n", "<A-w>", ":bdelete<CR>", opts)
-  map("n", "<A-W>", ":bdelete!<CR>", opts)
+  keymap("n", "<A-,>", ":BufferLineCyclePrev<CR>")
+  keymap("n", "<A-.>", ":BufferLineCycleNext<CR>")
+  keymap("n", "<A-<>", ":BufferLineMovePrev<CR>")
+  keymap("n", "<A->>", ":BufferLineMoveNext<CR>")
+  keymap("n", "<A-w>", ":bdelete<CR>")
+  keymap("n", "<A-W>", ":bdelete!<CR>")
 end
 
 if not pcall(debug.getlocal, 4, 1) then

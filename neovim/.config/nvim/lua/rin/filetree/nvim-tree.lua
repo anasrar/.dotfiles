@@ -246,7 +246,9 @@ M.setup = function()
   })
 
   -- # Keymap
-  vim.api.nvim_set_keymap("n", "<Leader>e", ":NvimTreeToggle<CR>", { silent = true })
+  local keymap = require("rin.utils.keymap").keymap
+
+  keymap("n", "<Leader>e", ":NvimTreeToggle<CR>")
 end
 
 if not pcall(debug.getlocal, 4, 1) then

@@ -39,11 +39,10 @@ M.setup = function()
   })
   telescope.load_extension("fzy_native")
 
-  local map = vim.api.nvim_set_keymap
-  local opts = { noremap = true, silent = true }
+  local keymap = require("rin.utils.keymap").keymap
 
-  map("n", "<leader>ff", ":Telescope find_files<CR>", opts)
-  map("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
+  keymap("n", "<leader>ff", ":Telescope find_files<CR>")
+  keymap("n", "<leader>fg", ":Telescope live_grep<CR>")
 end
 
 if not pcall(debug.getlocal, 4, 1) then

@@ -25,11 +25,10 @@ M.setup = function()
     },
   })
 
-  local map = vim.api.nvim_set_keymap
-  local opts = { noremap = true, silent = true }
+  local keymap = require("rin.utils.keymap").keymap
 
-  map("n", "<A-t>", ":ToggleTerm direction=float<CR>", opts)
-  map("t", "<A-t>", "<C-\\><C-n> :ToggleTerm<CR>", opts)
+  keymap("n", "<A-t>", ":ToggleTerm direction=float<CR>")
+  keymap("t", "<A-t>", "<C-\\><C-n> :ToggleTerm<CR>")
 end
 
 if not pcall(debug.getlocal, 4, 1) then
