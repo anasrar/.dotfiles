@@ -21,14 +21,14 @@ font:
   #   style: ExtraBold Italic
   # size: 10.5
   # builtin_box_drawing: true
-  # JetBrainsMono v2.242 Patch Nerd Font v2.1.0
+  # JetBrainsMono v2.242 Patch Nerd Font v2.3.0
   normal:
     family: JetBrainsMono Nerd Font
-    style: SemiBold
+    style: Bold
   bold:
     style: ExtraBold
   italic:
-    style: SemiBold Italic
+    style: Bold Italic
   bold_italic:
     style: ExtraBold Italic
   size: 10.0
