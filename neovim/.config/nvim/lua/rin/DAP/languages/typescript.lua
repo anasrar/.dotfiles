@@ -124,7 +124,7 @@ for i, ext in ipairs(exts) do
       cwd = vim.fn.getcwd(),
       runtimeArgs = { "${workspaceFolder}/node_modules/.bin/jest" },
       runtimeExecutable = "node",
-      args = { "${file}", "--coverage", "false"},
+      args = { "${file}", "--coverage", "false" },
       rootPath = "${workspaceFolder}",
       sourceMaps = true,
       console = "integratedTerminal",
@@ -155,11 +155,13 @@ for i, ext in ipairs(exts) do
     {
       type = "pwa-chrome",
       request = "attach",
-      name = "Attach Program (pwa-chrome = { port: 9222 })",
+      name = "Attach Program (pwa-chrome, select port)",
       program = "${file}",
       cwd = vim.fn.getcwd(),
       sourceMaps = true,
-      port = 9222,
+      port = function()
+        return vim.fn.input("Select port: ", 9222)
+      end,
       webRoot = "${workspaceFolder}",
     },
     -- {
@@ -180,7 +182,7 @@ for i, ext in ipairs(exts) do
     {
       type = "pwa-node",
       request = "attach",
-      name = "Attach Program (pwa-node)",
+      name = "Attach Program (pwa-node, select pid)",
       cwd = vim.fn.getcwd(),
       processId = dap_utils.pick_process,
       skipFiles = { "<node_internals>/**" },
