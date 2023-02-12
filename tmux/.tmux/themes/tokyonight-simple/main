@@ -7,11 +7,11 @@ set -g status-right-style "none"
 set -g status-right-length "100"
 
 set -g pane-border-style "fg=#15161e"
-set -g pane-active-border-style "fg=#9b72ef"
+set -g pane-active-border-style "fg=#545c7e"
 
 set -g message-style "bg=#15161E,fg=#d2d4de"
 
-set -g status-right "#[fg=#7aa2f7] #([ \"$(pwd)\" == $HOME ] && echo \"\" || (echo \"\")) #([ \"$(pwd)\" == $HOME ] && echo \"$USER\" || pwd | awk \'{print A[split($1,A,\"/\")]}\') #[fg=#f7768e]  #S "
+set -g status-right "#[fg=#9d7cd8] #([ \"$(pwd)\" == $HOME ] && echo \"\" || (echo \"\")) #([ \"$(pwd)\" == $HOME ] && echo \"$USER\" || pwd | awk \'{print A[split($1,A,\"/\")]}\') #[fg=#f7768e]  #S "
 set -g status-left ""
 
 set -g window-status-separator ""
