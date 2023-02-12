@@ -43,7 +43,7 @@ M.setup = function()
     end
     return lsp_clients .. msg
   end
-  
+
   local setup_winbar = {
     options = {
       globalstatus = true,
@@ -60,16 +60,17 @@ M.setup = function()
         {
           "mode",
           separator = {
-            left = "",
-            right = "",
+            left = "",
+            right = "",
           },
         },
       },
       lualine_b = {
         {
           "branch",
+          icon = "שׂ",
           separator = {
-            right = "",
+            right = "",
           },
         },
       },
@@ -171,9 +172,9 @@ M.setup = function()
       },
     }
   }
-  
+
   lualine.setup(setup_winbar)
-  
+
   vim.cmd("set noshowmode")
 end
 
