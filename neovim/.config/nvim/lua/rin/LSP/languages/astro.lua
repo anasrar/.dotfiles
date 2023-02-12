@@ -11,7 +11,7 @@ local ok_lspconfig, lspconfig = safe_require("lspconfig")
 local ok_cmp_nvim_lsp, cmp_nvim_lsp = safe_require("cmp_nvim_lsp")
 local ok_null_ls, null_ls = safe_require("null-ls")
 
-if not(ok_lspconfig and ok_cmp_nvim_lsp and ok_null_ls) then
+if not (ok_lspconfig and ok_cmp_nvim_lsp and ok_null_ls) then
   return
 end
 
@@ -28,8 +28,8 @@ lspconfig.astro.setup({
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     -- Using builtin formatter
-    -- client.server_capabilities.documentFormattingProvider = false
-    -- client.server_capabilities.documentRangeFormattingProvider = false
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
     on_attach(client, bufnr)
   end,
 })
@@ -44,4 +44,3 @@ null_ls.register({
   },
   on_attach = on_attach,
 })
-
