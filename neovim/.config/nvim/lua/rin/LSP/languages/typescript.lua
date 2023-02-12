@@ -13,7 +13,7 @@ local ok_cmp_nvim_lsp, cmp_nvim_lsp = safe_require("cmp_nvim_lsp")
 local ok_null_ls, null_ls = safe_require("null-ls")
 local ok_ts_utils, ts_utils = safe_require("nvim-lsp-ts-utils")
 
-if not(ok_lspconfig and ok_cmp_nvim_lsp and ok_null_ls and ok_ts_utils) then
+if not (ok_lspconfig and ok_cmp_nvim_lsp and ok_null_ls and ok_ts_utils) then
   return
 end
 
@@ -36,6 +36,7 @@ lspconfig.tsserver.setup({
     on_attach(client, bufnr)
   end,
   root_dir = lspconfig.util.root_pattern("package.json"),
+  single_file_support = false,
 })
 
 null_ls.register({

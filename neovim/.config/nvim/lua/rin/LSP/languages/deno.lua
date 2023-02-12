@@ -8,7 +8,7 @@ local ok_lspconfig, lspconfig = safe_require("lspconfig")
 local ok_cmp_nvim_lsp, cmp_nvim_lsp = safe_require("cmp_nvim_lsp")
 local ok_null_ls, null_ls = safe_require("null-ls")
 
-if not(ok_lspconfig and ok_cmp_nvim_lsp and ok_null_ls) then
+if not (ok_lspconfig and ok_cmp_nvim_lsp and ok_null_ls) then
   return
 end
 
@@ -37,6 +37,7 @@ lspconfig.denols.setup({
     on_attach(client, bufnr)
   end,
   root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+  single_file_support = false,
 })
 
 null_ls.register({
