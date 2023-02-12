@@ -7,7 +7,7 @@ local safe_require = require("rin.utils.safe_require")
 local ok_lspconfig, lspconfig = safe_require("lspconfig")
 local ok_cmp_nvim_lsp, cmp_nvim_lsp = safe_require("cmp_nvim_lsp")
 
-if not(ok_lspconfig and ok_cmp_nvim_lsp) then
+if not (ok_lspconfig and ok_cmp_nvim_lsp) then
   return
 end
 
@@ -20,7 +20,7 @@ end
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     -- Using builtin formatter
