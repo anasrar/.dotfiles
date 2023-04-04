@@ -19,7 +19,6 @@ M.setup = function()
   barbar.setup({
     animation = false,
     auto_hide = false,
-    closable = false,
     tabpages = false,
   })
 
