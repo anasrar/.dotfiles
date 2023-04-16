@@ -1,7 +1,7 @@
 local M = {}
 
 M.plugin = {
-  "editorconfig/editorconfig-vim",
+  -- "editorconfig/editorconfig-vim",
   -- event = "VeryLazy",
   config = function()
     M.setup()

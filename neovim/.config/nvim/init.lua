@@ -15,10 +15,12 @@ vim.opt.runtimepath:prepend(lazypath)
 
 local safe_require = require("rin.utils.safe_require")
 local ok, lazy = safe_require("lazy")
+
+-- # Utils
+require("rin.personal.main").setup()
+
 if ok then
   lazy.setup({
-    -- # Utils
-    require("rin.personal.main").plugin,
 
     -- # Theme
     require("rin.theme.tokyonight").plugin,
