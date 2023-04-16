@@ -52,6 +52,7 @@ M.setup = function()
   require("rin.LSP.languages.cpp")
   require("rin.LSP.languages.python")
   require("rin.LSP.languages.lua")
+  require("rin.LSP.languages.php")
   -- format some markup and dif file
   require("rin.LSP.languages.prettier")
 
