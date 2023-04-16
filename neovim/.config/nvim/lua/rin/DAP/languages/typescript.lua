@@ -150,6 +150,8 @@ for i, ext in ipairs(exts) do
       cwd = vim.fn.getcwd(),
       runtimeArgs = { "test", "--inspect-brk", "--allow-all", "${file}" },
       runtimeExecutable = "deno",
+      smartStep = true,
+      console = "integratedTerminal",
       attachSimplePort = 9229,
     },
     {
