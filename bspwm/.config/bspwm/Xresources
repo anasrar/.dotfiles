@@ -1,7 +1,10 @@
+Xft.autohint: 0
 Xft.antialias:	1
-Xft.hintstyle:	hintfull
+Xft.hinting: 1
+Xft.hintstyle:	hintslight
 Xft.rgba:	rgb
-Xft.dpi:	96
+Xft.dpi:	92
+Xft.lcdfilter: lcddefault
 Xcursor.theme:	McMojave-cursors
 Xcursor.size:	0
 Xcursor.theme_core:	1
