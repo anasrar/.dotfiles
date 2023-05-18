@@ -73,7 +73,7 @@ M.setup = function()
           "watches",
         },
         size = 40,
-        position = "left",
+        position = "right",
       },
       {
         elements = {
