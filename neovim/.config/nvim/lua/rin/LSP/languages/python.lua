@@ -5,9 +5,9 @@ project set up
 python -m venv .venv
 source .venv/bin/activate
 ```
-install pylsp for lsp
+install pyright for static type checker
 ```
-pip install python-lsp-server
+pip install pyright
 ```
 install pydocstyle for documentation lint
 ```
@@ -37,7 +37,7 @@ end
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
-lspconfig.pylsp.setup({
+lspconfig.pyright.setup({
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
