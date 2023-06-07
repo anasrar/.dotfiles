@@ -58,6 +58,9 @@ if ok then
     -- # LSP
     require("rin.LSP.main").plugin,
 
+    -- # Outline
+    require("rin.outline.aerial").plugin,
+
     -- # DAP
     require("rin.DAP.main").plugin,
 
