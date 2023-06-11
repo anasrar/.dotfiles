@@ -39,7 +39,7 @@ alias catnip='catnip -dt 1 -ct 2 -fg 6'
 PROMPT_COMMAND='exitcode=$?'
 ## git branch
 git_branch() {
-     git branch --show-current 2> /dev/null | sed -e 's/\(.*\)/  שׂ \1/'
+     git branch --show-current 2> /dev/null | sed -e 's/\(.*\)/   \1/'
 }
 dir_color='157;124;216'
 arrow_color='86;95;137'
@@ -51,4 +51,4 @@ ok_color='158;206;106'
 # export PS1='\[\e[00m\e[48;5;${bg_color}m\]\[\e[38;5;${fg_color}m\] $([ "$PWD" == ~ ] && echo " Home" || echo "ﱮ ${PWD##*/}") $(git_branch) \$ $(if [ $exitcode == 0 ]; then echo "\[\e[01m\e[0m\]\[\e[38;5;${bg_color}m\]\[\e[0m\]\[\e[38;5;${ok_color}m\]"; else echo "\[\e[01m\e[0m\]\[\e[38;5;${bg_color}m\]\[\e[0m\]\[\e[38;5;${error_color}m\]"; fi) \[\e[0m\]'
 # export PS1='$(if [ $exitcode == 0 ]; then echo "\[\e[0m\]\[\e[38;5;${ok_color}m\]▊"; else echo "\[\e[0m\]\[\e[38;5;${error_color}m\]▊"; fi)\[\e[00m\e[48;5;${bg_color}m\]\[\e[38;5;${fg_color}m\] $([ "$PWD" == ~ ] && echo " Home" || echo "ﱮ ${PWD##*/}") $(git_branch) \$ \[\e[01m\e[0m\]\[\e[38;5;${bg_color}m\] \[\e[0m\]'
 # export PS1='$(if [ $exitcode == 0 ]; then echo "\[\e[0m\]\[\e[38;5;${ok_color}m\]\[\e[48;5;${ok_color}m\]\[\e[38;5;${fg_color}m\]  \[\e[0m\]\[\e[38;5;${ok_color}m\] "; else echo "\[\e[0m\]\[\e[38;5;${error_color}m\]\[\e[48;5;${error_color}m\]\[\e[38;5;${fg_color}m\]  \[\e[0m\]\[\e[38;5;${error_color}m\] "; fi)\[\e[0m\]\[\e[38;5;${bg_color}m\]\[\e[00m\e[48;5;${bg_color}m\]\[\e[38;5;${fg_color}m\] $([ "$PWD" == ~ ] && echo " $USER" || ([ "$PWD" == "/" ] && echo "囹 root") || echo " ${PWD##*/}") │$(git_branch) \$ \[\e[0m\]\[\e[38;5;${bg_color}m\] \[\e[0m\]'
-export PS1='$(if [ $exitcode == 0 ]; then echo "\[\e[38;2;${ok_color}m\] 晴"; else echo "\[\e[38;2;${error_color}m\]  "; fi) \[\e[01;38;2;${dir_color}m\]$([ "$PWD" == ~ ] && echo " $USER" || ([ "$PWD" == "/" ] && echo "囹 root") || echo " ${PWD##*/}")\[\e[01;38;2;${branch_color}m\]$(git_branch)  \[\e[01;38;2;${arrow_color}m\]❯ \[\e[0m\]'
+export PS1=' $(if [ $exitcode == 0 ]; then echo "\[\e[38;2;${ok_color}m\]󰔓"; else echo "\[\e[38;2;${error_color}m\]"; fi)  \[\e[01;38;2;${dir_color}m\]$([ "$PWD" == ~ ] && echo " $USER" || ([ "$PWD" == "/" ] && echo "󰿠 root") || echo " ${PWD##*/}")\[\e[01;38;2;${branch_color}m\]$(git_branch)  \[\e[01;38;2;${arrow_color}m\]❯ \[\e[0m\]'
