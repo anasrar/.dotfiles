@@ -23,7 +23,7 @@ font:
   # builtin_box_drawing: true
   # JetBrainsMono v2.242 Patch Nerd Font v2.3.0
   normal:
-    family: JetBrainsMono Nerd Font
+    family: JetBrains Mono
     style: Bold
   bold:
     style: ExtraBold
