@@ -1,120 +1,67 @@
 local wezterm = require('wezterm')
+local config = {}
 
-return {
-  -- debug_key_events = true,
-  -- window_decorations = 'NONE',
-  window_background_opacity = 0.925,
-  enable_tab_bar = false,
-  enable_scroll_bar = false,
-  window_padding = {
-    left = 0,
-    right = 0,
-    top = 0,
-    bottom = 0,
+if wezterm.config_builder then
+  config = wezterm.config_builder()
+end
+
+config.window_background_opacity = 0.925
+config.enable_tab_bar = false
+config.enable_scroll_bar = false
+config.window_padding = {
+  left = 0,
+  right = 0,
+  top = 0,
+  bottom = 0,
+}
+config.initial_cols = 80
+config.initial_rows = 24
+
+config.set_environment_variables = {
+  TERM = 'xterm-256color',
+}
+
+config.custom_block_glyphs = false
+config.font = wezterm.font_with_fallback({
+  {
+    family = 'JetBrains Mono',
+    weight = 'Bold',
   },
-  initial_cols = 80,
-  initial_rows = 24,
-
-  set_environment_variables = {
-    TERM = 'xterm-256color',
+  {
+    family = 'Symbols Nerd Font',
+    scale = 1.15
   },
+})
+config.font_size = 12
+-- config.line_height = 1.0
 
-  -- custom_block_glyphs = false,
-  -- font = wezterm.font(
-  --   'RecursiveMonoCslSt Nerd Font',
-  --   {
-  --     weight = 'Medium',
-  --   }
-  -- ),
-  -- font_rules= {
-  --   {
-  --     italic = true,
-  --     font = wezterm.font('RecursiveMonoCslSt Nerd Font', {
-  --       italic = true,
-  --     }),
-  --   },
-  --   {
-  --     intensity = 'Bold',
-  --     font = wezterm.font('RecursiveMonoCslSt Nerd Font', {
-  --       weight = 'ExtraBold',
-  --     }),
-  --   },
-  --   {
-  --     italic = true,
-  --     intensity = 'Bold',
-  --     font = wezterm.font('RecursiveMonoCslSt Nerd Font', {
-  --       italic = true,
-  --       weight = 'ExtraBold',
-  --     }),
-  --   },
-  -- },
-  -- font_size = 10.5,
-  -- line_height = 1.0,
+config.color_scheme = 'tokyonight'
 
-  custom_block_glyphs = true,
-  font = wezterm.font(
-    'JetBrainsMono Nerd Font',
-    {
-      weight = 'DemiBold',
-    }
-  ),
-  font_rules= {
-    {
-      italic = true,
-      font = wezterm.font('JetBrainsMono Nerd Font', {
-        italic = true,
-        weight = 'DemiBold',
-      }),
-    },
-    {
-      intensity = 'Bold',
-      font = wezterm.font('JetBrainsMono Nerd Font', {
-        weight = 'ExtraBold',
-      }),
-    },
-    {
-      italic = true,
-      intensity = 'Bold',
-      font = wezterm.font('JetBrainsMono Nerd Font', {
-        italic = true,
-        weight = 'ExtraBold',
-      }),
-    },
+config.disable_default_key_bindings = true
+config.keys = {
+  {
+    key = 'c',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.CopyTo('Clipboard'),
   },
-  font_size = 10.5,
-  -- line_height = 1.0,
-  
-  color_scheme = 'tokyonight',
-
-  disable_default_key_bindings = true,
-  keys = {
-    {
-      key = 'c',
-      mods = 'CTRL|SHIFT',
-      action = 'Copy',
-    },
-    {
-      key = 'v',
-      mods = 'CTRL|SHIFT',
-      action = 'Paste',
-    },
-    {
-      key = 'Enter',
-      mods = 'CTRL|SHIFT',
-      action = 'SpawnWindow',
-    },
-    {
-      key = 'v',
-      mods = 'CTRL|SHIFT',
-      action = 'Paste',
-    },
-    {
-      key = 'raw:102',
-      action = wezterm.action.SendKey({ key = '\x1b' }),
-    },
-    {
-      key = 'raw:101',
-      action = wezterm.action.SendKey({ key = '\x5c' }),
-    },
+  {
+    key = 'v',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.PasteFrom('Clipboard'),
+  },
+  {
+    key = 'Enter',
+    mods = 'CTRL|SHIFT',
+    action = 'SpawnWindow',
+  },
+  {
+    key = 'raw:102',
+    action = wezterm.action.SendKey({ key = '\x1b' }),
+  },
+  {
+    key = 'raw:101',
+    action = wezterm.action.SendKey({ key = '\x5c' }),
   },
 }
+
+return config
