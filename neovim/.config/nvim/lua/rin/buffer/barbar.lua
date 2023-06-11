@@ -20,6 +20,9 @@ M.setup = function()
     animation = false,
     auto_hide = false,
     tabpages = false,
+    icons = {
+      button = '󰖭',
+    },
   })
 
   local keymap = require("rin.utils.keymap").keymap

@@ -11,12 +11,12 @@ luasnip.config.setup({
   ext_opts = {
     [types.choiceNode] = {
       active = {
-        virt_text = {{ "", "LuaSnipChoiceNode" }}
+        virt_text = { { "", "LuaSnipChoiceNode" } }
       }
     },
     [types.insertNode] = {
       active = {
-        virt_text = {{ "פֿ", "LuaSnipInsertNode" }}
+        virt_text = { { "󰏫", "LuaSnipInsertNode" } }
       }
     }
   },
@@ -43,7 +43,7 @@ keymap({ "i", "s" }, "<C-k>", function()
 end)
 keymap({ "i", "s" }, "<C-l>", function()
   if luasnip.choice_active() then
-      luasnip.change_choice(1)
+    luasnip.change_choice(1)
   end
 end)
 

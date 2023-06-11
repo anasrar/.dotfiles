@@ -38,7 +38,7 @@ M.setup = function()
     for _, client in ipairs(clients) do
       local filetypes = client.config.filetypes
       if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-        lsp_clients = lsp_clients .. " " .. client.name .. " "
+        lsp_clients = lsp_clients .. "󱘖 " .. client.name .. " "
       end
     end
     return lsp_clients .. msg
@@ -59,6 +59,7 @@ M.setup = function()
       lualine_a = {
         {
           "mode",
+          icon = "",
           separator = {
             left = "",
             right = "",
@@ -66,13 +67,6 @@ M.setup = function()
         },
       },
       lualine_b = {
-        {
-          "branch",
-          icon = "שׂ",
-          separator = {
-            right = "",
-          },
-        },
       },
       lualine_c = {
         {
@@ -101,8 +95,8 @@ M.setup = function()
           "filename",
           path = 1,
           symbols = {
-            modified = " 洛",
-            readonly = " ",
+            modified = "  ",
+            readonly = "  ",
             unnamed = "NO NAME",
           },
         },
@@ -137,8 +131,8 @@ M.setup = function()
           "filename",
           path = 1,
           symbols = {
-            modified = " 洛",
-            readonly = " ",
+            modified = "  ",
+            readonly = "  ",
             unnamed = "NO NAME",
           },
         },
