@@ -20,9 +20,12 @@ bspc config borderless_monocle        false
 bspc config gapless_monocle           false
 
 bspc rule -a 'firefox' desktop='^2' follow=on
+bspc rule -a 'Brave-browser' desktop='^2' follow=on
+bspc rule -a 'Google-chrome' desktop='^2' follow=on
 bspc rule -a 'Gimp-2.10' desktop='^3' follow=on
 bspc rule -a 'vlc' desktop='^4' follow=on
 bspc rule -a 'spotify' desktop='^5' follow=on
+bspc rule -a 'Spotify' desktop='^5' follow=on
 bspc rule -a 'discord' desktop='^7' follow=on
 
 # list floating window
