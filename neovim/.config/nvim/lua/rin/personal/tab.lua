@@ -12,7 +12,7 @@ M.statusline = function()
   for i = 1, total_tab do
     local hl = i == current_tab and "StatusLineTabActive" or "StatusLineTabInactive"
     local name = tab_name[i] or "unknown";
-    result = result .. "  " .. "%#" .. hl .. "#" .. i .. ":" .. name .. "%*"
+    result = result .. "  " .. "%#" .. hl .. "Number# " .. i .. " %* %#" .. hl .. "#" .. name .. "%*"
   end
 
   return result .. " "

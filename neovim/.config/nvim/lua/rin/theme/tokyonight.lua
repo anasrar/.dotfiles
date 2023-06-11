@@ -53,7 +53,9 @@ M.setup = function()
     ---@param colors ColorScheme
     on_highlights = function(highlights, colors)
       highlights.StatusLineTabActive = { fg = "#e0af68", bg = "#16161e" }
+      highlights.StatusLineTabActiveNumber = { fg = "#16161e", bg = "#e0af68" }
       highlights.StatusLineTabInactive = { fg = "#414868", bg = "#16161e" }
+      highlights.StatusLineTabInactiveNumber = { fg = "#16161e", bg = "#414868" }
       highlights.GitSignsAdd = { link = "String" }
       highlights.GitSignsChange = { link = "diffFile" }
       highlights.GitSignsDelete = { link = "TSVariableBuiltin" }
