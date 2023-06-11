@@ -21,6 +21,11 @@ alias attt='tmux split-pane -h -l 57%\; select-pane -t 1\; split-pane -v\; selec
 alias attt1='tmux split-pane -v -l 40%\; split-pane -h -l 50%\; select-pane -t 1 && clear'
 alias attttt='tmux split-pane -h -l 57%\; select-pane -t 1\; split-pane -v\; select-pane -t 3\; new-window\; new-window\; split-pane -v -l 40%\; split-pane -h -l 66%\; split-pane -h -l 50%\; select-pane -t 1\; select-window -t 1 && clear'
 
+# exa
+alias kk='exa -lah --color=auto --icons --group-directories-first'
+alias kkt='exa -lahT -L 3 --color=auto --icons --group-directories-first'
+alias kkg='exa -lah --color=auto --icons --group-directories-first --git'
+
 # moc
 alias mocp='mocp -T tty'
 
