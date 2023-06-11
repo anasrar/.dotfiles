@@ -2,6 +2,7 @@ local M = {}
 
 M.plugin = {
   "stevearc/aerial.nvim",
+  event = "VeryLazy",
   config = function()
     M.setup()
   end,
