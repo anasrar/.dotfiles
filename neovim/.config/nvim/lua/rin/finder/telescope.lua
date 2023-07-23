@@ -27,8 +27,8 @@ M.setup = function()
 
   telescope.setup({
     defaults = {
-      prompt_prefix = " 什",
-      selection_caret = " ",
+      prompt_prefix = " 󱡴 ",
+      selection_caret = "󰁔 ",
     },
     extensions = {
       fzy_native = {
@@ -43,6 +43,7 @@ M.setup = function()
 
   keymap("n", "<leader>ff", ":Telescope find_files<CR>")
   keymap("n", "<leader>fg", ":Telescope live_grep<CR>")
+  keymap("n", "<leader>fc", ":Telescope current_buffer_fuzzy_find<CR>")
 end
 
 if not pcall(debug.getlocal, 4, 1) then
