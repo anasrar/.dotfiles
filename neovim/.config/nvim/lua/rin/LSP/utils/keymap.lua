@@ -14,16 +14,17 @@ local mapping = function(bufnr)
 
   local buf_keymap = require("rin.utils.keymap").buf_keymap
 
-  buf_keymap(bufnr, "n", "<Leader>lf", ":Lspsaga lsp_finder<CR>")
+  buf_keymap(bufnr, "n", "<Leader>lf", ":Lspsaga finder<CR>")
   buf_keymap(bufnr, "n", "<Leader>ld", ":Lspsaga peek_definition<CR>")
   buf_keymap(bufnr, "n", "<Leader>lr", ":Lspsaga rename<CR>")
-  buf_keymap(bufnr, "n", "<Leader>lt", ":LspTypeDef<CR>")
+  buf_keymap(bufnr, "n", "<Leader>lt", ":Lspsaga peek_type_definition<CR>")
   buf_keymap(bufnr, "n", "<Leader>lj", ":Lspsaga hover_doc<CR>")
   buf_keymap(bufnr, "n", "<Leader>l[", ":Lspsaga diagnostic_jump_prev<CR>")
   buf_keymap(bufnr, "n", "<Leader>l]", ":Lspsaga diagnostic_jump_next<CR>")
   buf_keymap(bufnr, "n", "<Leader>la", ":Lspsaga code_action<CR>")
   buf_keymap(bufnr, "n", "<Leader>ll", ":Lspsaga show_line_diagnostics<CR>")
   buf_keymap(bufnr, "n", "<Leader>lL", ":Lspsaga show_buf_diagnostics<CR>")
+  buf_keymap(bufnr, "n", "<Leader>lo", ":Lspsaga outline<CR>")
   buf_keymap(bufnr, "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>")
 end
 

@@ -25,7 +25,7 @@ M.plugin = {
     "L3MON4D3/LuaSnip",
     -- # LSP UI
     {
-      "glepnir/lspsaga.nvim",
+      "nvimdev/lspsaga.nvim",
       branch = "main",
     },
   },
