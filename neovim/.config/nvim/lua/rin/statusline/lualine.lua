@@ -3,7 +3,6 @@ local M = {}
 M.plugin = {
   "nvim-lualine/lualine.nvim",
   dependencies = {
-    "nvim-lua/lsp-status.nvim",
   },
   -- event = "VeryLazy",
   config = function()
@@ -14,34 +13,25 @@ M.plugin = {
 M.setup = function()
   local safe_require = require("rin.utils.safe_require")
   local ok_lualine, lualine = safe_require("lualine")
-  local ok_lsp_status, lsp_status = safe_require("lsp-status")
 
-  if not (ok_lualine and ok_lsp_status) then
+  if not (ok_lualine) then
     return
   end
 
-  lsp_status.register_progress()
-  lsp_status.config({
-    status_symbol = "",
-    show_filename = true,
-    diagnostics = false,
-  })
-
   local function LSP()
-    local msg = lsp_status.status()
     local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
     local clients = vim.lsp.get_active_clients()
     if next(clients) == nil then
-      return msg
+      return ""
     end
     local lsp_clients = ""
     for _, client in ipairs(clients) do
       local filetypes = client.config.filetypes
       if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-        lsp_clients = lsp_clients .. "󱘖 " .. client.name .. " "
+        lsp_clients = lsp_clients .. client.name .. " "
       end
     end
-    return lsp_clients .. msg
+    return lsp_clients
   end
 
   local setup_winbar = {
