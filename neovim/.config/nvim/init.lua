@@ -32,6 +32,9 @@ if ok then
     -- require("rin.theme.catppuccin").plugin,
     -- require("rin.theme.material").plugin,
 
+    -- # UI
+    require("rin.UI.noice").plugin,
+
     -- # Buffer
     require("rin.buffer.barbar").plugin,
     -- require("rin.buffer.bufferline").plugin,
