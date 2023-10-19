@@ -1,3 +1,4 @@
+---@deprecated
 local safe_require = function(path)
   local ok, m = pcall(require, path)
   if not ok then
