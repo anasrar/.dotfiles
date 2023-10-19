@@ -31,8 +31,6 @@ lspconfig.tsserver.setup({
   on_attach = function(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
-    ts_utils.setup({})
-    ts_utils.setup_client(client)
     on_attach(client, bufnr)
   end,
   root_dir = lspconfig.util.root_pattern("package.json"),

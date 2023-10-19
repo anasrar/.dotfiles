@@ -12,7 +12,6 @@ M.plugin = {
         "nvim-lua/plenary.nvim",
       },
     },
-    "jose-elias-alvarez/nvim-lsp-ts-utils", -- null-ls for TS project
     -- # LSP Completion
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-nvim-lsp-signature-help",
