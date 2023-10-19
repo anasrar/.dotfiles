@@ -54,13 +54,29 @@ M.setup = function()
     ---@param highlights Highlights
     ---@param colors ColorScheme
     on_highlights = function(highlights, colors)
-      highlights.StatusLineTabActive = { fg = "#e0af68", bg = "#16161e" }
-      highlights.StatusLineTabActiveNumber = { fg = "#16161e", bg = "#e0af68" }
-      highlights.StatusLineTabInactive = { fg = "#414868", bg = "#16161e" }
-      highlights.StatusLineTabInactiveNumber = { fg = "#16161e", bg = "#414868" }
+      highlights.StatusLineModeIcon = { bg = "#9ece6a", fg = "#16161e", }
+      highlights.StatusLineModeText = { bg = "#16161e", fg = "#9ece6a", style = "bold", }
+      highlights.StatusLineGitBranchIcon = { bg = "#f7768e", fg = "#16161e", }
+      highlights.StatusLineGitBranchText = { bg = "#16161e", fg = "#f7768e", }
+      highlights.StatusLineLspIcon = { bg = "#7aa2f7", fg = "#16161e", }
+      highlights.StatusLineLspText = { bg = "#16161e", fg = "#7aa2f7", }
+      highlights.StatusLineFilePathIcon = { bg = "#e0af68", fg = "#16161e", }
+      highlights.StatusLineFilePathText = { bg = "#16161e", fg = "#c0caf5", style = "bold", }
+      highlights.StatusLineLocationIcon = { bg = "#bb9af7", fg = "#16161e", }
+      highlights.StatusLineLocationText = { bg = "#16161e", fg = "#bb9af7", }
+
+      highlights.TabbyBufferIcon = { bg = "#bb9af7", fg = "#16161e", }
+      highlights.TabbyBufferTextChanged = { bg = "#16161e", fg = "#e0af68", }
+      highlights.TabbyBufferTextCurrent = { bg = "#16161e", fg = "#bb9af7", }
+      highlights.TabbyBufferText = { fg = "#565f89", }
+
+      highlights.TabbyTabIcon = { bg = "#7aa2f7", fg = "#16161e", }
+      highlights.TabbyTabTextCurrent = { bg = "#16161e", fg = "#7aa2f7", }
+      highlights.TabbyTabText = { bg = "#16161e", fg = "#565f89", }
+
       highlights.GitSignsAdd = { link = "String" }
       highlights.GitSignsChange = { link = "diffFile" }
-      highlights.GitSignsDelete = { link = "TSVariableBuiltin" }
+      highlights.GitSignsDelete = { link = "Error" }
 
       -- neo-tree using fallback color { "GitGutter", "GitSigns" }
       highlights.GitGutterChange = { link = "@parameter" }
