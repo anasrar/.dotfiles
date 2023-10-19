@@ -23,10 +23,10 @@ M.plugin = {
     "saadparwaiz1/cmp_luasnip",
     "L3MON4D3/LuaSnip",
     -- # LSP UI
-    {
-      "nvimdev/lspsaga.nvim",
-      branch = "main",
-    },
+    -- {
+    --   "nvimdev/lspsaga.nvim",
+    --   branch = "main",
+    -- },
   },
   event = "VeryLazy",
   config = function()
@@ -39,7 +39,7 @@ M.setup = function()
   require("rin.LSP.utils.icon")
   require("rin.LSP.utils.cmp")
   -- # LSP UI
-  require("rin.LSP.utils.lspsaga")
+  -- require("rin.LSP.utils.lspsaga")
   -- # LSP Config
   require("rin.LSP.languages.typescript")
   require("rin.LSP.languages.css")
