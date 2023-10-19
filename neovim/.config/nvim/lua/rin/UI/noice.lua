@@ -17,12 +17,14 @@ M.plugin = {
 }
 
 M.setup = function()
-  local safe_require = require("rin.utils.safe_require")
-  local ok_noice, noice = safe_require("noice")
-
-  if not ok_noice then
+  local ok = require("rin.utils.check_requires").check({
+    "noice",
+  })
+  if not ok then
     return
   end
+
+  local noice = require("noice")
 
   noice.setup({
     cmdline = {

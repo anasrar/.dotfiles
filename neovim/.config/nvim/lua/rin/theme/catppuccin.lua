@@ -9,12 +9,14 @@ M.plugin = {
 }
 
 M.setup = function()
-  local safe_require = require("rin.utils.safe_require")
-  local ok_catppuccin, catppuccin = safe_require("catppuccin")
-
-  if not ok_catppuccin then
+  local ok = require("rin.utils.check_requires").check({
+    "catppuccin",
+  })
+  if not ok then
     return
   end
+
+  local catppuccin = require("catppuccin")
 
   catppuccin.setup({})
 

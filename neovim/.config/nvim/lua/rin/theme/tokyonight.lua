@@ -8,12 +8,14 @@ M.plugin = {
 }
 
 M.setup = function()
-  local safe_require = require("rin.utils.safe_require")
-  local ok_tokyonight, tokyonight = safe_require("tokyonight")
-
-  if not ok_tokyonight then
+  local ok = require("rin.utils.check_requires").check({
+    "tokyonight",
+  })
+  if not ok then
     return
   end
+
+  local tokyonight = require("tokyonight")
 
   vim.o.termguicolors = true
 

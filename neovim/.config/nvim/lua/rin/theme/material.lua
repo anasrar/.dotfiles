@@ -8,12 +8,14 @@ M.plugin = {
 }
 
 M.setup = function()
-  local safe_require = require("rin.utils.safe_require")
-  local ok_material, material = safe_require("material")
-
-  if not ok_material then
+  local ok = require("rin.utils.check_requires").check({
+    "material",
+  })
+  if not ok then
     return
   end
+
+  local material = require("material")
 
   vim.o.termguicolors = true
   vim.g.material_style = "deep ocean"

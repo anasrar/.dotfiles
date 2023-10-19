@@ -17,15 +17,19 @@ M.plugin = {
 }
 
 M.setup = function()
-  local safe_require = require("rin.utils.safe_require")
-  local ok_dap, dap = safe_require("dap")
-  local ok_dapui, dapui = safe_require("dapui")
-  local ok_dap_ext_vscode, dap_ext_vscode = safe_require("dap.ext.vscode")
-  local ok_dap_virtual_text, dap_virtual_text = safe_require("nvim-dap-virtual-text")
-
-  if not (ok_dap and ok_dapui and ok_dap_ext_vscode and ok_dap_virtual_text) then
+  local ok = require("rin.utils.check_requires").check({
+    "dap",
+    "dapui",
+    "nvim-dap-virtual-text",
+  })
+  if not ok then
     return
   end
+
+  local dap = require("dap")
+  local dapui = require("dapui")
+  local dap_ext_vscode = require("dap.ext.vscode")
+  local dap_virtual_text = require("nvim-dap-virtual-text")
 
   -- # Sign
   vim.fn.sign_define("DapBreakpoint", { text = "🟥", texthl = "", linehl = "", numhl = "" })

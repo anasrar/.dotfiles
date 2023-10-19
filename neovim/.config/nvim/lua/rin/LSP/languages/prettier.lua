@@ -5,12 +5,14 @@ npm i -g prettier @fsouza/prettierd
 ```
 --]=]
 
-local safe_require = require("rin.utils.safe_require")
-local ok_null_ls, null_ls = safe_require("null-ls")
-
-if not ok_null_ls then
+local ok = require("rin.utils.check_requires").check({
+  "null-ls",
+})
+if not ok then
   return
 end
+
+local null_ls = require("null-ls")
 
 null_ls.register({
   name = "null-ls-Prettier",

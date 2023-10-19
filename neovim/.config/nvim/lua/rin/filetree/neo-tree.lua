@@ -15,12 +15,14 @@ M.plugin = {
 }
 
 M.setup = function()
-  local safe_require = require("rin.utils.safe_require")
-  local ok_neo_tree, neo_tree = safe_require("neo-tree")
-
-  if not ok_neo_tree then
+  local ok = require("rin.utils.check_requires").check({
+    "neo-tree",
+  })
+  if not ok then
     return
   end
+
+  local neo_tree = require("neo-tree")
 
   -- # Setup
   neo_tree.setup({

@@ -6,14 +6,18 @@ npm i -g svelte-language-server eslint_d @fsouza/prettierd
 ```
 --]=]
 
-local safe_require = require("rin.utils.safe_require")
-local ok_lspconfig, lspconfig = safe_require("lspconfig")
-local ok_cmp_nvim_lsp, cmp_nvim_lsp = safe_require("cmp_nvim_lsp")
-local ok_null_ls, null_ls = safe_require("null-ls")
-
-if not (ok_lspconfig and ok_cmp_nvim_lsp and ok_null_ls) then
+local ok = require("rin.utils.check_requires").check({
+  "lspconfig",
+  "cmp_nvim_lsp",
+  "null-ls",
+})
+if not ok then
   return
 end
+
+local lspconfig = require("lspconfig")
+local cmp_nvim_lsp = require("cmp_nvim_lsp")
+local null_ls = require("null-ls")
 
 local on_attach = function(client, bufnr)
   require("rin.LSP.utils.keymap")(bufnr)

@@ -13,12 +13,14 @@ M.plugin = {
 }
 
 M.setup = function()
-  local safe_require = require("rin.utils.safe_require")
-  local ok_nvim_tree, nvim_tree = safe_require("nvim-tree")
-
-  if not ok_nvim_tree then
+  local ok = require("rin.utils.check_requires").check({
+    "nvim-tree",
+  })
+  if not ok then
     return
   end
+
+  local nvim_tree = require("nvim-tree")
 
   -- # Setup
   nvim_tree.setup({

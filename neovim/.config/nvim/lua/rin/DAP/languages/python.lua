@@ -8,14 +8,16 @@ pip install debugpy
 ```
 --]=]
 
-local safe_require = require("rin.utils.safe_require")
-local ok_dap, dap = safe_require("dap")
-
-if not ok_dap then
+local ok = require("rin.utils.check_requires").check({
+  "dap",
+})
+if not ok then
   return
 end
 
-command = vim.fn.getcwd() .. "/.venv/bin/python"
+local dap = require("dap")
+
+local command = vim.fn.getcwd() .. "/.venv/bin/python"
 
 dap.adapters.python = {
   type = "executable",
@@ -29,6 +31,7 @@ dap.configurations.python = {
     request = "launch",
     name = "Launch Current File",
     program = "${file}",
+    console = "integratedTerminal",
     pythonPath = function()
       local cwd = vim.fn.getcwd()
       if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then

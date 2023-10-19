@@ -18,12 +18,14 @@ M.plugin = {
 }
 
 M.setup = function()
-  local safe_require = require("rin.utils.safe_require")
-  local ok_telescope, telescope = safe_require("telescope")
-
-  if not ok_telescope then
+  local ok = require("rin.utils.check_requires").check({
+    "telescope",
+  })
+  if not ok then
     return
   end
+
+  local telescope = require("telescope")
 
   telescope.setup({
     defaults = {

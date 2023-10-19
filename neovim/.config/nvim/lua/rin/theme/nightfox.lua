@@ -9,12 +9,14 @@ M.plugin = {
 }
 
 M.setup = function()
-  local safe_require = require("rin.utils.safe_require")
-  local ok_nightfox, nightfox = safe_require("nightfox")
-
-  if not ok_nightfox then
+  local ok = require("rin.utils.check_requires").check({
+    "nightfox",
+  })
+  if not ok then
     return
   end
+
+  local nightfox = require("nightfox")
 
   nightfox.setup({
     options = {

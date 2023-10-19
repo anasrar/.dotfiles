@@ -1,14 +1,16 @@
-local safe_require = require("rin.utils.safe_require")
-local ok_ls, ls = safe_require("luasnip")
-local ok_events, events = safe_require("luasnip.util.events")
-local ok_ai, ai = safe_require("luasnip.nodes.absolute_indexer")
-local ok_fmt, fmt = safe_require("luasnip.extras.fmt")
-local ok_postfix, postfix = safe_require("luasnip.extras.postfix")
-local ok_extras, extras = safe_require("luasnip.extras")
-
-if not (ok_ls and ok_events and ok_ai and ok_fmt and ok_postfix and ok_extras) then
+local ok = require("rin.utils.check_requires").check({
+  "luasnip",
+})
+if not ok then
   return
 end
+
+local ls = require("luasnip")
+local events = require("luasnip.util.events")
+local ai = require("luasnip.nodes.absolute_indexer")
+local fmt = require("luasnip.extras.fmt")
+local postfix = require("luasnip.extras.postfix")
+local extras = require("luasnip.extras")
 
 local M = {
   s = ls.snippet,

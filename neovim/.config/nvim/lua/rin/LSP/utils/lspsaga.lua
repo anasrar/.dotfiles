@@ -1,9 +1,10 @@
-local safe_require = require("rin.utils.safe_require")
-local ok_lspsaga, lspsaga = safe_require("lspsaga")
-
-if not ok_lspsaga then
+local ok = require("rin.utils.check_requires").check({
+  "lspsaga",
+})
+if not ok then
   return
 end
+local lspsaga = require("lspsaga")
 
 lspsaga.setup({
   finder = {

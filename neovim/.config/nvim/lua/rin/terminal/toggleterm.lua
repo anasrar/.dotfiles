@@ -10,12 +10,14 @@ M.plugin = {
 }
 
 M.setup = function()
-  local safe_require = require("rin.utils.safe_require")
-  local ok_toggleterm, toggleterm = safe_require("toggleterm")
-
-  if not ok_toggleterm then
+  local ok = require("rin.utils.check_requires").check({
+    "toggleterm",
+  })
+  if not ok then
     return
   end
+
+  local toggleterm = require("toggleterm")
 
   toggleterm.setup({
     direction = "float",

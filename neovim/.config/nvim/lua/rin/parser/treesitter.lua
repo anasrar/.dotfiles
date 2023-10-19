@@ -9,12 +9,14 @@ M.plugin = {
 }
 
 M.setup = function()
-  local safe_require = require("rin.utils.safe_require")
-  local ok_treesitter_configs, treesitter_configs = safe_require("nvim-treesitter.configs")
-
-  if not ok_treesitter_configs then
+  local ok = require("rin.utils.check_requires").check({
+    "nvim-treesitter",
+  })
+  if not ok then
     return
   end
+
+  local treesitter_configs = require("nvim-treesitter.configs")
 
   treesitter_configs.setup({
     highlight = {

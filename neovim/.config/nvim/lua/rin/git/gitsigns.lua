@@ -9,12 +9,14 @@ M.plugin = {
 }
 
 M.setup = function()
-  local safe_require = require("rin.utils.safe_require")
-  local ok_gitsigns, gitsigns = safe_require("gitsigns")
-
-  if not ok_gitsigns then
+  local ok = require("rin.utils.check_requires").check({
+    "gitsigns",
+  })
+  if not ok then
     return
   end
+
+  local gitsigns = require("gitsigns")
 
   gitsigns.setup({
     signs                        = {

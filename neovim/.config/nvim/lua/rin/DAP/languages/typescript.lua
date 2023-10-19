@@ -42,14 +42,17 @@ npm run compile
 
 --]=]
 
-local safe_require = require("rin.utils.safe_require")
-local ok_dap, dap = safe_require("dap")
-local ok_dap_utils, dap_utils = safe_require("dap.utils")
-local ok_dap_vscode_js, dap_vscode_js = safe_require("dap-vscode-js")
-
-if not (ok_dap and ok_dap_utils and ok_dap_vscode_js) then
+local ok = require("rin.utils.check_requires").check({
+  "dap",
+  "dap-vscode-js",
+})
+if not ok then
   return
 end
+
+local dap = require("dap")
+local dap_utils = require("dap.utils")
+local dap_vscode_js = require("dap-vscode-js")
 
 -- !DEPRECATED!
 -- dap.adapters.chrome = {

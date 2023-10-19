@@ -13,12 +13,14 @@ M.plugin = {
 }
 
 M.setup = function()
-  local safe_require = require("rin.utils.safe_require")
-  local ok_bufferline, bufferline = safe_require("bufferline")
-
-  if not ok_bufferline then
+  local ok = require("rin.utils.check_requires").check({
+    "bufferline",
+  })
+  if not ok then
     return
   end
+
+  local bufferline = require("bufferline")
 
   vim.opt.termguicolors = true
 

@@ -10,14 +10,16 @@ docker run --privileged <images name> <command>
 ```
 --]=]
 
-local safe_require = require("rin.utils.safe_require")
-local ok_dap, dap = safe_require("dap")
-local ok_dap_utils, dap_utils = safe_require("dap.utils")
-local ok_dap_repl, dap_repl = safe_require("dap.repl")
-
-if not (ok_dap and ok_dap_utils and ok_dap_repl) then
+local ok = require("rin.utils.check_requires").check({
+  "dap",
+})
+if not ok then
   return
 end
+
+local dap = require("dap")
+local dap_utils = require("dap.utils")
+local dap_repl = require("dap.repl")
 
 dap.adapters.dlv = function(callback, config)
   local stdout = vim.loop.new_pipe(false)
@@ -25,8 +27,8 @@ dap.adapters.dlv = function(callback, config)
   local pid_or_err
   local port = 38697
   local opts = {
-    stdio = {nil, stdout},
-    args = {"dap", "-l", "127.0.0.1:" .. port},
+    stdio = { nil, stdout },
+    args = { "dap", "-l", "127.0.0.1:" .. port },
     detached = true
   }
   handle, pid_or_err = vim.loop.spawn("dlv", opts, function(code)
@@ -48,7 +50,7 @@ dap.adapters.dlv = function(callback, config)
   -- Wait for delve to start
   vim.defer_fn(
     function()
-      callback({type = "server", host = "127.0.0.1", port = port})
+      callback({ type = "server", host = "127.0.0.1", port = port })
     end,
     100)
 end
@@ -59,12 +61,14 @@ dap.configurations.go = {
     request = "launch",
     name = "Launch Current File (Delve)",
     program = "${file}",
+    console = "integratedTerminal",
   },
   {
     type = "dlv",
     request = "launch",
     name = "Launch Package Program (Delve)",
     program = "${fileDirname}",
+    console = "integratedTerminal",
   },
   {
     type = "dlv",
@@ -72,6 +76,7 @@ dap.configurations.go = {
     name = "Launch Debug Test Current File (Delve)",
     mode = "test",
     program = "${file}",
+    console = "integratedTerminal",
   },
   {
     type = "dlv",
@@ -79,12 +84,14 @@ dap.configurations.go = {
     name = "Launch Debug Test (go.mod) (Delve)",
     mode = "test",
     program = "./${relativeFileDirname}",
+    console = "integratedTerminal",
   },
   {
     type = "dlv",
     request = "attach",
     name = "Attach Program (Delve)",
     mode = "local",
+    console = "integratedTerminal",
     processId = dap_utils.pick_process,
   },
 }

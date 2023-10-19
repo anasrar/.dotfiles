@@ -11,13 +11,14 @@ M.plugin = {
 }
 
 M.setup = function()
-  local safe_require = require("rin.utils.safe_require")
-  local ok_lualine, lualine = safe_require("lualine")
-
-  if not (ok_lualine) then
+  local ok = require("rin.utils.check_requires").check({
+    "lualine",
+  })
+  if not ok then
     return
   end
 
+  local lualine = require("lualine")
   local function LSP()
     local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
     local clients = vim.lsp.get_active_clients()

@@ -6,12 +6,14 @@ extract to `~/.DAP/vscode-cpptools`
 install gdb
 --]=]
 
-local safe_require = require("rin.utils.safe_require")
-local ok_dap, dap = safe_require("dap")
-
-if not ok_dap then
+local ok = require("rin.utils.check_requires").check({
+  "dap",
+})
+if not ok then
   return
 end
+
+local dap = require("dap")
 
 dap.adapters.cppdbg = {
   id = "cppdbg",
@@ -19,7 +21,7 @@ dap.adapters.cppdbg = {
   command = os.getenv("HOME") .. "/.DAP/vscode-cpptools/extension/debugAdapters/bin/OpenDebugAD7",
 }
 
-local exts = {"c","cpp"}
+local exts = { "c", "cpp" }
 
 for i, ext in ipairs(exts) do
   dap.configurations[ext] = {
@@ -31,6 +33,7 @@ for i, ext in ipairs(exts) do
         return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
       end,
       cwd = "${workspaceFolder}",
+      console = "integratedTerminal",
       stopOnEntry = true,
     },
     {
@@ -41,6 +44,7 @@ for i, ext in ipairs(exts) do
       miDebuggerServerAddress = "localhost:1234",
       miDebuggerPath = "/usr/bin/gdb",
       cwd = "${workspaceFolder}",
+      console = "integratedTerminal",
       program = function()
         return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
       end,

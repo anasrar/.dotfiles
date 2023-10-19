@@ -1,10 +1,13 @@
-local safe_require = require("rin.utils.safe_require")
-local ok_cmp, cmp = safe_require("cmp")
-local ok_luasnip, luasnip = safe_require("luasnip")
-
-if not (ok_cmp and ok_luasnip) then
+local ok = require("rin.utils.check_requires").check({
+  "cmp",
+  "luasnip",
+})
+if not ok then
   return
 end
+
+local cmp = require("cmp")
+local luasnip = require("luasnip")
 
 local icons = {
   Text = "",

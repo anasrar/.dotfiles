@@ -9,13 +9,14 @@ M.plugin = {
 }
 
 M.setup = function()
-  local safe_require = require("rin.utils.safe_require")
-  local ok_aerial, aerial = safe_require("aerial")
-
-  if not ok_aerial then
+  local ok = require("rin.utils.check_requires").check({
+    "aerial",
+  })
+  if not ok then
     return
   end
 
+  local aerial = require("aerial")
   aerial.setup({
     close_on_select = true,
     float = {

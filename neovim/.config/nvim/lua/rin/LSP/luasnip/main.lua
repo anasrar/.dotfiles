@@ -1,3 +1,10 @@
+local ok = require("rin.utils.check_requires").check({
+  "luasnip",
+})
+if not ok then
+  return
+end
+
 local luasnip = require("luasnip")
 local types = require("luasnip.util.types")
 
