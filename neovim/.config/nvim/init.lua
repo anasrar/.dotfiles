@@ -38,9 +38,11 @@ lazy.setup({
   -- # UI
   require("rin.UI.noice").plugin,
 
-    require("rin.buffer.barbar").plugin,
-    -- require("rin.buffer.bufferline").plugin,
   -- # Buffer
+  -- require("rin.buffer.barbar").plugin,
+  -- require("rin.buffer.bufferline").plugin,
+  require("rin.buffer.tabby").plugin,
+  require("rin.buffer.buffer_manager").plugin,
 
   -- # Terminal
   require("rin.terminal.toggleterm").plugin,
