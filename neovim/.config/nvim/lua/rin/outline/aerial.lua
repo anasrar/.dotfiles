@@ -17,11 +17,19 @@ M.setup = function()
   end
 
   local aerial = require("aerial")
+
   aerial.setup({
+    backends = { "lsp", "treesitter", "markdown", "man" },
     close_on_select = true,
+    layout = {
+      min_width = 60,
+    },
     float = {
       relative = "editor",
+      min_width = { 0.2, 20 },
+      min_height = { 10, 0.1 },
     },
+    filter_kind = false,
   })
 
   -- # Keymap
