@@ -4,7 +4,7 @@ M.setup = function()
   local command_name_setup = "RinSetupWindow"
   local command_name_clear = "RinClearWindow"
   local tab_key = "RinWindow"
-  local setup = "60vs | sp | wincmd l"
+  local setup = "80vs | sp | wincmd l"
   local clear = "wincmd q"
 
   local get_var = function()
@@ -18,7 +18,7 @@ M.setup = function()
     end
   end
   local set_state = function(val)
-    vim.api.nvim_tabpage_set_var(0, tab_key,val)
+    vim.api.nvim_tabpage_set_var(0, tab_key, val)
   end
 
   vim.api.nvim_create_user_command(
@@ -35,7 +35,7 @@ M.setup = function()
   vim.api.nvim_create_user_command(
     "RinClearWindow",
     function()
-      local tab_total_window = #vim.api.nvim_tabpage_list_wins(0) 
+      local tab_total_window = #vim.api.nvim_tabpage_list_wins(0)
       if tab_total_window > 1 then
         vim.cmd(string.rep(clear, tab_total_window - 1, " | "))
       end
