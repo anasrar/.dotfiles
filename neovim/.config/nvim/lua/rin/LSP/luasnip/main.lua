@@ -10,10 +10,10 @@ local types = require("luasnip.util.types")
 
 -- # Setup
 luasnip.config.setup({
-  history = true,
-  update_events = "TextChangedI",
-  region_check_events = "InsertEnter",
-  delete_check_events = "TextChanged",
+  history = false,
+  -- update_events = "TextChangedI",
+  -- region_check_events = "InsertEnter",
+  -- delete_check_events = "TextChanged",
   enable_autosnippets = true,
   ext_opts = {
     [types.choiceNode] = {
