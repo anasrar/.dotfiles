@@ -8,6 +8,9 @@ export LS_COLORS
 # history limit
 HISTFILESIZE=3
 
+# neovim
+alias vv='nvim'
+
 # neofetch
 alias neofetch='neofetch --ascii ~/.config/neofetch/ascii.txt --ascii_colors 6 4'
 alias neofetchimg='neofetch --ascii ~/.config/neofetch/ascii.txt --ascii_colors 6 4 --kitty --source ~/.config/neofetch/90655690_p0.jpg --size 180'
@@ -15,10 +18,12 @@ alias neofetchimg='neofetch --ascii ~/.config/neofetch/ascii.txt --ascii_colors 
 # tmux
 alias ttt='tmux new-session\; split-pane -h -l 57%\; select-pane -t 1\; split-pane -v\; select-pane -t 3'
 alias ttt1='tmux new-session\; split-pane -v -l 40%\; split-pane -h -l 50%\; select-pane -t 1'
+alias ttt2='tmux new-session\; split-pane -h -l 57%\; select-pane -t 1\; split-pane -v -l 66%\; split-pane -v\; select-pane -t 4 && clear'
 alias ttttt='tmux new-session\; split-pane -h -l 57%\; select-pane -t 1\; split-pane -v\; select-pane -t 3\; new-window\; new-window\; split-pane -v -l 40%\; split-pane -h -l 66%\; split-pane -h -l 50%\; select-pane -t 1\; select-window -t 1'
 
 alias attt='tmux split-pane -h -l 57%\; select-pane -t 1\; split-pane -v\; select-pane -t 3 && clear'
 alias attt1='tmux split-pane -v -l 40%\; split-pane -h -l 50%\; select-pane -t 1 && clear'
+alias attt2='tmux split-pane -h -l 57%\; select-pane -t 1\; split-pane -v -l 66%\; split-pane -v\; select-pane -t 4 && clear'
 alias attttt='tmux split-pane -h -l 57%\; select-pane -t 1\; split-pane -v\; select-pane -t 3\; new-window\; new-window\; split-pane -v -l 40%\; split-pane -h -l 66%\; split-pane -h -l 50%\; select-pane -t 1\; select-window -t 1 && clear'
 
 # exa
