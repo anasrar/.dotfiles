@@ -68,7 +68,7 @@ M.setup = function()
       highlights.TabbyBufferIcon = { bg = "#bb9af7", fg = "#16161e", }
       highlights.TabbyBufferTextChanged = { bg = "#16161e", fg = "#e0af68", }
       highlights.TabbyBufferTextCurrent = { bg = "#16161e", fg = "#bb9af7", }
-      highlights.TabbyBufferText = { fg = "#565f89", }
+      highlights.TabbyBufferText = { bg = "#16161e", fg = "#565f89", }
 
       highlights.TabbyTabIcon = { bg = "#7aa2f7", fg = "#16161e", }
       highlights.TabbyTabTextCurrent = { bg = "#16161e", fg = "#7aa2f7", }
