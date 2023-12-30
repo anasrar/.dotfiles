@@ -1,0 +1,12 @@
+#!/usr/bin/sh
+
+tmux ls | grep dropdown -q || tmux new-session -d -s dropdown
+
+if xdotool search --class bspwm_dropdown ; then
+  xprop -id $(xdotool search --class bspwm_dropdown) | grep Withdrawn -q &&
+    (bspc rule -a \* -o state=floating rectangle=1206x620+355+448 &&
+    xdotool search --class bspwm_dropdown windowmap) ||
+    xdotool search --class bspwm_dropdown windowunmap
+else
+  bspc rule -a \* -o state=floating sticky=on rectangle=1206x620+355+448 && alacritty --class bspwm_dropdown -e bash -c "tmux attach-session -t dropdown"
+fi

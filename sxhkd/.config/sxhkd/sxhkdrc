@@ -10,6 +10,9 @@
 {_,shift +}Henkan_Mode
 	 {alacritty, bspc rule -a \* -o state=floating center=on rectangle=1206x788+0+0 && alacritty}
 
+super + Muhenkan
+	sh -c "$HOME/.config/sxhkd/scripts/toggle-dropdown-terminal"
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd; notify-send -i "$HOME/.local/share/icons/Grade-orange-dark/symbolic/status/my-caffeine-on-symbolic.svg" "sxhkd" "Reload Config"
