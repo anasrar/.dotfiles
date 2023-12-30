@@ -70,7 +70,7 @@ M.setup = function()
             left = "",
             right = "",
           },
-          fmt = function(str) return "%#StatusLineGitBranchIcon#  %*" .. "%#StatusLineGitBranchText# " .. str .. " %*" end,
+          fmt = function(str) return "%#StatusLineGitBranchIcon#  %*" .. "%#StatusLineGitBranchText# " .. (#str == 0 and "NO GIT" or str) .. " %*" end,
         },
         {
           LSP,
