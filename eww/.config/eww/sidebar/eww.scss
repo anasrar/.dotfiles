@@ -1,4 +1,5 @@
 $font-main: "Inter V";
+$font-secondary: "JetBrainsMonoTabler";
 $font-monospace: "JetBrains Mono";
 $font-icon: "tabler-icons";
 $color-bg: #1a1b26;
@@ -20,8 +21,8 @@ $color-white: #a9b1d6;
 tooltip {
   color: $color-fg;
   background-color: darken($color-bg, $amount: 7.5%);
-  font-family: $font-main;
-  font-weight: 600;
+  font-family: $font-monospace;
+  font-weight: 800;
 }
 
 // # bar
@@ -165,8 +166,8 @@ tooltip {
   border-radius: 6px;
   color: $color-fg;
   background-color: darken($color-bg, 2.5%);
-  font-family: $font-main;
-  font-weight: 600;
+  font-family: $font-secondary;
+  font-weight: 700;
   font-size: 12px;
 }
 
@@ -203,6 +204,8 @@ tooltip {
   border-radius: 4px;
   color: $color-fg;
   background-color: darken($color-bg, 8%);
+  font-family: $font-secondary;
+  font-weight: 700;
 
   &:hover {
     border-color: $color-fg;
@@ -212,9 +215,12 @@ tooltip {
 // # calendar
 
 .calendar {
-  font-family: $font-main;
+  font-weight: 700;
 
   calendar {
+    font-family: $font-secondary;
+    margin: 0 2px;
+
     &.highlight {
       color: $color-green;
     }
