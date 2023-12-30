@@ -10,9 +10,9 @@ bspc monitor -d 0 1 2 3 4 5 6
 # new node on left side
 bspc config initial_polarity first_child
 
-bspc config border_width              3
-bspc config focused_border_color      '#9b72ef'
-bspc config normal_border_color       '#414868'
+bspc config border_width              2
+bspc config focused_border_color      '#3d4463'
+bspc config normal_border_color       '#2d324a'
 bspc config window_gap                6
 
 bspc config split_ratio               0.5
@@ -39,8 +39,11 @@ bspc rule -a 'File-roller' state=floating center=on
 bspc rule -a 'Blueman-manager' state=floating center=on
 bspc rule -a 'Lxappearance' state=floating center=on
 bspc rule -a 'SimpleScreenRecorder' state=floating center=on
+bspc rule -a 'PCSX2' state=floating center=on
 bspc rule -a '*:*:Picture in picture' state=floating center=on
 bspc rule -a '*:*:Picture-in-Picture' state=floating center=on
+bspc rule -a '*:*:OpenCV*' state=floating center=on
+bspc rule -a "*:Godot_Engine:Godot" state=floating
 
 # auto start
 
@@ -79,3 +82,7 @@ killall -q blueman-applet; blueman-applet &
 
 ## compositor
 killall -q picom; picom -b &
+
+## scripts
+
+bspc config external_rules_command "$HOME/.config/bspwm/scripts/main.sh"
