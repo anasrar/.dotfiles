@@ -1,0 +1,8 @@
+#!/usr/bin/sh
+
+
+xprop -id $(xdotool search --classname "stalonetray") | grep Withdrawn -q &&
+  (xdotool search --classname "eww-bar" windowmap&&
+  xdotool search --classname "stalonetray" windowmap) ||
+    (xdotool search --classname "eww-bar" windowunmap &&
+    xdotool search --classname "stalonetray" windowunmap)

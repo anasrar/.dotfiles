@@ -14,6 +14,10 @@ Henkan_Mode
 super + Escape
 	pkill -USR1 -x sxhkd; notify-send -i "$HOME/.local/share/icons/Grade-orange-dark/symbolic/status/my-caffeine-on-symbolic.svg" "sxhkd" "Reload Config"
 
+# sidebar
+super + @space
+	sh -c "$HOME/.config/sxhkd/scripts/toggle-sidebar"
+
 # program launcher
 super + a
 	rofi -show drun
