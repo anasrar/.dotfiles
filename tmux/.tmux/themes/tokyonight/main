@@ -6,8 +6,8 @@ set -g status-left-length "100"
 set -g status-right-style "none"
 set -g status-right-length "100"
 
-set -g pane-border-style "fg=#15161e"
-set -g pane-active-border-style "fg=#9b72ef"
+set -g pane-border-style "fg=#212538"
+set -g pane-active-border-style "fg=#3d4463"
 
 set -g message-style "bg=#15161E,fg=#d2d4de"
 
