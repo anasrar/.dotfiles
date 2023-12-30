@@ -3,12 +3,12 @@
 #
 
 # terminal emulator
-super + Return
-	WINIT_X11_SCALE_FACTOR=1 alacritty
+{_,shift +}super + Return
+	 {alacritty, bspc rule -a \* -o state=floating center=on rectangle=1206x788+0+0 && alacritty}
 
 # terminal emulator
-Henkan_Mode
-	WINIT_X11_SCALE_FACTOR=1 alacritty
+{_,shift +}Henkan_Mode
+	 {alacritty, bspc rule -a \* -o state=floating center=on rectangle=1206x788+0+0 && alacritty}
 
 # make sxhkd reload its configuration files:
 super + Escape
