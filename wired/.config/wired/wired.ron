@@ -102,7 +102,7 @@
             offset: (x: 0.0, y: 0.0),
             params: TextBlock((
                 text: "%s",
-                font: "Inter V Bold 10",
+                font: "JetBrainsMonoTabler ExtraBold 11",
                 ellipsize: Middle,
                 color: (hex: "#c0caf5"),
                 padding: (left: 12.0, right: 12.0, top: 12.0, bottom: 12.0),
@@ -130,9 +130,9 @@
             render_anti_criteria: [ AppName("progress") ],
             params: ScrollingTextBlock((
                 text: "%b",
-                font: "Inter V Medium 9.5",
+                font: "JetBrainsMonoTabler Bold 10",
                 color: (hex: "#c0caf5"),
-                padding: (left: 12.0, right: 12.0, top: 0.0, bottom: 12.0),
+                padding: (left: 12.0, right: 12.0, top: -6.0, bottom: 12.0),
                 width: (min: 190, max: 190),
                 width_image_hint: (min: 136, max: 136),
                 width_image_app: (min: 136, max: 136),
@@ -168,7 +168,7 @@
             render_criteria: [ Progress ],
             render_anti_criteria: [ Body ],
             params: ProgressBlock((
-                padding: (left: 12.0, right: 12.0, top: 0.0, bottom: 12.0),
+                padding: (left: 12.0, right: 12.0, top: -2.0, bottom: 12.0),
                 border_width: 0.0,
                 border_rounding: 4.0,
                 fill_rounding: 4.0,
@@ -188,8 +188,8 @@
             render_criteria: [ ActionOther(0) ],
             params: TextBlock((
                 text: "",
-                padding: (left: 0.0, right: 0.0, top: 0.0, bottom: 20.0),
-                font: "Inter V Medium 9.5",
+                padding: (left: 0.0, right: 0.0, top: -6.0, bottom: 26.0),
+                font: "JetBrainsMonoTabler Bold 10",
                 color: (hex: "#c0caf5"),
                 dimensions: (
                     width: (min: 190, max: 190),
@@ -214,7 +214,7 @@
             render_criteria: [ ActionOther(0) ],
             params: ButtonBlock((
                 text: "%a",
-                font: "Inter V Medium 9.5",
+                font: "JetBrainsMonoTabler Bold 10",
                 action: OtherAction(0),
                 padding: (left: 8.0, right: 8.0, top: 4.0, bottom: 4.0),
                 border_width: 2.0,
@@ -238,7 +238,7 @@
             render_criteria: [ ActionOther(1) ],
             params: ButtonBlock((
                 text: "%a",
-                font: "Inter V Medium 9.5",
+                font: "JetBrainsMonoTabler Bold 10",
                 action: OtherAction(1),
                 padding: (left: 8.0, right: 8.0, top: 4.0, bottom: 4.0),
                 border_width: 2.0,
@@ -262,7 +262,7 @@
             render_criteria: [ ActionOther(2) ],
             params: ButtonBlock((
                 text: "%a",
-                font: "Inter V Medium 9.5",
+                font: "JetBrainsMonoTabler Bold 10",
                 action: OtherAction(2),
                 padding: (left: 8.0, right: 8.0, top: 4.0, bottom: 4.0),
                 border_width: 2.0,
