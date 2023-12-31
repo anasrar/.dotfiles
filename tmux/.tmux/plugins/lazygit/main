@@ -1,12 +1,6 @@
-#!/bin/sh
+# vi: filetype=tmux
 # DEPENDENCY:
 # - lazygit https://github.com/jesseduffield/lazygit
 
-# tmux_session_name=$(tmux display-message -p -F "#{session_name}");
-# tmux_session_path=$(tmux display-message -p -F "#{session_path}");
-# [ "$tmux_session_name" = "popup_lazygit" ] && tmux detach-client && exit 0;
-# tmux has -t popup_lazygit && [ "$tmux_session_path" != "$(tmux display-message -p -t popup_lazygit -F "#{session_path}")" ] && tmux kill-session -t popup_lazygit;
-# tmux a -t popup_lazygit || tmux new -c "$(pwd)" -s popup_lazygit "bash -c \"tmux set status off && lazygit\"";
-
 # change bash to your shell of choice
-tmux bind-key -N lazygit -T root C-g popup -E -T lazygit -b rounded -w 90% -h 90% 'tmux_session_name=$(tmux display-message -p -F "#{session_name}"); tmux_session_path=$(tmux display-message -p -F "#{session_path}"); [ "$tmux_session_name" = "popup_lazygit" ] && tmux detach-client && exit 0; tmux has -t popup_lazygit && [ "$tmux_session_path" != "$(tmux display-message -p -t popup_lazygit -F "#{session_path}")" ] && tmux kill-session -t popup_lazygit; tmux a -t popup_lazygit || tmux new -c "$(pwd)" -s popup_lazygit "bash -c \"tmux set status off && lazygit\""'
+bind-key -N lazygit -T root C-g popup -E -T lazygit -b rounded -w 90% -h 90% 'bash -c "~/.tmux/plugins/lazygit/script.sh"'
