@@ -1,5 +1,8 @@
 # BSPWM
 
+> [!CAUTION]
+> This is my 2023 setup, for current year check [this README.md](../README.md).
+
 <table>
   <tbody>
     <tr>
