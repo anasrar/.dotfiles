@@ -46,7 +46,8 @@ alias catnip='catnip -dt 1 -ct 2 -fg 6'
 PROMPT_COMMAND='exitcode=$?'
 ## git branch
 git_branch() {
-     git branch --show-current 2> /dev/null | sed -e 's/\(.*\)/   \1/'
+  CURERNT_BRANCH=$(git symbolic-ref -q --short HEAD 2> /dev/null || git rev-parse --short HEAD 2> /dev/null)
+  [ "$CURERNT_BRANCH" == "" ] || echo "$CURERNT_BRANCH" | sed -e 's/\(.*\)/   \1/'
 }
 dir_color='157;124;216'
 arrow_color='86;95;137'
