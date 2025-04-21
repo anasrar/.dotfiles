@@ -11,7 +11,6 @@ M.plugin = {
       dependencies = {
         "nvim-lua/plenary.nvim",
       },
-      commit = "bb680d7",
     },
     -- # LSP Completion
     "hrsh7th/cmp-nvim-lsp",
