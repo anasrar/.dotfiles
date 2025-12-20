@@ -11,13 +11,6 @@ M.plugin = {
 }
 
 M.setup = function()
-  local ok = require("rin.utils.check_requires").check({
-    "lualine",
-  })
-  if not ok then
-    return
-  end
-
   local lualine = require("lualine")
 
   local function LSP()
@@ -60,17 +53,7 @@ M.setup = function()
             left = "",
             right = "",
           },
-          fmt = function(str) return "%#StatusLineModeIcon#  %*" .. "%#StatusLineModeText# " .. str .. " %*" end,
-        },
-        {
-          "branch",
-          icon = "",
-          padding = 0,
-          separator = {
-            left = "",
-            right = "",
-          },
-          fmt = function(str) return "%#StatusLineGitBranchIcon#  %*" .. "%#StatusLineGitBranchText# " .. (#str == 0 and "NO GIT" or str) .. " %*" end,
+          fmt = function(str) return "%#@accent.300#▎%*" .. str .. "" end,
         },
         {
           LSP,
@@ -80,8 +63,7 @@ M.setup = function()
             left = "",
             right = "",
           },
-          fmt = function(str) return "%#StatusLineLspIcon# 󰛓 %*" ..
-                "%#StatusLineLspText# " .. (#str == 0 and "NO LSP" or str) .. " %*"
+          fmt = function(str) return (#str == 0 and "" or "⏵ " .. str)
           end,
         },
       },
@@ -94,7 +76,7 @@ M.setup = function()
             left = "",
             right = "",
           },
-          fmt = function(str) return "%#StatusLineLocationIcon# 󰕅 %*" .. "%#StatusLineLocationText# " .. str .. " %*" end,
+          fmt = function(str) return "%#StatusLineLocationText#" .. str .. " %*" end,
         },
       },
       lualine_y = {
@@ -121,7 +103,7 @@ M.setup = function()
             left = "",
             right = "",
           },
-          fmt = function(str) return "%#StatusLineFilePathIcon#  %*" .. "%#StatusLineFilePathText# " .. str .. " %*" end,
+          fmt = function(str) return " " .. str end,
         },
       },
       lualine_x = {
@@ -168,6 +150,10 @@ M.setup = function()
     },
     inactive_winbar = {
       lualine_a = {
+      },
+      lualine_b = {
+      },
+      lualine_c = {
         {
           "filename",
           path = 1,
@@ -181,18 +167,12 @@ M.setup = function()
             left = "",
             right = "",
           },
-          fmt = function(str) return "%#StatusLineFilePathIcon#  %*" .. "%#StatusLineFilePathText# " .. str .. " %*" end,
+          fmt = function(str) return " " .. str end,
         },
-      },
-      lualine_b = {
-      },
-      lualine_c = {
-      },
-      lualine_x = {
       },
       lualine_y = {
       },
-      lualine_z = {
+      lualine_x = {
         {
           "diagnostics",
           always_visible = false,
@@ -210,6 +190,8 @@ M.setup = function()
         {
           "filetype",
         },
+      },
+      lualine_z = {
       },
     }
   }
