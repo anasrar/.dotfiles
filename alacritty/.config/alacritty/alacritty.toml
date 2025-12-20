@@ -10,28 +10,28 @@ color = "0xdb4b4b"
 index = 17
 
 [colors.bright]
-black = "0x414868"
-blue = "0x7aa2f7"
-cyan = "0x7dcfff"
-green = "0x9ece6a"
-magenta = "0xbb9af7"
-red = "0xf7768e"
-white = "0xc0caf5"
-yellow = "0xe0af68"
+black = "#3b3b47"   # zinc   200 @accent.600
+blue = "#e0e6fe"    # indigo 200 @accent.100
+cyan = "#e0f4fe"    # sky    200 @accent.100
+green = "#f4fee0"   # lime   200 @accent.100
+magenta = "#c4b5fd" # violet 200 @accent.100
+red = "#fee0e4"     # rose   200 @accent.100
+white = "#eeeef0"   # zinc   200 @accent.100
+yellow = "#fef8e0"  # amber  200 @accent.100
 
 [colors.normal]
-black = "0x15161E"
-blue = "0x7aa2f7"
-cyan = "0x7dcfff"
-green = "0x9ece6a"
-magenta = "0xbb9af7"
-red = "0xf7768e"
-white = "0xa9b1d6"
-yellow = "0xe0af68"
+black = "#26262d"   # zinc   200 @accent.700
+blue = "#8ca4fe"    # indigo 200 @accent.200
+cyan = "#8cd7fe"    # sky    200 @accent.200
+green = "#d7fe8c"   # lime   200 @accent.200
+magenta = "#9f8cfe" # violet 200 @accent.200
+red = "#fe8c9b"     # rose   200 @accent.200
+white = "#c0c0ca"   # zinc   200 @accent.200
+yellow = "#fee88c"  # amber  200 @accent.200
 
 [colors.primary]
-background = "0x1a1b26"
-foreground = "0xc0caf5"
+background = "0x121214"
+foreground = "0xc0c0ca"
 
 [cursor.style]
 blinking = "Always"
@@ -41,7 +41,7 @@ shape = "Block"
 TERM = "xterm-256color"
 
 [font]
-builtin_box_drawing = true
+builtin_box_drawing = false
 size = 12.0
 
 [font.bold]
@@ -54,7 +54,7 @@ style = "ExtraBold Italic"
 style = "Bold Italic"
 
 [font.normal]
-family = "JetBrains Mono"
+family = "Ioskeley Mono"
 style = "Bold"
 
 [[keyboard.bindings]]
@@ -72,7 +72,7 @@ key = 93
 
 [window]
 dynamic_padding = true
-opacity = 0.98
+opacity = 0.94
 
 [window.dimensions]
 columns = 80
