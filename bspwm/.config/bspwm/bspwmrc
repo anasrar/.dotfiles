@@ -15,8 +15,8 @@ bspc monitor -d 0 1 2 3 4 5 6
 bspc config initial_polarity first_child
 
 bspc config border_width              2
-bspc config focused_border_color      '#3d4463'
-bspc config normal_border_color       '#2d324a'
+bspc config focused_border_color      '#8ca4fe'
+bspc config normal_border_color       '#26262d'
 bspc config window_gap                6
 
 bspc config split_ratio               0.5
@@ -71,7 +71,6 @@ killall -q sate; sate start &
 ## eww widget
 eww --config "$HOME/.config/eww/sidebar/" kill
 eww --config "$HOME/.config/eww/sidebar/" daemon
-eww --config "$HOME/.config/eww/sidebar/" open bar
 
 ## notification daemon
 killall -q wired; wired &
