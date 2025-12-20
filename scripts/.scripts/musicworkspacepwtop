@@ -1,0 +1,3 @@
+#!/usr/bin/sh
+
+xdotool selectwindow windowsize 1062 280 windowmove 638 652
