@@ -16,8 +16,8 @@ HISTFILESIZE=3
 alias vv='nvim'
 
 # neofetch
-alias neofetch='neofetch --ascii ~/.config/neofetch/ascii.txt --ascii_colors 6 4'
-alias neofetchimg='neofetch --ascii ~/.config/neofetch/ascii.txt --ascii_colors 6 4 --kitty --source ~/.config/neofetch/90655690_p0.jpg --size 180'
+alias neofetch='neofetch --ascii ~/.config/neofetch/ascii.txt --ascii_colors 6 4 --colors 1 1 1 4 7 7'
+alias neofetchimg='neofetch --ascii ~/.config/neofetch/ascii.txt --ascii_colors 6 4 --colors 1 1 1 4 7 7 --kitty --source ~/.config/neofetch/90655690_p0.jpg --size 180'
 
 # tmux
 alias ttt='tmux new-session\; split-pane -h -l 57%\; select-pane -t 1\; split-pane -v\; select-pane -t 3'
@@ -53,14 +53,14 @@ git_branch() {
   CURERNT_BRANCH=$(git symbolic-ref -q --short HEAD 2> /dev/null || git rev-parse --short HEAD 2> /dev/null)
   [ "$CURERNT_BRANCH" == "" ] || echo "$CURERNT_BRANCH" | sed -e 's/\(.*\)/   \1/'
 }
-dir_color='157;124;216'
-arrow_color='86;95;137'
-branch_color='247;118;142'
-error_color='247;118;142'
-ok_color='158;206;106'
+dir_color='140;164;254'
+arrow_color='111;111;132'
+branch_color='146;146;164'
+error_color='255;161;173'
+ok_color='187;244;81'
 
 # export PS1='\[\e[01m\e[48;5;${bg_color}m\]\[\e[38;5;${fg_color}m\]  \u@\h   \W $(git_branch) \$  $(if [ $exitcode == 0 ]; then echo "\[\e[01m\e[48;5;${ok_color}m\]\[\e[38;5;${bg_color}m\]"; else echo "\[\e[01m\e[48;5;${error_color}m\]\[\e[38;5;${bg_color}m\]"; fi) \[\e[0m\]\[\e[38;5;${bg_color}m\] \[\e[0m\]'
 # export PS1='\[\e[00m\e[48;5;${bg_color}m\]\[\e[38;5;${fg_color}m\] $([ "$PWD" == ~ ] && echo " Home" || echo "ﱮ ${PWD##*/}") $(git_branch) \$ $(if [ $exitcode == 0 ]; then echo "\[\e[01m\e[0m\]\[\e[38;5;${bg_color}m\]\[\e[0m\]\[\e[38;5;${ok_color}m\]"; else echo "\[\e[01m\e[0m\]\[\e[38;5;${bg_color}m\]\[\e[0m\]\[\e[38;5;${error_color}m\]"; fi) \[\e[0m\]'
 # export PS1='$(if [ $exitcode == 0 ]; then echo "\[\e[0m\]\[\e[38;5;${ok_color}m\]▊"; else echo "\[\e[0m\]\[\e[38;5;${error_color}m\]▊"; fi)\[\e[00m\e[48;5;${bg_color}m\]\[\e[38;5;${fg_color}m\] $([ "$PWD" == ~ ] && echo " Home" || echo "ﱮ ${PWD##*/}") $(git_branch) \$ \[\e[01m\e[0m\]\[\e[38;5;${bg_color}m\] \[\e[0m\]'
 # export PS1='$(if [ $exitcode == 0 ]; then echo "\[\e[0m\]\[\e[38;5;${ok_color}m\]\[\e[48;5;${ok_color}m\]\[\e[38;5;${fg_color}m\]  \[\e[0m\]\[\e[38;5;${ok_color}m\] "; else echo "\[\e[0m\]\[\e[38;5;${error_color}m\]\[\e[48;5;${error_color}m\]\[\e[38;5;${fg_color}m\]  \[\e[0m\]\[\e[38;5;${error_color}m\] "; fi)\[\e[0m\]\[\e[38;5;${bg_color}m\]\[\e[00m\e[48;5;${bg_color}m\]\[\e[38;5;${fg_color}m\] $([ "$PWD" == ~ ] && echo " $USER" || ([ "$PWD" == "/" ] && echo "囹 root") || echo " ${PWD##*/}") │$(git_branch) \$ \[\e[0m\]\[\e[38;5;${bg_color}m\] \[\e[0m\]'
-export PS1=' $(if [ $exitcode == 0 ]; then echo "\[\e[38;2;${ok_color}m\]"; else echo "\[\e[38;2;${error_color}m\]"; fi)  \[\e[01;38;2;${dir_color}m\]$([ "$PWD" == ~ ] && echo " $USER" || ([ "$PWD" == "/" ] && echo "󰿠 root") || echo " ${PWD##*/}")\[\e[01;38;2;${branch_color}m\]$(git_branch)  \[\e[01;38;2;${arrow_color}m\]❯ \[\e[0m\]'
+export PS1=' $(if [ $exitcode == 0 ]; then echo "\[\e[38;2;${ok_color}m\]"; else echo "\[\e[38;2;${error_color}m\]"; fi)  \[\e[01;38;2;${dir_color}m\]$([ "$PWD" == ~ ] && echo " $USER" || ([ "$PWD" == "/" ] && echo "󰿠 root") || echo " ${PWD##*/}")\[\e[01;38;2;${branch_color}m\]$(git_branch)  \[\e[01;38;2;${arrow_color}m\]⏵  \[\e[0m\]'
