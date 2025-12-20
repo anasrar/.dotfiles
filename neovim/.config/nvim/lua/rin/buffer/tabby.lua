@@ -9,13 +9,6 @@ M.plugin = {
 }
 
 M.setup = function()
-  local ok = require("rin.utils.check_requires").check({
-    "tabby.tabline",
-  })
-  if not ok then
-    return
-  end
-
   local tabby = require("tabby.tabline")
 
   vim.o.showtabline = 2
@@ -23,26 +16,27 @@ M.setup = function()
   tabby.set(function(line)
     return {
       {
-        { " 󰯌 ", hl = "TabbyBufferIcon", },
+        { "▎", hl = "@accent.300", },
+      },
+      {
+        { "neovim", hl = "", },
       },
       line.wins_in_tab(line.api.get_current_tab()).foreach(function(win)
-        local hl = win.buf().is_changed() and "TabbyBufferTextChanged" or win.is_current() and "TabbyBufferTextCurrent"
-            or "TabbyBufferText"
+        local hl = win.buf().is_changed() and "@accent.300" or win.is_current() and "@accent.200"
+            or ""
         return {
           " ",
+          win.is_current() and "⏵ " or "",
           (win.buf_name() == "[No Name]" and "NO NAME" or win.buf_name()),
-          " ",
+          "",
           hl = hl,
         }
       end),
       line.spacer(),
-      {
-        { " 󰖯 ", hl = "TabbyTabIcon", },
-      },
       line.tabs().foreach(function(tab)
-        local hl = tab.is_current() and "TabbyTabTextCurrent" or "TabbyTabText"
+        local hl = tab.is_current() and "@accent.200" or ""
         return {
-          " ",
+          tab.is_current() and "⏵ " or "",
           (tab.name() == "[No Name]" and "NO NAME" or tab.name()),
           " ",
           hl = hl,
