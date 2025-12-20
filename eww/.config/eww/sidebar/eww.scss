@@ -1,17 +1,17 @@
-$font-main: "Inter V";
-$font-secondary: "JetBrainsMonoTabler";
-$font-monospace: "JetBrains Mono";
+$font-main: "Ioskeley Mono";
+$font-secondary: "IoskeleyMonoTabler";
+$font-monospace: "Ioskeley Mono";
 $font-icon: "tabler-icons";
-$color-bg: #1a1b26;
-$color-fg: #c0caf5;
-$color-black: #15161e;
-$color-red: #f7768e;
-$color-green: #9ece6a;
-$color-yellow: #e0af68;
-$color-blue: #7aa2f7;
-$color-magenta: #bb9af7;
-$color-cyan: #7dcfff;
-$color-white: #a9b1d6;
+$color-bg: #121214;
+$color-fg: #c0c0ca;
+$color-black: #26262d;
+$color-red: #fe8c9b;
+$color-green: #d7fe8c;
+$color-yellow: #fee88c;
+$color-blue: #8ca4fe;
+$color-magenta: #9f8cfe;
+$color-cyan: #8cd7fe;
+$color-white: #c0c0ca;
 
 * {
   all: unset;
@@ -20,7 +20,7 @@ $color-white: #a9b1d6;
 // # tooltip
 tooltip {
   color: $color-fg;
-  background-color: darken($color-bg, $amount: 7.5%);
+  background-color: $color-bg;
   font-family: $font-monospace;
   font-weight: 800;
 }
@@ -32,6 +32,8 @@ tooltip {
   background-color: darken($color-bg, 2.5%);
   font-family: $font-main;
   font-size: 12px;
+  border: 2px solid $color-blue;
+  border-radius: 6px;
 }
 
 .icon {
@@ -78,9 +80,9 @@ tooltip {
 .rofi {
   margin: 0 6px;
   padding: 3px 0;
-  border: 3px solid #a1b4ef;
-  border-radius: 6px;
-  color: #a9b1d6;
+  border: 3px solid $color-blue;
+  border-radius: 4px;
+  color: $color-blue;
   background-color: darken($color-bg, 8%);
 
   & .icon {
@@ -92,13 +94,13 @@ tooltip {
 .desktop_item {
   margin: 0 6px;
   padding: 3px 0;
-  border: 3px solid rgba($color: #a1b4ef, $alpha: 0.25);
-  border-radius: 6px;
-  color: #a1b4ef;
+  border: 3px solid rgba($color: $color-fg, $alpha: 0.25);
+  border-radius: 4px;
+  color: $color-fg;
   background-color: darken($color-bg, 8%);
 
   &.current {
-    color: adjust-hue($color: #f494c7, $degrees: -10deg);
+    color: $color-cyan;
     border-color: currentColor;
   }
 
@@ -112,56 +114,56 @@ tooltip {
   margin: 0 6px 6px;
   padding: 10px 0;
   border-radius: 6px;
-  background: #090a0e;
+  background: darken($color-bg, 8%);
 }
 
 .color_notify {
-  color: #d680ec;
-  background-color: rgba($color: #d680ec, $alpha: 0.25);
+  color: $color-magenta;
+  background-color: darken($color-bg, 8%);
 }
 
 .color_notify_paused {
-  color: #aba8cb;
-  background-color: rgba($color: #d680ec, $alpha: 0.25);
+  color: $color-fg;
+  background-color: darken($color-bg, 8%);
 }
 
 .color_volume {
-  color: #79bdf5;
-  background-color: rgba($color: #79bdf5, $alpha: 0.25);
+  color: $color-cyan;
+  background-color: darken($color-bg, 8%);
 }
 
 .color_volume_muted {
-  color: #f57979;
-  background-color: rgba($color: #f57979, $alpha: 0.25);
+  color: $color-red;
+  background-color: darken($color-bg, 8%);
 }
 
 .color_brightness {
-  color: #eff780;
-  background-color: rgba(#eff780, $alpha: 0.25);
+  color: $color-yellow;
+  background-color: darken($color-bg, 8%);
 }
 
 .color_battery_low {
   color: saturate($color-red, 75%);
-  background-color: rgba($color: saturate($color-red, 75%), $alpha: 0.25);
+  background-color: darken($color-bg, 8%);
 }
 
 .color_battery_charging {
   color: saturate($color-green, 75%);
-  background-color: rgba($color: saturate($color-green, 75%), $alpha: 0.25);
+  background-color: darken($color-bg, 8%);
 }
 
 .color_battery_discharging {
-  color: #7a95e9;
-  background-color: rgba($color: #7a95e9, $alpha: 0.25);
+  color: $color-green;
+  background-color: darken($color-bg, 8%);
 }
 
 .color_power {
-  color: #e97acc;
-  background-color: rgba($color: #e97acc, $alpha: 0.25);
+  color: $color-red;
+  background-color: darken($color-bg, 8%);
 }
 
 .date {
-  font-family: $font-main;
+  font-family: $font-monospace;
   font-weight: 800;
   font-size: 9px;
 }
@@ -225,7 +227,7 @@ tooltip {
   font-weight: 700;
 
   calendar {
-    font-family: $font-secondary;
+    font-family: $font-monospace;
     margin: 0 2px;
 
     &.highlight {

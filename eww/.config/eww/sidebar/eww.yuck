@@ -1,21 +1,21 @@
 ; # bar
 
+(defvar is_bar_panel_open
+  "false"
+)
+
 (defwindow bar
   :monitor 0
   :geometry (geometry
-    :x "0"
-    :y "0"
-    :width "42px"
-    :height "100%"
+    :x "14px"
+    :y "14px"
+    :width "46px"
+    :height "1052px"
     :anchor "top left"
   )
-  :stacking "bg"
-  :reserve (struts
-    :distance "42px"
-    :side "left"
-  )
+  :stacking "fg"
   :windowtype "dock"
-  :wm-ignore false
+  :wm-ignore true
   (box
     :orientation "v" 
     :space-evenly false
@@ -299,8 +299,8 @@
 (defwindow volume
   :monitor 0
   :geometry (geometry
-    :x "58px"
-    :y "-160px"
+    :x "72px"
+    :y "-174px"
     :width "150px"
     :anchor "bottom left"
   )
@@ -363,8 +363,8 @@
 (defwindow brightness
   :monitor 0
   :geometry (geometry
-    :x "58px"
-    :y "-122px"
+    :x "72px"
+    :y "-136px"
     :anchor "bottom left"
   )
   :stacking "fg"
@@ -409,8 +409,8 @@
 (defwindow battery
   :monitor 0
   :geometry (geometry
-    :x "58px"
-    :y "-84px"
+    :x "72px"
+    :y "-98px"
     :width "150px"
     :anchor "bottom left"
   )
@@ -454,8 +454,8 @@
 (defwindow power
   :monitor 0
   :geometry (geometry
-    :x "58px"
-    :y "-46px"
+    :x "72px"
+    :y "-60px"
     :width "150px"
     :anchor "bottom left"
   )
@@ -534,7 +534,7 @@
 (defwindow calendar
   :monitor 0
   :geometry (geometry
-    :x "58px"
+    :x "72px"
     :y "-16px"
     :width "240px"
     :anchor "bottom left"
