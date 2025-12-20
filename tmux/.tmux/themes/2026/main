@@ -1,0 +1,22 @@
+set -g status "on"
+set -g status-justify "left"
+set -g status-style "bg=#121214,fg=#9292a4"
+set -g status-left-style "none"
+set -g status-left-length "100"
+set -g status-right-style "none"
+set -g status-right-length "100"
+
+set -g pane-border-style "fg=#26262d"
+set -g pane-active-border-style "fg=#3b3b47"
+
+set -g message-style "bg=#121214,fg=#9292a4"
+
+set -g status-right " #S "
+set -g status-left "#[fg=#5478ff]▎#[fg=#9292a4]tmux "
+
+set -g window-status-separator ""
+
+set -g window-status-format "#W "
+set -g window-status-current-format "#[fg=#8ca4fe]⏵ #W "
+
+# vi: ft=tmux
