@@ -26,7 +26,8 @@ require("rin.personal.main").setup()
 lazy.setup({
 
   -- # Theme
-  require("rin.theme.tokyonight").plugin,
+  require("rin.theme.xeno").plugin,
+  -- require("rin.theme.tokyonight").plugin,
   -- require("rin.theme.tokyodark").plugin,
   -- require("rin.theme.iceberg").plugin,
   -- require("rin.theme.kanagawa").plugin,
