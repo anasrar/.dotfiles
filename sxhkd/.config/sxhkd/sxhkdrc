@@ -19,7 +19,7 @@ super + Escape
 
 # sidebar
 super + @space
-	sh -c "$HOME/.config/sxhkd/scripts/toggle-sidebar"
+	bash --login -i -c "$HOME/.config/sxhkd/scripts/toggle-sidebar"
 
 # program launcher
 super + a
