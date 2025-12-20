@@ -9,14 +9,6 @@ install pyright for static type checker
 ```
 pip install pyright
 ```
-install pydocstyle for documentation lint
-```
-pip install pydocstyle
-```
-install autopep8 for formatting
-```
-pip install autopep8
-```
 --]=]
 
 local ok = require("rin.utils.check_requires").check({
@@ -50,16 +42,4 @@ lspconfig.pyright.setup({
   end,
 })
 
-null_ls.register({
-  name = "null-ls-Python",
-  sources = {
-    null_ls.builtins.diagnostics.pydocstyle.with({
-      filetypes = { "python" },
-      extra_args = { "--config=$ROOT/setup.cfg" },
-    }),
-    null_ls.builtins.formatting.autopep8.with({
-      filetypes = { "python" },
-    }),
-  },
-  on_attach = on_attach,
-})
+-- TODO: use ruff `https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ruff`

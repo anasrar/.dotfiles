@@ -34,8 +34,6 @@ local capabilities = cmp_nvim_lsp.default_capabilities()
 lspconfig.rust_analyzer.setup({
   capabilities = capabilities,
   on_attach = function(client, bufnr)
-    client.server_capabilities.documentFormattingProvider = false
-    client.server_capabilities.documentRangeFormattingProvider = false
     on_attach(client, bufnr)
   end,
   settings = {
@@ -45,14 +43,4 @@ lspconfig.rust_analyzer.setup({
       },
     },
   },
-})
-
-null_ls.register({
-  name = "null-ls-Rust",
-  sources = {
-    null_ls.builtins.formatting.rustfmt.with({
-      filetypes = { "rust" },
-    }),
-  },
-  on_attach = on_attach,
 })
