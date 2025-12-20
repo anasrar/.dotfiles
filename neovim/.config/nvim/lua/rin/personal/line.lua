@@ -14,6 +14,7 @@ M.setup = function()
     trail = "·",
     eol = "↵",
   }
+  vim.opt.fillchars:append('eob: ')
 
   -- # Line manipulation
 
