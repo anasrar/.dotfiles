@@ -6,16 +6,6 @@ npm i -g svelte-language-server eslint_d @fsouza/prettierd
 ```
 --]=]
 
-local ok = require("rin.utils.check_requires").check({
-  "lspconfig",
-  "cmp_nvim_lsp",
-  "null-ls",
-})
-if not ok then
-  return
-end
-
-local lspconfig = require("lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 local null_ls = require("null-ls")
 
@@ -28,7 +18,7 @@ end
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
-lspconfig.svelte.setup({
+vim.lsp.config("svelte", {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
@@ -36,6 +26,7 @@ lspconfig.svelte.setup({
     on_attach(client, bufnr)
   end,
 })
+vim.lsp.enable("svelte")
 
 null_ls.setup({
   name = "null-ls-svelte",
