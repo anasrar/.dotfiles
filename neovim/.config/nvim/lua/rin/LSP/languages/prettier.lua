@@ -5,13 +5,6 @@ npm i -g prettier @fsouza/prettierd
 ```
 --]=]
 
-local ok = require("rin.utils.check_requires").check({
-  "null-ls",
-})
-if not ok then
-  return
-end
-
 local null_ls = require("null-ls")
 
 null_ls.register({
