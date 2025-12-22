@@ -5,22 +5,12 @@ npm i -g vscode-langservers-extracted @fsouza/prettierd
 ```
 --]=]
 
-local ok = require("rin.utils.check_requires").check({
-  "lspconfig",
-  "cmp_nvim_lsp",
-  "null-ls",
-})
-if not ok then
-  return
-end
-
-local lspconfig = require("lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 local null_ls = require("null-ls")
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
-lspconfig.cssls.setup({
+vim.lsp.config("cssls", {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     require("rin.LSP.utils.keymap")(bufnr)
@@ -28,6 +18,7 @@ lspconfig.cssls.setup({
     client.server_capabilities.documentRangeFormattingProvider = false
   end,
 })
+vim.lsp.enable("cssls")
 
 null_ls.register({
   name = "null-ls-CSS",
