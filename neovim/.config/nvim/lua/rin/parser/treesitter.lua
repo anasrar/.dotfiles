@@ -2,6 +2,7 @@ local M = {}
 
 M.plugin = {
   "nvim-treesitter/nvim-treesitter",
+  branch = "master",
   event = "VeryLazy",
   config = function()
     M.setup()
