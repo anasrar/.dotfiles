@@ -7,16 +7,6 @@ npm i -g typescript typescript-language-server eslint_d @fsouza/prettierd
 ```
 --]=]
 
-local ok = require("rin.utils.check_requires").check({
-  "lspconfig",
-  "cmp_nvim_lsp",
-  "null-ls",
-})
-if not ok then
-  return
-end
-
-local lspconfig = require("lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 local null_ls = require("null-ls")
 
@@ -29,16 +19,16 @@ end
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
-lspconfig.ts_ls.setup({
+vim.lsp.config("ts_ls", {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
     on_attach(client, bufnr)
   end,
-  root_dir = lspconfig.util.root_pattern("package.json"),
   single_file_support = false,
 })
+vim.lsp.enable("ts_ls")
 
 null_ls.register({
   name = "null-ls-TypeScript",
