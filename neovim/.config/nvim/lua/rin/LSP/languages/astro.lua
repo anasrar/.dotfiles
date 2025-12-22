@@ -6,16 +6,6 @@ npm i -g @astrojs/language-server eslint_d @fsouza/prettierd
 ```
 --]=]
 
-local ok = require("rin.utils.check_requires").check({
-  "lspconfig",
-  "cmp_nvim_lsp",
-  "null-ls",
-})
-if not ok then
-  return
-end
-
-local lspconfig = require("lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 local null_ls = require("null-ls")
 
@@ -28,7 +18,7 @@ end
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
-lspconfig.astro.setup({
+vim.lsp.config("astro", {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     -- Using builtin formatter
@@ -37,6 +27,7 @@ lspconfig.astro.setup({
     on_attach(client, bufnr)
   end,
 })
+vim.lsp.enable("astro")
 
 null_ls.register({
   name = "null-ls-astro",
