@@ -45,7 +45,6 @@ lazy.setup({
   require("rin.finder.telescope").plugin,
 
   -- # File Tree
-  -- require("rin.filetree.nvim-tree").plugin,
   require("rin.filetree.neo-tree").plugin,
 
   -- # Status line
