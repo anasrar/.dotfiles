@@ -4,25 +4,15 @@ https://dotnet.microsoft.com/en-us/download
 https://github.com/omnisharp/omnisharp-roslyn
 --]=]
 
-local ok = require("rin.utils.check_requires").check({
-  "lspconfig",
-  "cmp_nvim_lsp",
-})
-if not ok then
-  return
-end
-
-local lspconfig = require("lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 local on_attach = function(client, bufnr)
   require("rin.LSP.utils.keymap")(bufnr)
 end
 
-local capabilities
-cmp_nvim_lsp.default_capabilities()
+local capabilities = cmp_nvim_lsp.default_capabilities()
 
-lspconfig.omnisharp.setup {
+vim.lsp.config("omnisharp", {
   -- Enables support for reading code style, naming convention and analyzer
   -- settings from .editorconfig.
   enable_editorconfig_support = true,
@@ -63,4 +53,5 @@ lspconfig.omnisharp.setup {
   on_attach = function(client, bufnr)
     on_attach(client, bufnr)
   end,
-}
+})
+vim.lsp.enable("omnisharp")
