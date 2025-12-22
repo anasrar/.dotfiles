@@ -11,16 +11,6 @@ https://golangci-lint.run/usage/install
 gofmt pre-installed on go
 --]=]
 
-local ok = require("rin.utils.check_requires").check({
-  "lspconfig",
-  "cmp_nvim_lsp",
-  "null-ls",
-})
-if not ok then
-  return
-end
-
-local lspconfig = require("lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 local null_ls = require("null-ls")
 
@@ -33,7 +23,7 @@ end
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
-lspconfig.gopls.setup({
+vim.lsp.config("gopls", {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
@@ -41,6 +31,7 @@ lspconfig.gopls.setup({
     on_attach(client, bufnr)
   end,
 })
+vim.lsp.enable("gopls")
 
 null_ls.register({
   name = "null-ls-Go",
