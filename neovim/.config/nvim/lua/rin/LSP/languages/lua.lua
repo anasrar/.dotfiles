@@ -1,17 +1,8 @@
 --[=[
 lua-language-server
-https://github.com/sumneko/lua-language-server
+https://github.com/luals/lua-language-server
 --]=]
 
-local ok = require("rin.utils.check_requires").check({
-  "lspconfig",
-  "cmp_nvim_lsp",
-})
-if not ok then
-  return
-end
-
-local lspconfig = require("lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 local on_attach = function(client, bufnr)
@@ -23,12 +14,9 @@ end
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
-lspconfig.lua_ls.setup({
+vim.lsp.config("lua_ls", {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
-    -- Using builtin formatter
-    -- client.server_capabilities.documentFormattingProvider = false
-    -- client.server_capabilities.documentRangeFormattingProvider = false
     on_attach(client, bufnr)
   end,
   settings = {
@@ -52,3 +40,4 @@ lspconfig.lua_ls.setup({
     },
   },
 })
+vim.lsp.enable("lua_ls")
