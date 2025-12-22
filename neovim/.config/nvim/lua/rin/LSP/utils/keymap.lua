@@ -24,8 +24,6 @@ local mapping = function(bufnr)
   buf_keymap(bufnr, "n", "<Leader>l]", ":LspDiagNext<CR>")
   buf_keymap(bufnr, "n", "<Leader>la", ":LspCodeAction<CR>")
   buf_keymap(bufnr, "n", "<Leader>ll", ":LspDiagLine<CR>")
-  -- buf_keymap(bufnr, "n", "<Leader>lL", ":Lspsaga show_buf_diagnostics<CR>")
-  -- buf_keymap(bufnr, "n", "<Leader>lo", ":Lspsaga outline<CR>")
   buf_keymap(bufnr, "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>")
 end
 
