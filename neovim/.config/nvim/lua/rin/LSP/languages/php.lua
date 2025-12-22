@@ -5,15 +5,6 @@ npm i -g intelephense
 ```
 --]=]
 
-local ok = require("rin.utils.check_requires").check({
-  "lspconfig",
-  "cmp_nvim_lsp",
-})
-if not ok then
-  return
-end
-
-local lspconfig = require("lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 local on_attach = function(client, bufnr)
@@ -25,11 +16,10 @@ end
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
-lspconfig.intelephense.setup({
+vim.lsp.config("intelephense", {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
-    -- client.server_capabilities.documentFormattingProvider = false
-    -- client.server_capabilities.documentRangeFormattingProvider = false
     on_attach(client, bufnr)
   end,
 })
+vim.lsp.enable("intelephense")
