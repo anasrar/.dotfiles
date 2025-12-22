@@ -27,14 +27,6 @@ lazy.setup({
 
   -- # Theme
   require("rin.theme.xeno").plugin,
-  -- require("rin.theme.tokyonight").plugin,
-  -- require("rin.theme.tokyodark").plugin,
-  -- require("rin.theme.iceberg").plugin,
-  -- require("rin.theme.kanagawa").plugin,
-  -- require("rin.theme.nightfox").plugin,
-  -- require("rin.theme.nightfly").plugin,
-  -- require("rin.theme.catppuccin").plugin,
-  -- require("rin.theme.material").plugin,
 
   -- # UI
   require("rin.UI.noice").plugin,
