@@ -15,10 +15,6 @@ HISTFILESIZE=3
 # neovim
 alias vv='nvim'
 
-# neofetch
-alias neofetch='neofetch --ascii ~/.config/neofetch/ascii.txt --ascii_colors 6 4 --colors 1 1 1 4 7 7'
-alias neofetchimg='neofetch --ascii ~/.config/neofetch/ascii.txt --ascii_colors 6 4 --colors 1 1 1 4 7 7 --kitty --source ~/.config/neofetch/90655690_p0.jpg --size 180'
-
 # tmux
 alias ttt='tmux new-session\; split-pane -h -l 57%\; select-pane -t 1\; split-pane -v\; select-pane -t 3'
 alias ttt1='tmux new-session\; split-pane -v -l 40%\; split-pane -h -l 50%\; select-pane -t 1'
