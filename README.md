@@ -6,7 +6,7 @@ My 2026 dotfiles.
 
 ## Screenshot
 
-![Screenshot](./screenshots/Screenshot From 2025-12-25 12-39-13.png)
+![Screenshot](screenshots/Screenshot From 2025-12-25 12-39-13.png)
 
 ## Details
 
