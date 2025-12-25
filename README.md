@@ -6,7 +6,7 @@ My 2026 dotfiles.
 
 ## Screenshot
 
-![Screenshot](screenshots/Screenshot From 2025-12-25 12-39-13.png)
+![Screenshot](https://github.com/anasrar/.dotfiles/assets/38805204/3a0f326d-fdb0-43eb-8ee1-899b080ff50f)
 
 ## Details
 
