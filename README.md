@@ -1,36 +1,25 @@
 # dotfiles
 
-My 2025 dotfiles.
+My 2026 dotfiles.
 
 # Details
 
 ## Screenshot
 
-![Screenshot](https://github.com/anasrar/.dotfiles/assets/38805204/d2ed4651-9b87-48e4-b33b-0d0292056382)
+![Screenshot](./screenshots/Screenshot From 2025-12-25 12-39-13.png)
 
 ## Details
 
-- **GTK Theme**: [Kripton](https://www.pling.com/p/1365372/).
-- **Cursor**: [McMojave cursors](https://www.pling.com/p/1355701/).
-- **Icon**: [Grade-icon-theme](https://www.pling.com/p/1586828).
+- **DE**: [GNOME](https://www.gnome.org/).
 - **Fonts**:
   - [Inter](https://github.com/rsms/inter), select variable version for crisp render.
-  - [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) with [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) fallback.
-  - [tabler-icons](https://github.com/tabler/tabler-icons), font icon.
+  - [IoskeleyMono](https://github.com/ahatem/IoskeleyMono) with [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) fallback.
 - **Terminal**:
-  - [Alacritty](https://github.com/alacritty/alacritty) with color scheme [Tokyo Night](https://github.com/folke/tokyonight.nvim/tree/main/extras/alacritty).
-  - [Kitty](https://github.com/kovidgoyal/kitty) with color scheme [Tokyo Night](https://github.com/folke/tokyonight.nvim/blob/main/extras/kitty/tokyonight_night.conf).
+  - [Alacritty](https://github.com/alacritty/alacritty) with custom color scheme.
+  - [Kitty](https://github.com/kovidgoyal/kitty) with custom color scheme.
 - **Text Editor**: [Neovim](https://github.com/neovim/neovim).
 - **Git Client**: [lazygit](https://github.com/jesseduffield/lazygit).
-- **Browser**: [Firefox](https://www.mozilla.org/firefox/new/) with [Fireside](https://github.com/bjesus/fireside).
-- **Music Visualizer**: [cava](https://github.com/karlstav/cava).
-- **App Finder**: [rofi](https://github.com/davatorium/rofi).
-- **Panel/Sidebar**: [eww](https://github.com/elkowar/eww).
-- **System Tray**: [stalonetray](https://github.com/kolbusa/stalonetray).
-- **Notification**: [wired-notify](https://github.com/Toqozz/wired-notify).
-- **Compositor**: [picom](https://github.com/yshui/picom).
-- **Neofetch Image**: [pixiv: Aoi Ogata](https://www.pixiv.net/en/artworks/90655690).
-- **Wallpaper**: [https://wallhaven.cc/w/y8jgzk](https://wallhaven.cc/w/y8jgzk).
+- **Fastfetch**: [pixiv: Aoi Ogata](https://www.pixiv.net/en/artworks/90655690).
 
 # Notice
 
