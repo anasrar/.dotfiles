@@ -72,7 +72,8 @@ key = 93
 
 [window]
 dynamic_padding = true
-opacity = 0.94
+opacity = 1.0
+decorations = "None"
 
 [window.dimensions]
 columns = 80
