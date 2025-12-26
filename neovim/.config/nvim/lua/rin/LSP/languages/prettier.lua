@@ -23,7 +23,7 @@ null_ls.register({
     null_ls.builtins.formatting.prettierd.with({
       filetypes = { "json", "jsonc", "markdown" },
       condition = function(utils)
-        return not utils.root_has_file({ "deno.json", "deno.jsonc" })
+        return not utils.has_file({ "deno.json", "deno.jsonc" })
       end,
     }),
   },

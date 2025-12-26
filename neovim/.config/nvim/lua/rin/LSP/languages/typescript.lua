@@ -36,19 +36,19 @@ null_ls.register({
     require("none-ls.diagnostics.eslint_d").with({
       filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
       condition = function(utils)
-        return utils.root_has_file({ "package.json" })
+        return utils.has_file({ "package.json" })
       end,
     }),
     require("none-ls.code_actions.eslint_d").with({
       filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
       condition = function(utils)
-        return utils.root_has_file({ "package.json" })
+        return utils.has_file({ "package.json" })
       end,
     }),
     null_ls.builtins.formatting.prettierd.with({
       filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
       condition = function(utils)
-        return utils.root_has_file({ "package.json" })
+        return utils.has_file({ "package.json" })
       end,
     }),
   },
