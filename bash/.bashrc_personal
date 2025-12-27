@@ -12,6 +12,9 @@ bind '"\e[B":history-search-forward'
 # history limit
 HISTFILESIZE=3
 
+# open file manager
+alias ee='xdg-open .'
+
 # neovim
 alias vv='nvim'
 
