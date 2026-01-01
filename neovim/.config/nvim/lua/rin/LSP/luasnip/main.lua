@@ -63,3 +63,4 @@ luasnip.add_snippets("typescriptreact", require("rin.LSP.luasnip.languages.types
 luasnip.add_snippets("astro", require("rin.LSP.luasnip.languages.astro"))
 luasnip.add_snippets("lua", require("rin.LSP.luasnip.languages.lua"))
 luasnip.add_snippets("prisma", require("rin.LSP.luasnip.languages.prisma"))
+luasnip.add_snippets("go", require("rin.LSP.luasnip.languages.go"))
